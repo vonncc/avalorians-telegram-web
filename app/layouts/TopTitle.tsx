@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface TabSelect {
     text: string;
@@ -34,7 +35,7 @@ const TopTitle: React.FC<TopTitleProps> = ({activeTab}) => {
     return (
         <div className="top-container">
             <div className="left-side">{tabSelected[index].text}</div>
-            <div className="right-side"><img src={`/assets/images/top-menu/${tabSelected[index].image}.png`} /></div>
+            <div className="right-side"><Image src={`/assets/images/top-menu/${tabSelected[index].image}.png`} alt = "Tab Selected Image" /></div>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import "./globals.css";
 import FrontOverlay from "./layouts/BottomTabItems";
 // import TopTitle from "./layouts/TopTitle";
 // import { useState } from "react";
-import Head from "next/head";
+// import Head from "next/head";
 import Script from "next/script";
 
 const geistSans = localFont({
