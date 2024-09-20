@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // import Script from "next/script";
 
 export default function Home() {
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState<TelegramWebAppUser | null>(null);
     // const [loadingTelegram, setloadingTelegram] = useState(0);
 
     // const [someString, setSomeString] = useState('');
