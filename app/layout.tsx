@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import FrontOverlay from "./layouts/BottomTabItems";
 // import TopTitle from "./layouts/TopTitle";
 // import { useState } from "react";
 // import Head from "next/head";
+import type { Metadata } from "next";
+// import DebugComponent from "./components/elements/DebugCompoment";
 import Script from "next/script";
+// import StartScripts from "./components/elements/StartScripts";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -21,7 +23,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
     title: "Avalorians Telegram",
     description: "Avalorians Telegram Game App",
-
 };
 
 export default function RootLayout({
@@ -34,8 +35,11 @@ export default function RootLayout({
             {/* <Head>
                 
             </Head> */}
-            <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
+            <head>
+                <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
+            </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                {/* <StartScripts></StartScripts> */}
                 {children}
                 <FrontOverlay tab={0} />
             </body>

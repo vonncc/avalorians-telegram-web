@@ -31,7 +31,7 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
                 <div className="tab-header">
                     {tabs.map((tab, index) => (
                         <div key={index} className={`tab-button ${index === activeTab ? "active" : ""}`} onClick={() => handleTabClick(index)}>
-                            <Image src={`${tab.image}`} alt="Icon" width={50} height={50} />
+                            <img src={`${tab.image}`} alt="Icon" width={50} height={50} />
                             <span className="tab-button-text">{tab.text}</span>
                         </div>
                     ))}

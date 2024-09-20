@@ -35,7 +35,7 @@ const TopTitle: React.FC<TopTitleProps> = ({activeTab}) => {
     return (
         <div className="top-container">
             <div className="left-side">{tabSelected[index].text}</div>
-            <div className="right-side"><Image src={`/assets/images/top-menu/${tabSelected[index].image}.png`} alt = "Tab Selected Image" /></div>
+            <div className="right-side"><img src={`/assets/images/top-menu/${tabSelected[index].image}.png`} alt = "Tab Selected Image" /></div>
         </div>
     );
 };
