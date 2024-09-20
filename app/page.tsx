@@ -14,6 +14,8 @@ interface UserData {
     language_code?: string;
     is_premium?: boolean;
 }
+
+
 export default function Home() {
     const [userData, setUserData] = useState<UserData | null>(null);
     // const [loadingTelegram, setloadingTelegram] = useState(0);
@@ -26,8 +28,9 @@ export default function Home() {
 
     useEffect(() => {
         console.log("TG_123: start use effect");
-        
+
         if (typeof window !== "undefined") {
+
             if (WebApp.initDataUnsafe.user) {
                 console.log("TG_123: Web App found");
                 console.log(WebApp);
@@ -37,10 +40,12 @@ export default function Home() {
             } else {
                 console.log("TG_123: Web App Not found");
                 console.log(WebApp);
-                
+
+                console.log("TG_123: Init Data only");
+                const initData = WebApp.initData; // This is base64-encoded
+                console.log("initData:", initData);
             }
         }
-        
 
         // const checkTelegramLoaded = setInterval(() => {
 
