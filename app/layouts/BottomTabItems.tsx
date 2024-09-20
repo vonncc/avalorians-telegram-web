@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TabMenu, { TabItem } from "../components/elements/TabMenu";
 import TopTitle from "./TopTitle";
 import ProductCard from "../components/ProductCard";
@@ -61,7 +61,7 @@ const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) =>
         if (currentActiveTab) currentActiveTab(index);
         console.log(index);
     };
-    const [userData, setUserData] = useState(null);
+    // const [userData, setUserData] = useState(null);
 
     
     

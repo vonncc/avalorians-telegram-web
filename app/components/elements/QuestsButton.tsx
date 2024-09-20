@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 // Apply the type to the component's props
-const QuestsButton: React.FC<ButtonProps> = ({text, onClick, data}) => {
+const QuestsButton: React.FC<ButtonProps> = ({text, onClick}) => {
     return <button className="button button--full-large"  onClick={onClick}>{text}</button>;
 };
 

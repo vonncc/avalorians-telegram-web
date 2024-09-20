@@ -5,16 +5,16 @@ const ProductCard = () => {
     <div>
         {/* <button onClick={() => con} */}
         Top
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
-        <img src='/assets/images/top-menu/airdrop.png'></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
+        <img src='/assets/images/top-menu/airdrop.png' alt="Description of the image"></img>
         BOTTOM
     </div>
   )

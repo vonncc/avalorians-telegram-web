@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import FrontOverlay from "./layouts/BottomTabItems";
-import TopTitle from "./layouts/TopTitle";
-import { useState } from "react";
+// import TopTitle from "./layouts/TopTitle";
+// import { useState } from "react";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -31,10 +31,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <Head>
-                {/* import external javascript */}
-                <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
-            </Head>
+            {/* <Head>
+                
+            </Head> */}
+            <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 {children}
                 <FrontOverlay tab={0} />

@@ -1,19 +1,19 @@
 "use client";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+// import Head from "next/head";
+// import Image from "next/image";
+// import Link from "next/link";
 import { useEffect, useState } from "react";
-import Script from "next/script";
+// import Script from "next/script";
 
 export default function Home() {
-    const [userData, setUserData] = useState<TelegramWebAppUser | null>(null);
-    const [loadingTelegram, setloadingTelegram] = useState(0);
+    const [userData, setUserData] = useState(null);
+    // const [loadingTelegram, setloadingTelegram] = useState(0);
 
-    const [someString, setSomeString] = useState('');
+    // const [someString, setSomeString] = useState('');
 
-    const incrementLoadingTelegram = () => {
-        setloadingTelegram(prevLoadingTelegram => prevLoadingTelegram + 1);
-    };
+    // const incrementLoadingTelegram = () => {
+    //     setloadingTelegram(prevLoadingTelegram => prevLoadingTelegram + 1);
+    // };
 
     useEffect(() => {
         console.log('TG_123: start use effect');
@@ -43,7 +43,7 @@ export default function Home() {
         return () => clearInterval(checkTelegramLoaded);
     }, []);
 
-    if (!userData) return <p>Loading user data... {someString}</p>;
+    if (!userData) return <p>Loading user data...</p>;
 
     return (
         <main>
