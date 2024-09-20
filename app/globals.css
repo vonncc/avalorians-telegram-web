@@ -2,26 +2,254 @@
 @tailwind components;
 @tailwind utilities;
 
+/* || GENERAL STYLES */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #000;
+    --foreground: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #000;
+        --foreground: #fff;
+    }
+}
+
+@font-face {
+    font-family: "mina";
+    src: url("/fonts/Mina-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "mina-bold";
+    src: url("/fonts/Mina-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: "mina", "mina-bold";
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: normal; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    /* … */
+}
+
+ul {
+    /* … */
+}
+
+blockquote {
+    /* … */
+}
+
+/* || UTILITIES */
+
+.nobullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }
+
+/* … */
+
+/* || SITEWIDE */
+
+.centered-div {
+    /* width: 10%; */
+    margin: 0 auto; /* Automatically adjust margins to center horizontally */
+    width: 100%; /* Ensures the container spans the full width of its parent */
+    padding: 0; /* Remove padding if needed */
+}
+
+.main-nav {
+    /* … */
+}
+
+.logo {
+    /* … */
+}
+
+.button {
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+
+    cursor: pointer;
+    background-size: cover; /* Ensures the image covers the button */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+    width: auto; /* Set the width to the desired value */
+    height: auto; /* Set the height to the desired value */
+    display: inline-block; /* Ensures the button doesn't take up more space than necessary */
+    line-height: 50px; /* Aligns text vertically */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.button--full-large {
+    background-image: url("/assets/images/buttons/btn-full-large.png");
+    width: 100%; /* Full width of the parent container */
+    height: 50px; /* Fixed height for the button */
+    background-size: cover; /* Ensure the background image covers the button */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-position: center; /* Center the background image */
+    border: none; /* Removes any default border */
+    box-sizing: border-box; /* Ensures padding and border are included in the button's width and height */
+}
+
+.overlay-menu {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+}
+
+/* || TITLE MENU || TOP MENU  */
+.overlay-menu .top-container {
+    z-index: 10;
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.overlay-menu .top-container .left-side {
+    margin-left: 100px;
+    align-items: center;
+}
+
+
+.overlay-menu .top-container .right-side {
+    margin-right: 100px;
+    display: flex; /* Ensure flex properties apply */
+    justify-content: flex-end; /* Aligns content to end (right) */
+    align-items: flex-start; /* Vertically center the content */
+    height: 100%; /* Match the height of the parent container */
+}
+
+.overlay-menu .top-container .right-side img {
+    height: 100%; /* Ensure the image takes up the full height of the parent */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+
+/* || TAB MENU || BOTTOM TAB  */
+
+.overlay-menu .bottom-container {
+    margin-top: auto; /* Pushes the bottom container to the bottom */
+    display: flex; /* Ensure flex properties apply */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+.overlay-menu .tab-item {
+    text-align: center;
+    /* Add any additional styling for tab items here */
+}
+
+.overlay-menu .tab-container {
+    display: flex;
+    text-transform: uppercase;
+    flex-direction: column;
+    justify-content: center; /* Center the grid within the container */
+    padding: 20px; /* Add some padding around the container */
+}
+
+.overlay-menu .tab-container-gradient-background {
+    z-index: 5;
+    background: linear-gradient(to top, rgba(120, 120, 120, 1), rgba(120, 120, 120, 0));
+    /* url("/assets/images/genericbox.png"); Background image */
+    border-radius: 30px; /* Rounded corners */
+}
+
+.overlay-menu .tab-header {
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
+    gap: 4px; /* Adjust the gap between the tabs as needed */
+}
+
+.overlay-menu .tab-content {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensure content is below the tabs */
+    align-items: flex-start; /* Align content to the top */
+    justify-content: center; /* Center content horizontally */
+    flex-direction: column;
+    padding-top: 100px; /* Add top padding */
+    padding-bottom: 170px;
+    box-sizing: border-box; /* Ensure padding is included in the height calculation */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+.overlay-menu .tab-button {
+    z-index: 5;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-end; /* Align children to the bottom */
+    align-items: center; /* Center children horizontally */
+    border-radius: 10px; /* Rounded corners */
+    width: 70px; /* Adjust this to match the width of your buttons */
+    height: 70px; /* Adjust this to match the height of your buttons */
+    font-size: 10px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease; /* Smooth transition for opacity changes */
+    padding-bottom: 10px; /* Adjust this to control the distance from the bottom */
+}
+
+.overlay-menu .tab-icon {
+    width: 80%; /* Make the image width relative to the tab */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 70%; /* Ensure the image doesn't exceed a certain height */
+}
+
+.overlay-menu .tab-button-text {
+    margin-top: auto;
+    color: white; /* Adjust text color as needed */
+}
+
+/* Active tab button styles */
+.overlay-menu .tab-button.active {
+    opacity: 1;
+    font-weight: bold;
+    z-index: 10;
+    /* Any other styles for the active state */
+}
+
+/* Optional: Hover state for better user experience */
+.tab-button:hover {
+    opacity: 0.7;
+}
+
+/* || SOCIAL QUESTS */
+
+.quests-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
