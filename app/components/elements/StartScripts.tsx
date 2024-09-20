@@ -5,7 +5,7 @@ import React from "react";
 const StartScripts = () => {
     return (
         <div>
-            <Script
+            {/* <Script
                 src="https://telegram.org/js/telegram-web-app.js"
                 strategy="beforeInteractive"
                 onLoad={() => {
@@ -15,7 +15,7 @@ const StartScripts = () => {
                     }
                 }}
                 onError={(error) => console.error("Failed to load the Telegram Web App script: " + error)}
-            />
+            /> */}
         </div>
     );
 };
