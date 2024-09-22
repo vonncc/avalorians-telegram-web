@@ -9,7 +9,7 @@ interface EquipmentProps extends HeroDetailsProps {
     body?: string;
     pants?: string;
 }
-const HeroEquipemt: React.FC<EquipmentProps> = ({ head = "", body = "", pants = "", name = "Avalorians User", level = 1, experience = 0 }) => {
+const HeroEquipemt: React.FC<EquipmentProps> = ({ head = "", body = "", pants = "", name, level = 1, experience = 0 }) => {
     return (
         <div>
             <div className="character-section">
