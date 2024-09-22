@@ -20,6 +20,7 @@ const HeroDetails: React.FC<HeroDetailsProps> = ({
     gold = 0,
     runes = 0,
 }) => {
+    
     return (
         <div className="details-section">
             <div className="top-section">
