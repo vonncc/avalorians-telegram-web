@@ -20,20 +20,20 @@ const Hero = () => {
     const [userData, setUserData] = useState<UserData | null>(null);
 
     useEffect(() => {
-        console.log("TG_123: start use effect");
+        console.log("TG_123_Hero: start use effect");
 
         if (typeof window !== "undefined") {
             if (WebApp.initDataUnsafe.user) {
-                console.log("TG_123: Web App found");
+                console.log("TG_123_Hero: Web App found");
                 console.log(WebApp);
-                console.log("TG_123: This is initDataUnsafe ");
+                console.log("TG_123_Hero: This is initDataUnsafe ");
                 console.log(WebApp.initDataUnsafe);
                 setUserData(WebApp.initDataUnsafe.user as UserData);
             } else {
-                console.log("TG_123: Web App Not found");
+                console.log("TG_123_Hero: Web App Not found");
                 console.log(WebApp);
 
-                console.log("TG_123: Init Data only");
+                console.log("TG_123_Hero: Init Data only");
                 const initData = WebApp.initData;
                 console.log("initData:", initData);
             }
