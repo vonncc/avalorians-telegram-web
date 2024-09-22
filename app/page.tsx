@@ -47,39 +47,11 @@ export default function Home() {
             }
         }
 
-        // const checkTelegramLoaded = setInterval(() => {
-
-        //     // console.log('TG_123: Checking Telegram is loaded');
-        //     // console.log(window.Telegram.WebApp)
-        //     // setSomeString('window.Telegram.WebApp');
-        //     // incrementLoadingTelegram();
-
-        //     //console.log(window.Telegram.WebApp);
-        //     if (window.Telegram && window.Telegram.WebApp) {
-        //         console.log('TG_123: Telegram is loaded');
-        //         clearInterval(checkTelegramLoaded);
-
-        //         const tg = window.Telegram.WebApp;
-        //         const user = tg.initDataUnsafe.user;
-
-        //         console.log('TG_123: the telegram object');
-        //         console.log(tg.initDataUnsafe);
-        //         console.log('TG_123: the user');
-        //         console.log(user);
-
-        //         console.log('TG_123: this is the user data');
-        //         console.log(user.first_name);
-        //         setUserData(user);
-        //         tg.expand(); // Expand the WebApp
-        //     }
-        // }, 100); // Check every 100ms until the Telegram WebApp is loaded
-
-        // return () => clearInterval(checkTelegramLoaded);
     }, []);
 
     return (
         <main>
-            {userData ? (
+            {/* {userData ? (
                 <div>
                     <h1>Welcome to the Game!</h1>
                     <p>
@@ -99,7 +71,7 @@ export default function Home() {
                 <>
                     <p>Loading user {userData ? userData : "null"} data... </p>;
                 </>
-            )}
+            )} */}
         </main>
     );
 }

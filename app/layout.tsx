@@ -7,6 +7,8 @@ import FrontOverlay from "./layouts/BottomTabItems";
 import type { Metadata } from "next";
 // import DebugComponent from "./components/elements/DebugCompoment";
 import Script from "next/script";
+import { Providers } from "./providers";
+
 // import StartScripts from "./components/elements/StartScripts";
 
 const geistSans = localFont({
@@ -39,9 +41,11 @@ export default function RootLayout({
                 <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                {/* <StartScripts></StartScripts> */}
-                {children}
-                <FrontOverlay tab={0} />
+                <Providers>
+                    {/* <StartScripts></StartScripts> */}
+                    {children}
+                    <FrontOverlay tab={0} />
+                </Providers>
             </body>
         </html>
     );

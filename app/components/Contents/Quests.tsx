@@ -1,17 +1,16 @@
 import React from 'react'
 import QuestsButton from '../elements/QuestsButton'
-
+import '@/app/styles/pages/quests.css';
 
 const Quests = () => {
   return (
     <div className='quests-container'>
-        Daily task
-        <QuestsButton text = "Watch youtube" data={{quests_id: '1', quests_status: false}}/>
-        <QuestsButton />
-        Daily task
-        <QuestsButton text = "Follow us on Twitter" data={{quests_id: '2', quests_status: false}} />
-        <QuestsButton text = "Like Avalorians on Facebook" data={{quests_id: '3', quests_status: false}} />
-        <QuestsButton text = "Subscribe to our Telegram" data={{quests_id: '4', quests_status: false}} />
+        <div className = "title">Daily tasks</div>
+        <QuestsButton text = "Watch youtube" image = '/assets/images/icons/youtubeIcon.png' data={{quests_id: '1', quests_status: false}}/>
+        {/* <QuestsButton text = "Follow us on Twitter" image = '/assets/images/icons/youtubeIcon.png' data={{quests_id: '2', quests_status: false}}  /> */}
+        <div className = "title">Permanent tasks</div>
+        <QuestsButton text = "Follow us on Twitter" image = '/assets/images/icons/Xsocial.png' data={{quests_id: '2', quests_status: false}} />
+        <QuestsButton text = "Join our Telegram" image = '/assets/images/icons/telegram2.png' data={{quests_id: '4', quests_status: false}} />
 
     </div>
   )

@@ -8,9 +8,7 @@ const SocialQuests = () => {
 
     return (
         <div>
-            <div className="centered-div">
-                <Button text="Upgrade"></Button>
-            </div>
+            
         </div>
     );
 };

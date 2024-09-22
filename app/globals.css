@@ -71,6 +71,8 @@ blockquote {
     }
 }
 
+
+
 /* … */
 
 /* || SITEWIDE */
@@ -140,7 +142,6 @@ blockquote {
     align-items: center;
 }
 
-
 .overlay-menu .top-container .right-side {
     margin-right: 100px;
     display: flex; /* Ensure flex properties apply */
@@ -184,7 +185,7 @@ blockquote {
 }
 
 .overlay-menu .tab-header {
-    display: grid;  
+    display: grid;
     grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
     gap: 4px; /* Adjust the gap between the tabs as needed */
 }
@@ -245,11 +246,5 @@ blockquote {
     opacity: 0.7;
 }
 
-/* || SOCIAL QUESTS */
 
-.quests-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
