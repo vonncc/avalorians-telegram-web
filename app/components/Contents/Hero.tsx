@@ -49,6 +49,15 @@ const Hero = () => {
                 <HeroSkill slot_number={3}></HeroSkill>
                 <HeroSkill slot_number={4}></HeroSkill>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     );
 };
