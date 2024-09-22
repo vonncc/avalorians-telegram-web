@@ -40,7 +40,7 @@ const Hero = () => {
 
     return (
         <div className="general-hero-container ">
-            {userData ? <HeroDetails name={userData.username || "Avalorians USer"} /> : <HeroDetails name="Avalorians USer" />}
+            {userData ? <HeroDetails name={userData.username || "No Username"} /> : <HeroDetails name="Avalorians USer" />}
             <HeroEquipemt />
             <HeroStats />
             <div className="hero-skills-container">
