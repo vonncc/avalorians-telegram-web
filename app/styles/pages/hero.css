@@ -1,3 +1,7 @@
+.general-hero-container {
+    padding-bottom: 200px;
+}
+
 .details-section {
     display: flex;
     flex-direction: column;

@@ -24,8 +24,6 @@ const Hero = () => {
 
         if (typeof window !== "undefined") {
             if (WebApp.initDataUnsafe.user) {
-                console.log("TG_123_Hero: Web App found");
-                console.log(WebApp);
                 console.log("TG_123_Hero: This is initDataUnsafe ");
                 console.log(WebApp.initDataUnsafe);
                 setUserData(WebApp.initDataUnsafe.user as UserData);
@@ -41,7 +39,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <div>
+        <div className="general-hero-container ">
             {userData ? <HeroDetails name={userData.username || "Avalorians USer"} /> : <HeroDetails name="Avalorians USer" />}
             <HeroEquipemt />
             <HeroStats />
