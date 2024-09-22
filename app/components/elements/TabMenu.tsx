@@ -25,7 +25,7 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
     };
 
     return (
-        <div>
+
             <div className="tab-container tab-container-gradient-background">
                 <div className="tab-content">{content[activeTab]}</div>
                 <div className="tab-header">
@@ -37,7 +37,7 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
                     ))}
                 </div>
             </div>
-        </div>
+
     );
 };
 

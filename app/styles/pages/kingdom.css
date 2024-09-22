@@ -1,0 +1,232 @@
+
+.main-kingdom-container {
+
+}
+
+.upgrade-button {
+    width: 100%;
+    height: 50px;
+}
+
+/* Container for the entire interface */
+.profile-container {
+    z-index: 1;
+    background-color: #ffab2b;
+    border: 2px solid #8b4513; /* Dark border */
+    padding: 20px;
+    border-radius: 10px;
+    font-family: "Arial", sans-serif; /* Sans-serif font */
+    color: white;
+    width: 100%;
+    z-index: 0;
+}
+
+/* Section for the vault information */
+.vault-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.vault-section .right-side {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.vault-section .left-side {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.vault-section .icon {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.vault-section .vault-text {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Section for the hourly income information */
+.economy-section {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background: #9c251f3d;
+    padding: 8px;
+}
+
+.economy-section .right-side {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.economy-section .left-side {
+    display: flex;
+    align-items: center;
+}
+
+.economy-section .right-side .icon {
+    margin-left: 5px;
+    height: auto;
+    width: 25px;
+}
+
+/* Section for the Experience information */
+.experience-container {
+    background-color: #ffab2b;
+    border: 2px solid #8b4513; /* Dark border */
+    padding: 20px;
+    border-radius: 10px;
+    font-family: "Arial", sans-serif; /* Sans-serif font */
+    color: white;
+    width: 100%;
+}
+
+.experience-section {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 8px; */
+}
+
+.experience-section .right-side {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.experience-section .left-side {
+    display: flex;
+    align-items: center;
+}
+
+.slider-section {
+    padding-top: 5px;
+}
+
+.kingdoms-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.kingdom-object {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.kingdom-items {
+    z-index: 0;
+    width: 111px;
+    height: 205px;
+    position: relative; /* Establishes a positioning context for child elements */
+}
+
+.kingdom-items .label-with-background {
+    height: 20px;
+    background: #9f6000;
+    /* Primary / Black (900) */
+    border: 1px solid #262626;
+    box-shadow: 0.5px 0.5px 0px #262626;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    border-radius: 48px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 20px;
+    z-index: 3; /* Ensures this element is on top */
+    position: absolute; /* Positions the element absolutely within the relative parent */
+    width: 60%; /* Ensures both images have the same width */
+    left: 20%; /* Centers the element horizontally */
+
+}
+
+
+.kingdom-items .frame img,
+.kingdom-items .icon img {
+    position: absolute; /* Positions the element absolutely within the relative parent */
+    top: 0; /* Positions the element at the top */
+    left: 0; /* Positions the element at the left */
+    width: 100%; /* Ensures both images have the same width */
+    
+    object-fit: cover; /* Ensures the image covers the entire area */
+}
+
+.kingdom-items .frame img {
+    z-index: 1; /* Ensures this element is on top of the label */
+    height: 118px; /* Ensures both images have the same height */
+}
+
+.kingdom-items .icon img {
+    z-index: 2; /* Ensures this element is on top of the frame image */
+    width: 65px; /* Ensures both images have the same width */
+    height: 65px; /* Ensures both images have the same height */
+    left: 20%; /* Centers the element horizontally */
+    top: 15%;
+}
+
+
+.kingdom-items .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* opacity: .2; */
+    position: absolute;
+    background: #9f6000;
+    border: 1px solid #fff;
+
+    border-radius: 20px;
+    width: 100%;
+    height: 70px;
+    z-index: 4;
+    top: 90px;
+}
+
+.kingdom-items .details .top-part {
+    display: flex;
+    margin-top: 5px;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+
+
+.kingdom-items .details .bottom-part {
+    padding-bottom: 10px;
+    display: flex;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.kingdom-items .details .bottom-part img {
+    margin-left: 3px;
+    height: 20px;
+    width: 20px;
+}
+
+
+.kingdom-items .kingdom-items-button {
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    z-index: 6;
+    position: absolute;
+}

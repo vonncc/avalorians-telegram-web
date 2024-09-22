@@ -40,6 +40,7 @@ body {
     align-items: normal; /* Center vertically */
     height: 100vh; /* Full viewport height */
     margin: 0; /* Remove default margin */
+    text-transform: uppercase;
 }
 
 h1,
@@ -71,8 +72,6 @@ blockquote {
     }
 }
 
-
-
 /* … */
 
 /* || SITEWIDE */
@@ -84,6 +83,34 @@ blockquote {
     padding: 0; /* Remove padding if needed */
 }
 
+.base-text {
+    /* text-shadow: 1px 1px 2px #000; Text shadow for depth */
+    text-shadow: 2px 2px 0px #000;
+    color: #fff;
+    font-family: "mina", "mina-bold";
+}
+
+.slider-color {
+    background: linear-gradient(89.84deg, #f6d700 0.14%, #ee9000 127.49%);
+    border-radius: 12px 0px 0px 12px;
+}
+
+.slider-color-start {
+    background: #f6d700 0.14%
+}
+
+.slider-star {
+    width: 50px;
+    height: auto;
+    background-image: "/assets/images/sliderStar.png";
+}
+
+.curved-box {
+    background-color: #ee9000;
+    border-radius: 10px;
+    border: 1px solid #ee9000;
+}
+
 .main-nav {
     /* … */
 }
@@ -92,42 +119,35 @@ blockquote {
     /* … */
 }
 
-.button {
-    border: none;
-    border-radius: 20px;
-    color: #fff;
-
+.box-button {
+    z-index: 45;
     cursor: pointer;
     background-size: cover; /* Ensures the image covers the button */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-position: center; /* Centers the image */
     width: auto; /* Set the width to the desired value */
-    height: auto; /* Set the height to the desired value */
-    display: inline-block; /* Ensures the button doesn't take up more space than necessary */
-    line-height: 50px; /* Aligns text vertically */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-}
-
-.button--full-large {
-    background-image: url("/assets/images/buttons/btn-full-large.png");
-    width: 100%; /* Full width of the parent container */
-    height: 50px; /* Fixed height for the button */
-    background-size: cover; /* Ensure the background image covers the button */
-    background-repeat: no-repeat; /* Prevent background image from repeating */
-    background-position: center; /* Center the background image */
-    border: none; /* Removes any default border */
-    box-sizing: border-box; /* Ensures padding and border are included in the button's width and height */
+    height: 75px; /* Set the height to the desired value */
+    display: flex; /* Ensures the button doesn't take up more space than necessary */
+    background-color: #ee9000;
+    border-radius: 10px;
+    border: 1px solid #ee9000;
+    /* box-shadow: 0.5px 0.5px 0px #262626; */
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
 }
 
 .overlay-menu {
-    height: 100vh; /* Full viewport height */
+    z-index: 45;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column; /* Arrange children in a column */
 }
 
 /* || TITLE MENU || TOP MENU  */
 .overlay-menu .top-container {
-    z-index: 10;
+    z-index: 45;
     display: flex;
     background-color: black;
     justify-content: space-between;
@@ -158,6 +178,8 @@ blockquote {
 /* || TAB MENU || BOTTOM TAB  */
 
 .overlay-menu .bottom-container {
+    z-index: 45;
+    width: 100%;
     margin-top: auto; /* Pushes the bottom container to the bottom */
     display: flex; /* Ensure flex properties apply */
     align-items: center; /* Center items vertically */
@@ -165,11 +187,13 @@ blockquote {
 }
 
 .overlay-menu .tab-item {
+    z-index: 45;
     text-align: center;
     /* Add any additional styling for tab items here */
 }
 
-.overlay-menu .tab-container {
+.tab-container {
+    z-index: 45;
     display: flex;
     text-transform: uppercase;
     flex-direction: column;
@@ -177,10 +201,10 @@ blockquote {
     padding: 20px; /* Add some padding around the container */
 }
 
-.overlay-menu .tab-container-gradient-background {
-    z-index: 5;
-    background: linear-gradient(to top, rgba(120, 120, 120, 1), rgba(120, 120, 120, 0));
-    /* url("/assets/images/genericbox.png"); Background image */
+.tab-container-gradient-background {
+    z-index: 45;
+    background: url("/assets/images/BottomBG.png");
+    width: 100%;
     border-radius: 30px; /* Rounded corners */
 }
 
@@ -196,19 +220,42 @@ blockquote {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 100px); /* Subtract the margin-top from the viewport height */
     z-index: 0; /* Ensure content is below the tabs */
     align-items: flex-start; /* Align content to the top */
     justify-content: center; /* Center content horizontally */
     flex-direction: column;
-    padding-top: 100px; /* Add top padding */
-    padding-bottom: 170px;
+    
     box-sizing: border-box; /* Ensure padding is included in the height calculation */
     overflow-y: auto; /* Enable vertical scrolling if needed */
+    margin-top: 100px;
+    flex-grow: 1;
+    padding: 10px;
+    padding-bottom: 200px;
+    border-top: 2px solid #EE9000; /* Defines a top border */
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+
+    background-color: #000;
+    border-radius: 10px;
 }
 
+.overlay-menu .tab-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.overlay-menu .tab-content {
+    -ms-overflow-style: none; /* Hides the scrollbar */
+}
+
+.overlay-menu .tab-content {
+    scrollbar-width: none; /* Hides the scrollbar */
+}
+
+
 .overlay-menu .tab-button {
-    z-index: 5;
+    z-index: 45;
     display: flex;
     flex-direction: column; /* Stack children vertically */
     justify-content: flex-end; /* Align children to the bottom */
@@ -245,6 +292,3 @@ blockquote {
 .tab-button:hover {
     opacity: 0.7;
 }
-
-
-

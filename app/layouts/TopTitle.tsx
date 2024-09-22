@@ -10,7 +10,7 @@ interface TabSelect {
 const tabSelected: TabSelect[] = [
     
 
-    {text: "friends", image: "quests"},
+    {text: "friends", image: "creeps"},
     {text: "quests", image: "quests"},
     {text: "airdrop", image: "airdrop"},
     {text: "store", image: "statue"},

@@ -48,8 +48,9 @@
     margin-top: -10px;
 }
 
-.box.button .body .description .text {
+.box.button .body .description-text {
     /* flex-grow: 1; */
+    margin-top: 10px;
     background-color: #9c251f;
     width: 100%;
     text-shadow: -1px -1px 0 #b4671a, 1px -1px 0 #b4671a, -1px 1px 0 #b4671a, 1px 1px 0 #b4671a; /* Outline color */
@@ -60,7 +61,7 @@
 }
 
 .reward-box-button {
-    margin-top: -10px;
+    margin-top: 10px;
     display: flex;
     height: 30px;
     width: 100px;
@@ -71,6 +72,7 @@
 }
 
 .reward-box-button img {
+    
     max-width: 20px; /* Allows image width to scale within container without cropping */
     max-height: 20px; /* Allows image height to scale within container without cropping */
     object-fit: contain; /* Ensures full visibility of content without distortion or cropping while maintaining aspect ratio */
@@ -78,7 +80,7 @@
 }
 
 .reward-box-button .reward-text {
-    flex-grow: 1; /* Allow the text to grow and take up available space */
+
     text-align: center; /* Center text horizontally */
     display: flex;
     align-items: center; /* Center text vertically */
@@ -98,6 +100,7 @@
 }
 
 .label-with-background {
+    margin-top: -20px;
     height: 20px;
     background: #9c251f;
     /* Primary / Black (900) */

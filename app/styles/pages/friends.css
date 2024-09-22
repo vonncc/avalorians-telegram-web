@@ -1,0 +1,48 @@
+.friends-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.friends-section {
+   height: 70px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 10px;
+}
+
+.friends-section .top-side {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-inline: 10px;
+}
+
+.friends-section .top-side .left-side {
+    display: flex;
+
+}
+
+.friends-section .top-side .right-side {
+    gap: 5px;
+    justify-content: end;
+}
+
+.friends-section .bottom-side {
+    padding-inline: 10px;
+    width: 100%;
+}
+
+
+
+.friends-section .right-side .friends-text {
+}
+
+.add-friend {
+    width: 100%;
+    margin-bottom: 10px;
+}

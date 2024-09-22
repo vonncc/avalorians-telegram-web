@@ -81,7 +81,7 @@ const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) =>
 
     return (
         
-        <div className="overlay-menu size-full z-10">
+        <div className="overlay-menu z-45">
             <TopTitle activeTab={activeTab} />
             <div className="bottom-container">
                 <TabMenu tabs={tabItems} onTabChange={handleTabClick} content={contentTabs} />
