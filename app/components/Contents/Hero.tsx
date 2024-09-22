@@ -41,8 +41,7 @@ const Hero = () => {
     return (
         <div className="general-hero-container ">
             <HeroDetails />
-            {userData ? <HeroEquipemt name={userData.username || "No Username"} /> : <HeroDetails name="Avalorians USer" />}
-            <HeroEquipemt />
+            {userData ? <HeroEquipemt name={userData.username || "No Username"} /> : <HeroEquipemt name="Avalorians USer" />}
             <HeroStats />
             <div className="hero-skills-container">
                 <HeroSkill slot_number={1} skill_image="/assets/images/Star.png"></HeroSkill>
