@@ -34,7 +34,7 @@ const Hero = () => {
                 console.log(WebApp);
 
                 console.log("TG_123: Init Data only");
-                const initData = WebApp.initData; // This is base64-encoded
+                const initData = WebApp.initData;
                 console.log("initData:", initData);
             }
         }
@@ -42,7 +42,7 @@ const Hero = () => {
 
     return (
         <div>
-            /* {userData ? <HeroDetails name={userData.username || "Avalorians USer"} /> : <HeroDetails name="Avalorians USer" />}
+            {userData ? <HeroDetails name={userData.username || "Avalorians USer"} /> : <HeroDetails name="Avalorians USer" />}
             <HeroEquipemt />
             <HeroStats />
             <div className="hero-skills-container">
