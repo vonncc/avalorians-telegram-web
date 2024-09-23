@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/button";
 const Friends = () => {
     return (
         <div className="friends-container">
-            <FriendBar friend_ids={["1", "2"]}></FriendBar>
+            <FriendBar friend_ids={[]}></FriendBar>
             <Button className="base-text box-button add-friend">
                 INVITE FRIENDS
             </Button>
