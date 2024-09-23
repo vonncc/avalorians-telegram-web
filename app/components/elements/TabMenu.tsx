@@ -25,19 +25,32 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
     };
 
     return (
-
-            <div className="tab-container tab-container-gradient-background">
-                <div className="tab-content">{content[activeTab]}</div>
-                <div className="tab-header">
-                    {tabs.map((tab, index) => (
-                        <div key={index} className={`tab-button ${index === activeTab ? "active" : ""}`} onClick={() => handleTabClick(index)}>
-                            <img src={`${tab.image}`} alt="Icon" width={50} height={50} />
-                            <span className="tab-button-text">{tab.text}</span>
-                        </div>
-                    ))}
+        <div className="tab-container tab-container-gradient-background">
+            <div className="tab-content">{content[activeTab]}</div>
+            <div className="tab-header">
+                <div
+                    className="w-full object-left-bottom"
+                    style={{
+                        position: "fixed",
+                        left: 0, // Ensures the div starts from the left edge of the screen
+                        right: 0, // Ensures the div stretches to the right edge of the screen
+                        bottom: 0, // Keeps it aligned to the bottom
+                    }}
+                >
+                    <img src="/assets/images/BottomBG.png" className="w-full" />
                 </div>
-            </div>
 
+                {tabs.map((tab, index) => (
+                    <div key={index} className={`tab-button`} onClick={() => handleTabClick(index)}>
+                        <div className={`tab-border ${index === activeTab ? "active" : ""}`}>
+                            <img src={`${tab.image}`} alt="Icon" width={40} height={40} />
+                        </div>
+
+                        <span className="tab-button-text">{tab.text}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 

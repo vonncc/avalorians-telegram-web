@@ -16,35 +16,35 @@ import Store from "../components/Contents/Store";
 
 const tabItems: TabItem[] = [
     {
-        image: "/assets/images/tabs/tab-btn-friends.png", // Image path or URL
+        image: "/assets/images/tabs/Friends.png", // Image path or URL
         text: "FRIENDS",
     },
     {
-        image: "/assets/images/tabs/tab-btn-quests.png",
+        image: "/assets/images/tabs/Quest.png",
         text: "QUESTS",
     },
     {
-        image: "/assets/images/tabs/tab-btn-airdrop.png", // Image path or URL
+        image: "/assets/images/tabs/Airdrop.png", // Image path or URL
         text: "AIRDROP",
     },
     {
-        image: "/assets/images/tabs/tab-btn-store.png",
+        image: "/assets/images/tabs/Store.png",
         text: "STORE",
     },
     {
-        image: "/assets/images/tabs/tab-btn-hero.png", // Image path or URL
+        image: "/assets/images/tabs/Hero.png", // Image path or URL
         text: "HERO",
     },
     {
-        image: "/assets/images/tabs/tab-btn-lane.png",
+        image: "/assets/images/tabs/Lane.png",
         text: "LANE",
     },
     {
-        image: "/assets/images/tabs/tab-btn-kingdom.png", // Image path or URL
+        image: "/assets/images/tabs/Kingdom.png", // Image path or URL
         text: "KINGDOM",
     },
     {
-        image: "/assets/images/tabs/tab-btn-creeps.png",
+        image: "/assets/images/tabs/Creeps.png",
         text: "CREEPS",
     },
 ];
@@ -82,8 +82,10 @@ const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) =>
     return (
         
         <div className="overlay-menu z-45">
+            
             <TopTitle activeTab={activeTab} />
             <div className="bottom-container">
+                
                 <TabMenu tabs={tabItems} onTabChange={handleTabClick} content={contentTabs} />
             </div>
         </div>
