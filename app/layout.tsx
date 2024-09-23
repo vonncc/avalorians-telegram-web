@@ -44,7 +44,7 @@ export default function RootLayout({
                 <Providers>
                     {/* <StartScripts></StartScripts> */}
                     {children}
-                    <FrontOverlay tab={0} />
+                    <FrontOverlay tab={4} />
                 </Providers>
             </body>
         </html>

@@ -5,13 +5,13 @@
 /* || GENERAL STYLES */
 
 :root {
-    --background: #000;
+    --background: #222;
     --foreground: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #000;
+        --background: #222;
         --foreground: #fff;
     }
 }
