@@ -14,6 +14,7 @@
     align-items: center;
     align-content: center;
     justify-content: space-around;
+    gap: 10px;
 }
 
 /* .details-section .top-section img {
@@ -24,13 +25,23 @@
     height: 70%;
     background-color: #ffab2b;
     align-content: center;
+    align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 5px;
 }
 
+.details-section .top-section .profit-section .left-side {
+    font-size: 12px;
+    gap: 2px;
+    display: flex;
+}
+
 .details-section .top-section .profit-section .right-side {
     justify-content: end;
+    font-size: 12px;
+    align-content: center;
+    align-items: center;
     gap: 2px;
     display: flex;
 }
@@ -39,12 +50,12 @@
 }
 
 .details-section .top-section .box-button.notebook {
-    width: 5px;
+    width: 50px;
     height: 70%;
 }
 
 .details-section .top-section .box-button.menu {
-    width: 5px;
+    width: 50px;
     height: 70%;
 }
 
@@ -72,7 +83,8 @@
     gap: 20px;
     margin-left: 10px;
     margin-right: 10px;
-    height: 70px;
+    height: 50px;
+    font-size: 12px;
     align-items: center;
 }
 
@@ -83,6 +95,7 @@
     display: flex;
     padding-left: 5px;
     padding-right: 5px;
+    height: 35px;
     background-color: #ffab2b;
 }
 
@@ -113,12 +126,15 @@
 /* Character Section */
 
 .character-section {
-    position: relative;
+    /* position: relative; */
     width: 100%; /* Full width to enable horizontal centering */
+    height: 100%; /* Full width to enable horizontal centering */
 }
 
-.character-section .character-image {
+.character-image {
     position: absolute;
+    /* height: 50%; */
+    width: 100px;
     z-index: 1; /* Lowest layer */
     left: 50%; /* Move the image to the horizontal center */
     transform: translateX(-50%); /* Adjust for the element's width to truly center it */
@@ -127,7 +143,7 @@
 .character-section .user-name {
     position: absolute;
     z-index: 3; /* Topmost layer */
-    top: 160px; /* Adjust the top position as needed */
+    top: 110px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     background-color: black;
@@ -140,13 +156,13 @@
 .character-section .experience-section {
     position: absolute;
     z-index: 2; /* Middle layer */
-    top: 170px; /* Adjust the top position as needed */
+    top: 120px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     width: 70%; /* Full width */
     display: flex;
     justify-content: space-evenly;
-    height: 70px;
+    height: 50px;
     flex-direction: column;
 }
 
@@ -174,7 +190,7 @@
     position: absolute;
     width: 70%;
     gap: 10px;
-    top: 420px;
+    top: 180px;
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
 
@@ -225,7 +241,7 @@
     display: flex;
     z-index: 10;
     justify-content: space-evenly;
-    top: 495px;
+    top: 260px;
     position: absolute;
     width: 100%;
     left: 50%; /* Center horizontally */

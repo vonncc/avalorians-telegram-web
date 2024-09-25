@@ -12,7 +12,7 @@ import Kingdom from "../components/Contents/Kingdom";
 import Lane from "../components/Contents/Lane";
 import Quests from "../components/Contents/Quests";
 import Store from "../components/Contents/Store";
-
+import HeroDetails from "../components/elements/Hero/HeroDetails";
 
 const tabItems: TabItem[] = [
     {
@@ -26,10 +26,6 @@ const tabItems: TabItem[] = [
     {
         image: "/assets/images/tabs/Airdrop.png", // Image path or URL
         text: "AIRDROP",
-    },
-    {
-        image: "/assets/images/tabs/Store.png",
-        text: "STORE",
     },
     {
         image: "/assets/images/tabs/Hero.png", // Image path or URL
@@ -47,6 +43,10 @@ const tabItems: TabItem[] = [
         image: "/assets/images/tabs/Creeps.png",
         text: "CREEPS",
     },
+    {
+        image: "/assets/images/tabs/Store.png",
+        text: "STORE",
+    },
 ];
 
 interface BottomTabDefaults {
@@ -54,38 +54,50 @@ interface BottomTabDefaults {
     currentActiveTab?: (activeTabIndex: number) => void;
 }
 
-
 const contentTabs = [
-    <div key="0" className="z-1"><Friends></Friends></div>,
-    <div key="1" className="z-1"><Quests></Quests></div>,
-    <div key="2" className="z-1"><Airdrop></Airdrop></div>,
-    <div key="4" className="z-1"><Store></Store></div>,
-    <div key="5" className="z-1"><Hero></Hero></div>,
-    <div key="6" className="z-1"><Lane></Lane></div>,
-    <div key="7" className="z-1"><Kingdom></Kingdom></div>,
-    <div key="8" className="z-1"><Creeps></Creeps></div>,
+    <div key="0" className="z-1">
+        <Friends></Friends>
+    </div>,
+    <div key="1" className="z-1">
+        <Quests></Quests>
+    </div>,
+    <div key="2" className="z-1">
+        <Airdrop></Airdrop>
+    </div>,
+
+    <div key="43" className="z-1">
+        <Hero></Hero>
+    </div>,
+    <div key="4" className="z-1">
+        <Lane></Lane>
+    </div>,
+    <div key="5" className="z-1">
+        <Kingdom></Kingdom>
+    </div>,
+    <div key="6" className="z-1">
+        <Store></Store>
+    </div>,
+    <div key="7" className="z-1">
+        <Creeps></Creeps>
+    </div>,
 ];
 
 const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) => {
     const [activeTab, onActiveTabChange] = useState(tab);
-    console.log(activeTab);
+    const [isHeroTab, onHeroTab] = useState(activeTab == 3);
+
     const handleTabClick = (index: number) => {
         onActiveTabChange(index);
+        onHeroTab(index == 3);
         if (currentActiveTab) currentActiveTab(index);
-        console.log(index);
+
     };
     // const [userData, setUserData] = useState(null);
 
-    
-    
-
     return (
-        
         <div className="overlay-menu z-45">
-            
-            <TopTitle activeTab={activeTab} />
+            {isHeroTab ? <HeroDetails /> : <TopTitle activeTab={activeTab} />}
             <div className="bottom-container">
-                
                 <TabMenu tabs={tabItems} onTabChange={handleTabClick} content={contentTabs} />
             </div>
         </div>

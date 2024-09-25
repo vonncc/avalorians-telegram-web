@@ -15,18 +15,26 @@ export interface TabProps {
 
 const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
     // Manage the active tab index
-    const [activeTab, setActiveTab] = useState(0);
+    const [activeTab, setActiveTab] = useState(0)
+
+    const [size, onSizeChange] = useState("full");
     const handleTabClick = (index: number) => {
         setActiveTab(index);
         console.log("in tabh menu " + index);
+        
         if (onTabChange) {
             onTabChange(index); // Notify parent of the active tab
+            
+            if (index ==3)
+                onSizeChange("hero");
+            else 
+                onSizeChange("full");
         }
     };
 
     return (
         <div className="tab-container tab-container-gradient-background">
-            <div className="tab-content">{content[activeTab]}</div>
+            <div className={`tab-content ${size}`}>{content[activeTab]}</div>
             <div className="tab-header">
                 <div
                     className="w-full object-left-bottom"
@@ -43,7 +51,7 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
                 {tabs.map((tab, index) => (
                     <div key={index} className={`tab-button`} onClick={() => handleTabClick(index)}>
                         <div className={`tab-border ${index === activeTab ? "active" : ""}`}>
-                            <img src={`${tab.image}`} alt="Icon" width={40} height={40} />
+                            <img src={`${tab.image}`} alt="Icon" width={20} height={20} />
                         </div>
 
                         <span className="tab-button-text">{tab.text}</span>

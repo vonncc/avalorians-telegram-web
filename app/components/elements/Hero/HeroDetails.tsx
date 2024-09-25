@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/button";
 import React from "react";
+import "@/app/styles/pages/hero.css";
 import { AvalorianDesignedSlider } from "../AvaloriansSlider";
 import { NextLevelExp } from "@/app/_globals/expereinceTreshhold";
 import Image from "next/image";
@@ -26,18 +27,18 @@ const HeroDetails: React.FC<HeroDetailsProps> = ({
             <div className="top-section">
                 <img src={`${profilePic}`} />
                 <div className="profit-section curved-box">
-                    <span className="base-text">PROFIT &#40;1H&#41;:</span>
+                    <span className="base-text left-side">PROFIT &#40;1H&#41;:</span>
                     <span className="right-side base-text">
                         800
                         <img src="/assets/images/Coin.png" />
                     </span>
                 </div>
-                <Button className="box-button notebook">
+                <button className="box-button notebook">
                     <img src="/assets/images/Hero/book.png" />
-                </Button>
-                <Button className="box-button menu">
+                </button>
+                <button className="box-button menu">
                     <img src="/assets/images/Hero/dice.png" />
-                </Button>
+                </button>
             </div>
             <div className="experience-section">
                 <div className="left-side">

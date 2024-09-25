@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "@/app/styles/pages/hero.css";
-import HeroDetails from "../elements/Hero/HeroDetails";
+// import HeroDetails from "../elements/Hero/HeroDetails";
 import HeroEquipemt from "../elements/Hero/HeroEquipemt";
 import HeroStats from "../elements/Hero/HeroStats";
 import HeroSkill from "../elements/Hero/HeroSkill";
@@ -40,7 +40,7 @@ const Hero = () => {
 
     return (
         <div className="general-hero-container ">
-            <HeroDetails />
+            {/* <HeroDetails /> */}
             {userData ? <HeroEquipemt name={userData.username || "No Username"} /> : <HeroEquipemt name="Avalorians USer" />}
             <HeroStats />
             <div className="hero-skills-container">
@@ -49,9 +49,6 @@ const Hero = () => {
                 <HeroSkill slot_number={3}></HeroSkill>
                 <HeroSkill slot_number={4}></HeroSkill>
             </div>
-            <br />
-            <br />
-            <br />
             <br />
             <br />
             <br />
