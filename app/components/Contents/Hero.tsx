@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "@/app/styles/pages/hero.css";
-// import HeroDetails from "../elements/Hero/HeroDetails";
-import HeroEquipemt from "../elements/Hero/HeroEquipemt";
+import HeroEquipment from "../elements/Hero/HeroEquipment";
 import HeroStats from "../elements/Hero/HeroStats";
-import HeroSkill from "../elements/Hero/HeroSkill";
 import WebApp from "@twa-dev/sdk";
+import HeroSelect from "@/app/components/elements/Hero/HeroSelect";
 
 interface UserData {
     id: number;
@@ -39,22 +38,11 @@ const Hero = () => {
     }, []);
 
     return (
-        <div className="general-hero-container ">
-            {/* <HeroDetails /> */}
-            {userData ? <HeroEquipemt name={userData.username || "No Username"} /> : <HeroEquipemt name="Avalorians USer" />}
+        <div className="general-hero-container">
+            <div className="text-center text-xl font-extrabold">Heroes 1/2</div>
+            {userData ? <HeroEquipment name={userData.username || "No Username"} /> : <HeroEquipment name="Avalorians User" />}
             <HeroStats />
-            <div className="hero-skills-container">
-                <HeroSkill slot_number={1} skill_image="/assets/images/Star.png"></HeroSkill>
-                <HeroSkill slot_number={2}></HeroSkill>
-                <HeroSkill slot_number={3}></HeroSkill>
-                <HeroSkill slot_number={4}></HeroSkill>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <HeroSelect />
         </div>
     );
 };

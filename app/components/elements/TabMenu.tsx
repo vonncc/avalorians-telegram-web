@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 
 export interface TabItem {
     image: string;
@@ -17,35 +16,35 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
     // Manage the active tab index
     const [activeTab, setActiveTab] = useState(0)
 
-    const [size, onSizeChange] = useState("full");
+    const [_size, onSizeChange] = useState("full");
     const handleTabClick = (index: number) => {
         setActiveTab(index);
-        console.log("in tabh menu " + index);
+        console.log("in tab menu " + index);
         
         if (onTabChange) {
             onTabChange(index); // Notify parent of the active tab
             
             if (index ==3)
                 onSizeChange("hero");
-            else 
+            else
                 onSizeChange("full");
         }
     };
 
     return (
         <div className="tab-container tab-container-gradient-background">
-            <div className={`tab-content ${size}`}>{content[activeTab]}</div>
+            <div className={`tab-content hero`}>{content[activeTab]}</div>
             <div className="tab-header">
                 <div
                     className="w-full object-left-bottom"
                     style={{
                         position: "fixed",
                         left: 0, // Ensures the div starts from the left edge of the screen
-                        right: 0, // Ensures the div stretches to the right edge of the screen
+                            right: 0, // Ensures the div stretches to the right edge of the screen
                         bottom: 0, // Keeps it aligned to the bottom
                     }}
                 >
-                    <img src="/assets/images/BottomBG.png" className="w-full" />
+                    <img src="/assets/images/BottomBG.png" className="w-full" alt=""/>
                 </div>
 
                 {tabs.map((tab, index) => (

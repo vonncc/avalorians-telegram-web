@@ -96,7 +96,7 @@
     padding-left: 5px;
     padding-right: 5px;
     height: 35px;
-    background-color: #ffab2b;
+    background-color: #0C0B17;
 }
 
 .details-section .wallet-section .runes-section {
@@ -106,7 +106,7 @@
     flex-grow: 1;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: #ffab2b;
+    background-color: #0C0B17;
 }
 
 .details-section .wallet-section .runes-section .right-side {
@@ -134,7 +134,7 @@
 .character-image {
     position: absolute;
     /* height: 50%; */
-    width: 100px;
+    width: 250px;
     z-index: 1; /* Lowest layer */
     left: 50%; /* Move the image to the horizontal center */
     transform: translateX(-50%); /* Adjust for the element's width to truly center it */
@@ -143,7 +143,7 @@
 .character-section .user-name {
     position: absolute;
     z-index: 3; /* Topmost layer */
-    top: 110px; /* Adjust the top position as needed */
+    top: 240px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     background-color: black;
@@ -156,7 +156,7 @@
 .character-section .experience-section {
     position: absolute;
     z-index: 2; /* Middle layer */
-    top: 120px; /* Adjust the top position as needed */
+    top: 255px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     width: 70%; /* Full width */
@@ -180,6 +180,33 @@
     width: 100%;
 }
 
+.character-select {
+    width: 131px;
+    height: 40px;
+    top: 395px;
+    left: 185px;
+    border-radius: 8px;
+    opacity: 100;
+    background-color: #FFA33E;
+    align-content: center;
+    position: absolute;
+    box-shadow: 0 4px 0 #9F6000, 0 3px 10px 0 #9F6000;
+}
+
+.character-select.active {
+    background-color: #4FD464;
+    box-shadow: 0 4px 0 #16A32C, 0 3px 10px 0 #16A32C;
+}
+
+.character-select-text {
+    font-family: Mina, serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 /* Stats */
 
 .stats-container {
@@ -190,14 +217,12 @@
     position: absolute;
     width: 70%;
     gap: 10px;
-    top: 180px;
+    top: 315px;
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
-
 }
 
 .stats-container .stats-row {
-    
     display: flex;
     justify-content: space-evenly;
     gap: 10px;
@@ -205,14 +230,14 @@
 }
 
 .stats-container .stats-row .stats-item {
-    background-color: #FFFFFF;
-    border-radius: 10px;    
+    border-color: #FFAB2B;
+    border-width: 1px;
+    border-radius: 10px;
     gap: 5px;
     align-items: center;
     flex-grow: 1;
     display: flex;
     width: 100%;
-    display: flex;
     padding-inline: 5px;
     justify-content: space-between;
     font-size: 15px;
@@ -221,19 +246,33 @@
 
 
 .stats-container .stats-row .stats-item .stats-up {
-
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: Mina, serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #FFAB2B;
+
 }
 
 .stats-container .stats-row .stats-item .stats-up img {
-    
     width: 20px;
     height: auto;
     padding: 2px;
 }
 
+.stats-name {
+    font-family: Mina, serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+}
 
 /* SKILLS */
 

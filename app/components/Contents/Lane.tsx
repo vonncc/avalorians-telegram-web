@@ -4,7 +4,7 @@ const Lane = () => {
     return (
         <div>
             <div className="inset-0 flex justify-center items-center size-full" style={{ opacity: 0.5 }}>
-                <img src="/assets/images/Lane/tempLaneBG.png" className="max-w-full" />
+                <img src="/assets/images/Lane/tempLaneBG.png" className="max-w-full"  alt=""/>
             </div>
             <div className="inset-0 flex justify-center items-center">
                 <div

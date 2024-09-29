@@ -1,61 +1,48 @@
-import { Button } from "@nextui-org/button";
 import React from "react";
 
 interface HeroStatsProps {
     hit_points?: number;
     armor?: number;
     attack_speed?: number;
-    mana?: number;
+    splash_damage?: number;
 }
 
-const HeroStats: React.FC<HeroStatsProps> = ({ hit_points = 10, armor = 1, attack_speed = 1, mana = 10 }) => {
+const HeroStats: React.FC<HeroStatsProps> = ({ hit_points = 10, armor = 12, attack_speed = 8, splash_damage = 3 }) => {
     return (
         <div className="stats-container">
             <div className="stats-row">
                 <div className="stats-item">
                     <div className="base-text">
-                        <img src="/assets/images/hero/HIT_POINTS.png" />
+                        <p className="stats-name">Hit Points</p>
                     </div>
                     <div className="base-text stats-up">
                         {hit_points}
-                        <button>
-                            <img src="/assets/images/hero/Plus.png" />
-                        </button>
                     </div>
                 </div>
                 <div className="stats-item">
                     <div className="base-text">
-                        <img src="/assets/images/hero/ARMOR.png" />
+                        <p className="stats-name">Armor</p>
                     </div>
                     <div className="base-text stats-up">
                         {armor}
-                        <button>
-                            <img src="/assets/images/hero/Plus.png" />
-                        </button>
                     </div>
                 </div>
             </div>
             <div className="stats-row">
                 <div className="stats-item">
                     <div className="base-text">
-                        <img src="/assets/images/hero/ATTACK_SPEED.png" />
+                        <p className="stats-name">Splash Damage</p>
                     </div>
                     <div className="base-text stats-up">
-                        {attack_speed}
-                        <button>
-                            <img src="/assets/images/hero/Plus.png" />
-                        </button>
+                        {splash_damage}
                     </div>
                 </div>
                 <div className="stats-item">
                     <div className="base-text">
-                        <img src="/assets/images/hero/MANA.png" />
+                        <p className="stats-name">Attack Speed</p>
                     </div>
                     <div className="base-text stats-up">
-                        {mana}
-                        <button>
-                            <img src="/assets/images/hero/Plus.png" />
-                        </button>
+                        {attack_speed}
                     </div>
                 </div>
             </div>
