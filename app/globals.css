@@ -298,6 +298,16 @@ blockquote {
     justify-content: center;
 }
 
+.overlay-menu .tab-button .top-tab-border {
+    background-color: #FFAB2B;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .overlay-menu .tab-icon {
     width: 80%; /* Make the image width relative to the tab */
     height: auto; /* Maintain aspect ratio */

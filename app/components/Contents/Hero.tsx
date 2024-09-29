@@ -4,7 +4,6 @@ import "@/app/styles/pages/hero.css";
 import HeroEquipment from "../elements/Hero/HeroEquipment";
 import HeroStats from "../elements/Hero/HeroStats";
 import WebApp from "@twa-dev/sdk";
-import HeroSelect from "@/app/components/elements/Hero/HeroSelect";
 
 interface UserData {
     id: number;
@@ -17,6 +16,7 @@ interface UserData {
 
 const Hero = () => {
     const [userData, setUserData] = useState<UserData | null>(null);
+    const [isSelected, setIsSelected] = useState<boolean>(true);
 
     useEffect(() => {
         console.log("TG_123_Hero: start use effect");
@@ -41,8 +41,7 @@ const Hero = () => {
         <div className="general-hero-container">
             <div className="text-center text-xl font-extrabold">Heroes 1/2</div>
             {userData ? <HeroEquipment name={userData.username || "No Username"} /> : <HeroEquipment name="Avalorians User" />}
-            <HeroStats />
-            <HeroSelect />
+            <HeroStats isSelected={isSelected} />
         </div>
     );
 };

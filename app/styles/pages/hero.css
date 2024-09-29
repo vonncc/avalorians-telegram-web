@@ -138,6 +138,12 @@
     z-index: 1; /* Lowest layer */
     left: 50%; /* Move the image to the horizontal center */
     transform: translateX(-50%); /* Adjust for the element's width to truly center it */
+    border: #FFA33E 3px solid;
+    border-radius: 50%;
+}
+
+.character-image.selected {
+    border-color: #4FD464;
 }
 
 .character-section .user-name {
@@ -189,11 +195,10 @@
     opacity: 100;
     background-color: #FFA33E;
     align-content: center;
-    position: absolute;
     box-shadow: 0 4px 0 #9F6000, 0 3px 10px 0 #9F6000;
 }
 
-.character-select.active {
+.character-select.selected {
     background-color: #4FD464;
     box-shadow: 0 4px 0 #16A32C, 0 3px 10px 0 #16A32C;
 }

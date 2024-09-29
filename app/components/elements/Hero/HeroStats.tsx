@@ -1,13 +1,15 @@
 import React from "react";
+import HeroSelect from "@/app/components/elements/Hero/HeroSelect";
 
 interface HeroStatsProps {
     hit_points?: number;
     armor?: number;
     attack_speed?: number;
     splash_damage?: number;
+    isSelected: boolean;
 }
 
-const HeroStats: React.FC<HeroStatsProps> = ({ hit_points = 10, armor = 12, attack_speed = 8, splash_damage = 3 }) => {
+const HeroStats: React.FC<HeroStatsProps> = ({ hit_points = 10, armor = 12, attack_speed = 8, splash_damage = 3, isSelected }) => {
     return (
         <div className="stats-container">
             <div className="stats-row">
@@ -46,6 +48,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hit_points = 10, armor = 12, atta
                     </div>
                 </div>
             </div>
+            <HeroSelect isSelected={isSelected}/>
         </div>
     );
 };

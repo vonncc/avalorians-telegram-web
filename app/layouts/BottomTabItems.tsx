@@ -69,13 +69,9 @@ const contentTabs = [
 
 const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) => {
     const [activeTab, onActiveTabChange] = useState(tab);
-    const [isHeroTab, onHeroTab] = useState(activeTab == 3);
 
     const handleTabClick = (index: number) => {
         onActiveTabChange(index);
-        onHeroTab(index == 1);
-        if (currentActiveTab) currentActiveTab(index);
-
     };
 
     return (

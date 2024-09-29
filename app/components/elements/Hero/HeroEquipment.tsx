@@ -13,7 +13,7 @@ const HeroEquipment: React.FC<EquipmentProps> = ({ head = "", body = "", pants =
     return (
         <div>
             <div className="character-section">
-                <div className="character-image">
+                <div className="character-image selected">
                     <Image src="/assets/images/Hero/tempCharacterImage.png" width={258} height={279} alt="character image" />
                 </div>
                 <div className="curved-box user-name">{name}</div>

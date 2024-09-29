@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export interface TabItem {
     image: string;
@@ -13,21 +14,14 @@ export interface TabProps {
 }
 
 const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
-    // Manage the active tab index
     const [activeTab, setActiveTab] = useState(0)
 
-    const [_size, onSizeChange] = useState("full");
     const handleTabClick = (index: number) => {
         setActiveTab(index);
         console.log("in tab menu " + index);
         
         if (onTabChange) {
-            onTabChange(index); // Notify parent of the active tab
-            
-            if (index ==3)
-                onSizeChange("hero");
-            else
-                onSizeChange("full");
+            onTabChange(index);
         }
     };
 
@@ -50,7 +44,7 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
                 {tabs.map((tab, index) => (
                     <div key={index} className={`tab-button`} onClick={() => handleTabClick(index)}>
                         <div className={`tab-border ${index === activeTab ? "active" : ""}`}>
-                            <img src={`${tab.image}`} alt="Icon" width={20} height={20} />
+                            <Image src={`${tab.image}`} alt="Icon" width={20} height={20} />
                         </div>
 
                         <span className="tab-button-text">{tab.text}</span>

@@ -34,7 +34,6 @@ export default function RootLayout({
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 <Providers>
-                    {/* <StartScripts></StartScripts> */}
                     {children}
                     <FrontOverlay tab={4} />
                 </Providers>

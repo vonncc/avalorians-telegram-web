@@ -39,22 +39,22 @@ const TopTitle: React.FC<TopTitleProps> = ({activeTab}) => {
                 <p>&nbsp;&nbsp;&nbsp;UQCa....d23a<img className="float-right" src="/assets/images/icons/ton.png" alt="ton"/></p>
             </div>
             <div className={`tab-button`}>
-            <div className={`tab-border active`}>
+            <div className={`top-tab-border`}>
                         <img src={`${tabItems[0].image}`} alt="Icon" width={20} height={20}/>
                     </div>
-                    <span className="mt-1">{tabItems[0].text}</span>
+                    <span className="mt-1 text-[8px]">{tabItems[0].text}</span>
                 </div>
                 <div className={`tab-button`}>
-                    <div className={`tab-border active`}>
+                    <div className={`top-tab-border`}>
                         <img src={`${tabItems[1].image}`} alt="Icon" width={20} height={20}/>
                     </div>
-                    <span className="mt-1">{tabItems[1].text}</span>
+                    <span className="mt-1 text-[8px]">{tabItems[1].text}</span>
                 </div>
                 <div className={`tab-button`}>
-                    <div className={`tab-border active`}>
+                    <div className={`top-tab-border`}>
                         <img src={`${tabItems[2].image}`} alt="Icon" width={20} height={20}/>
                     </div>
-                    <span className="mt-1 text-[#FF3E3E]">{tabItems[2].text}</span>
+                    <span className="mt-1 text-[8px]">{tabItems[2].text}</span>
                 </div>
         </div>
     );
