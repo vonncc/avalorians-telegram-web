@@ -109,6 +109,24 @@ blockquote {
     background-color: #ee9000;
     border-radius: 10px;
     border: 1px solid #ee9000;
+    align-content: center;
+}
+
+.curved-box.profit {
+    background-color: #0C0B17;
+    width: 213px;
+    height: 26px;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.curved-box.build {
+    width: 80px;
+    height: 26px;
+    float: right;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 100px;
 }
 
 .main-nav {
