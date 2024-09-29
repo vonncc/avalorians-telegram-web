@@ -4,15 +4,9 @@ const Creeps = () => {
     return (
         <div>
             
-            <div className="inset-0 flex justify-center items-center" style={{ opacity: 0.5 }}>
+            <div className="inset-0 flex justify-center items-center">
                 <img src="/assets/images/FrameCreeps.png" className="max-w-full"  alt=""/>
             </div>
-            <div className="inset-0 flex justify-center items-center">
-                <div className="max-w-full h-auto base-text justify-center items-center" style={{ position: "fixed", transform: "translateY(-50%)", top: "50%" }}>
-                    CREEPS COMING SOON
-                </div>
-            </div>
-
         </div>
     );
 };
