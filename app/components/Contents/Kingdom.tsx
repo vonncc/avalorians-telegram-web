@@ -12,7 +12,7 @@ const Kingdom = (props: KingdomProps) => {
         <div className="main-kingdom-container">
             <div className="flex pb-5">
                 <div className="curved-box profit base-text"><span>Profit (1H)</span>
-                    <div className="float-right pr-2">
+                    <div className="float-right pr-2 text-center">
                         <span className="pr-1">1,245</span>
                         <Image className="float-right" src="/assets/images/Coin.png" width={20} height={20} alt=""/>
                     </div>
