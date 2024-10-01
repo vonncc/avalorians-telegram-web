@@ -361,7 +361,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     // #region Data
     const data: AppearanceData = characterCustomizationData;
 
-    let characterData = {
+    const characterData = {
         name: heroName,
         gender: selectedGender,
         hair: selectedGender === Gender.Male ? data.hairM[indexChosenHairM] : data.hairF[indexChosenHairF],
