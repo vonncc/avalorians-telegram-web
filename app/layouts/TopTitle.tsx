@@ -4,6 +4,7 @@ import TabMenu, {TabItem} from "@/app/components/elements/TabMenu";
 
 interface TopTitleProps{
     activeTab: number;
+    handleTabClick: any;
 }
 
 const tabItems: TabItem[] = [
@@ -21,7 +22,7 @@ const tabItems: TabItem[] = [
     },
 ]
 
-const TopTitle: React.FC<TopTitleProps> = ({activeTab}) => {
+const TopTitle: React.FC<TopTitleProps> = ({activeTab, handleTabClick}) => {
     useEffect(() => {
         // Whenever activeTab prop changes, update internal index
         setIndex(activeTab);
@@ -46,7 +47,7 @@ const TopTitle: React.FC<TopTitleProps> = ({activeTab}) => {
                 <span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>
             </div>
             <div className={`tab-button`}>
-                <div className={`top-tab-border`}>
+                <div className={`top-tab-border`} onClick={() => handleTabClick(6)}>
                         <img src={`${tabItems[1].image}`} alt="Icon" width={20} height={20}/>
                     </div>
                     <span className="mt-1 text-[8px]">{tabItems[1].text}</span>

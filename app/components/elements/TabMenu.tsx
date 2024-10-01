@@ -10,20 +10,11 @@ export interface TabItem {
 export interface TabProps {
     tabs: TabItem[]; // Array of tab names
     content: React.ReactNode[]; // Array of content for each tab
-    onTabChange?: (activeTabIndex: number) => void;
+    activeTab: number;
+    handleTabClick: any;
 }
 
-const TabMenu: React.FC<TabProps> = ({ tabs, content, onTabChange }) => {
-    const [activeTab, setActiveTab] = useState(0)
-
-    const handleTabClick = (index: number) => {
-        setActiveTab(index);
-        console.log("in tab menu " + index);
-        
-        if (onTabChange) {
-            onTabChange(index);
-        }
-    };
+const TabMenu: React.FC<TabProps> = ({ tabs, content, activeTab, handleTabClick }) => {
 
     return (
         <div className="tab-container tab-container-gradient-background">

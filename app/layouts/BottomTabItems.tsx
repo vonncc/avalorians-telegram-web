@@ -35,11 +35,6 @@ const tabItems: TabItem[] = [
     },
 ];
 
-interface BottomTabDefaults {
-    tab: number;
-    currentActiveTab?: (activeTabIndex: number) => void;
-}
-
 const contentTabs = [
     <div key="1" className="z-1">
         <Hero />
@@ -67,16 +62,17 @@ const contentTabs = [
     </div>,
 ];
 
-const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) => {
-    const [activeTab, onActiveTabChange] = useState(tab);
+const FrontOverlay = () => {
+    const [activeTab, setActiveTab] = useState(0)
 
     const handleTabClick = (index: number) => {
-        onActiveTabChange(index);
+        setActiveTab(index);
+        console.log("in tab menu " + index);
     };
 
     return (
         <div className="overlay-menu z-45">
-            {<TopTitle activeTab={activeTab}/>}
+            {<TopTitle activeTab={activeTab} handleTabClick={handleTabClick}/>}
             <div className="details-section">
                 <div className="wallet-section grid-cols-2">
                     <div className="curved-box base-text gold-section">
@@ -96,7 +92,7 @@ const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) =>
                 </div>
             </div>
             <div className="bottom-container">
-                <TabMenu tabs={tabItems} onTabChange={handleTabClick} content={contentTabs}/>
+                <TabMenu tabs={tabItems} handleTabClick={handleTabClick} content={contentTabs} activeTab={activeTab}/>
             </div>
         </div>
     );
