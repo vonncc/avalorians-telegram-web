@@ -16,6 +16,7 @@ import WebApp from "@twa-dev/sdk";
 import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
+import CharacterCreation from "../components/Contents/cc";
 
 const tabItems: TabItem[] = [
     {
@@ -57,6 +58,10 @@ const FrontOverlay = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [freshAccount, setFreshAccount] = useState(true);
+    const [equippedData, setEquippedData] = useState("");
+
+    const [wallet, setWallet] = useState(null);
 
     const handleTabClick = (index: number) => {
         setActiveTab(index);
@@ -82,8 +87,8 @@ const FrontOverlay = () => {
         <div key="6" className="z-1">
             <Friends />
         </div>,
-        <div key="7" className="z-1">
-            <Quests />
+        <div key={`quests-${activeTab}`} className="z-1">
+            <Quests uniqueId={Date.now()} onUpdateWallet={GetWalet} />
         </div>,
         <div key="8" className="z-1">
             <Airdrop />
@@ -108,7 +113,45 @@ const FrontOverlay = () => {
     // Use useEffect to log the token whenever it changes
     useEffect(() => {
         console.log("Updated token:", token);
+        getUserEquipment();
+        GetWalet();
     }, [token]); // This will log the token every time it changes
+
+    async function GetWalet(): Promise<void> {
+        try {
+            console.log("asdadsadsadsdsadaahdsgajhdsag");
+            const response = await fetch(API_ENDPOINTS.GET_WALLET, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token,
+                },
+            });
+
+            if (!response.ok) {
+                console.log("ERRO ERRO EREROR");
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+            console.log("PUTANGINA");
+            const result = await response.json();
+
+            if (result) {
+                console.log("RESULT: assdgsadgsauydgsahdsgajhdsag");
+                console.log(response);
+                console.log(result.data);
+                setWallet(result.data);
+                result;
+            } else {
+                console.log("Response: assdgsadgsauydgsahdsgajhdsag");
+                console.log(result.data);
+                setWallet(result.data);
+            }
+        } catch (error) {
+            console.error("Error saving data:", error);
+        }
+
+        //
+    }
 
     const signIn = async () => {
         try {
@@ -145,9 +188,8 @@ const FrontOverlay = () => {
             console.log("asdad");
             console.log(result.access_token);
             setToken(result.access_token); // Assuming the token is in data.token
-            
+
             setData(result);
-            getUserState();
         } catch (err) {
             // setError(err.message);
             setLoading(false);
@@ -184,7 +226,7 @@ const FrontOverlay = () => {
             }
             const backupResult = await backupResponse.json();
             setToken(backupResult.access_token); // Assuming the token is in data.token
-            getUserState();
+
             setData(backupResult); // Set backup data if successful
         } catch (backupError) {}
     };
@@ -213,18 +255,66 @@ const FrontOverlay = () => {
             console.log(additionalResult);
 
             if (additionalResult.data.customCode == "AB001") {
+                setFreshAccount(true);
                 // Show Character Creation
             } else {
-                setLoading(false);
+                setFreshAccount(false);
+
                 // Open Kingdom
             }
             // Handle additional result here, e.g., set additional data state
-            
         } catch (error) {
             console.error("Error during additional fetch: ", error);
         } finally {
+            setLoading(false);
         }
     };
+
+    const getUserEquipment = async () => {
+        try {
+            // Perform your additional fetch here
+            const additionalResponse = await fetch(API_ENDPOINTS.GET_EQUIP_ITEM_USING_MASTER_ID, {
+                method: "GET", // or 'POST' based on your needs
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token,
+                },
+                // body: JSON.stringify({ ... }) // Include body if needed
+            });
+
+            if (!additionalResponse.ok) {
+                throw new Error("Additional fetch failed with status: " + additionalResponse.status);
+            }
+
+            console.log("additionalResult in Equipment");
+            console.log(additionalResponse);
+            const additionalResult = await additionalResponse.json();
+            console.log(additionalResult.data);
+
+            if (additionalResult.data.gender == "") {
+                setFreshAccount(true);
+                // Show Character Creation
+            } else {
+                setEquippedData(JSON.stringify(additionalResult.data));
+                setFreshAccount(false);
+
+                // Open Kingdom
+            }
+            // Handle additional result here, e.g., set additional data state
+        } catch (error) {
+            console.error("Error during additional fetch: ", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    function userDoneEditiin(response: string) {
+        console.log(response);
+        if (response) {
+            setEquippedData(JSON.stringify(response));
+            setFreshAccount(false);
+        }
+    }
 
     // Second useEffect for fetching data
     useEffect(() => {
@@ -235,30 +325,36 @@ const FrontOverlay = () => {
         <div className="overlay-menu z-45">
             {!loading ? (
                 <>
-                    <div className="">
-                        <TopTitle handleTabClick={handleTabClick} />
-                        <div className="details-section">
-                            <div className="wallet-section grid-cols-2">
-                                <div className="curved-box base-text gold-section">
-                                    GOLD:
-                                    <div className="right-side">
-                                        123,456
-                                        <img src="/assets/images/Coin.png" alt="" />
-                                    </div>
-                                </div>
-                                <div className="curved-box base-text runes-section">
-                                    RUNES:
-                                    <div className="right-side">
-                                        123
-                                        <img src="/assets/images/icons/money.png" alt="" />
+                    {!freshAccount ? (
+                        <>
+                            <div className="">
+                                <TopTitle handleTabClick={handleTabClick} />
+                                <div className="details-section">
+                                    <div className="wallet-section grid-cols-2">
+                                        <div className="curved-box base-text gold-section">
+                                            GOLD:
+                                            <div className="right-side">
+                                                {wallet ? wallet.gold.quantity : "0"}
+                                                <img src="/assets/images/Coin.png" alt="" />
+                                            </div>
+                                        </div>
+                                        <div className="curved-box base-text runes-section">
+                                            RUNES:
+                                            <div className="right-side">
+                                                {wallet ? wallet.rune.quantity : "0"}
+                                                <img src="/assets/images/icons/money.png" alt="" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="bottom-container">
-                        <TabMenu tabs={tabItems} handleTabClick={handleTabClick} content={contentTabs} activeTab={activeTab} />
-                    </div>
+                            <div className="bottom-container">
+                                <TabMenu tabs={tabItems} handleTabClick={handleTabClick} content={contentTabs} activeTab={activeTab} />
+                            </div>
+                        </>
+                    ) : (
+                        <CharacterCreation jsonData={equippedData} CharacterCreateEvent={userDoneEditiin} />
+                    )}
                 </>
             ) : (
                 <Loading />
