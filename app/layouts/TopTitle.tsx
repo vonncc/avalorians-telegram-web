@@ -1,9 +1,8 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import TabMenu, {TabItem} from "@/app/components/elements/TabMenu";
+import {TabItem} from "@/app/components/elements/TabMenu";
 
 interface TopTitleProps{
-    activeTab: number;
     handleTabClick: any;
 }
 
@@ -22,13 +21,7 @@ const tabItems: TabItem[] = [
     },
 ]
 
-const TopTitle: React.FC<TopTitleProps> = ({activeTab, handleTabClick}) => {
-    useEffect(() => {
-        // Whenever activeTab prop changes, update internal index
-        setIndex(activeTab);
-    }, [activeTab]);
-
-    const [index, setIndex] = useState(activeTab);
+const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
 
     return (
         <div className="top-container">
