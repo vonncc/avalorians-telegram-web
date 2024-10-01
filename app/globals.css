@@ -109,6 +109,24 @@ blockquote {
     background-color: #ee9000;
     border-radius: 10px;
     border: 1px solid #ee9000;
+    align-content: center;
+}
+
+.curved-box.profit {
+    background-color: #0C0B17;
+    width: 213px;
+    height: 26px;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.curved-box.build {
+    width: 80px;
+    height: 26px;
+    float: right;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 100px;
 }
 
 .main-nav {
@@ -155,6 +173,13 @@ blockquote {
     height: 50px;
     text-transform: uppercase;
     align-items: center;
+
+    font-family: Mina, serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 .overlay-menu .top-container .left-side {
@@ -210,7 +235,7 @@ blockquote {
 
 .overlay-menu .tab-header {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
+    grid-template-columns: repeat(5, 1fr); /* Always 4 columns */
     gap: 4px; /* Adjust the gap between the tabs as needed */
 }
 
@@ -250,7 +275,7 @@ blockquote {
 
 .overlay-menu .tab-content.hero {
     height: calc(100vh - 165px); /* Subtract the margin-top from the viewport height */
-    margin-top: 165px;
+    margin-top: 120px;
 }
 
 .overlay-menu .tab-content::-webkit-scrollbar {
@@ -274,7 +299,7 @@ blockquote {
     align-items: center; /* Center children horizontally */
     border-radius: 10px; /* Rounded corners */
     width: 50px; /* Adjust this to match the width of your buttons */
-    height: 55px; /* Adjust this to match the height of your buttons */
+    height: 70px; /* Adjust this to match the height of your buttons */
     font-size: 10px;
     /* opacity: 0.5; */
     transition: opacity 0.3s ease; /* Smooth transition for opacity changes */
@@ -284,8 +309,18 @@ blockquote {
 .overlay-menu .tab-button .tab-border {
     background-color: #9F6000;
     border-radius: 10px;
-    width: 35px;
-    height: 55px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-menu .tab-button .top-tab-border {
+    background-color: #FFAB2B;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;

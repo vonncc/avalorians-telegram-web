@@ -8,14 +8,25 @@ interface EquipmentProps extends HeroDetailsProps {
     head?: string;
     body?: string;
     pants?: string;
+    currentHero: number;
+    heroSelect: number;
+    handleNextHero: any;
+    handlePrevHero: any;
+    heroImage: string;
 }
-const HeroEquipemt: React.FC<EquipmentProps> = ({ head = "", body = "", pants = "", name, level = 1, experience = 0 }) => {
+
+const HeroEquipment: React.FC<EquipmentProps> = ({ head = "", body = "", pants = "", currentHero, heroSelect, handleNextHero, handlePrevHero, heroImage, name, level = 1, experience = 0 }) => {
+    const heroSelected = currentHero === heroSelect;
+
     return (
         <div>
             <div className="character-section">
-                <div className="character-image">
-                    <Image src="/assets/images/Hero/tempCharacterImage.png" width={258} height={279} alt="character image" />
+                <button className="hero-selector left" onClick={handlePrevHero}><Image src="/assets/images/icons/vector.png" width={20} height={32} alt="previous"/></button>
+                <div className={`character-image ${heroSelected ? 'selected' : ''}`}>
+                    <Image src={heroImage} width={258} height={279}
+                           alt="character image"/>
                 </div>
+                <button className="hero-selector right" onClick={handleNextHero}><Image src="/assets/images/icons/vector.png" width={20} height={32} alt="previous"/></button>
                 <div className="curved-box user-name">{name}</div>
                 <div className="experience-section curved-box">
                     <div className="top-side">
@@ -25,7 +36,7 @@ const HeroEquipemt: React.FC<EquipmentProps> = ({ head = "", body = "", pants = 
                         </div>
                     </div>
                     <div className="bottom-side">
-                        <AvalorianDesignedSlider experience={0} level={1} nextLevelExp={NextLevelExp} />
+                        <AvalorianDesignedSlider experience={0} level={1} nextLevelExp={NextLevelExp}/>
                     </div>
                 </div>
             </div>
@@ -33,4 +44,4 @@ const HeroEquipemt: React.FC<EquipmentProps> = ({ head = "", body = "", pants = 
     );
 };
 
-export default HeroEquipemt;
+export default HeroEquipment;
