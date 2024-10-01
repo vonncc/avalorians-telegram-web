@@ -1,34 +1,21 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import TabMenu, { TabItem } from "../components/elements/TabMenu";
 import TopTitle from "./TopTitle";
-import ProductCard from "../components/ProductCard";
 
-import Airdrop from "../components/Contents/Airdrop";
 import Creeps from "../components/Contents/Creeps";
-import Friends from "../components/Contents/Friends";
 import Hero from "../components/Contents/Hero";
 import Kingdom from "../components/Contents/Kingdom";
 import Lane from "../components/Contents/Lane";
-import Quests from "../components/Contents/Quests";
 import Store from "../components/Contents/Store";
-import HeroDetails from "../components/elements/Hero/HeroDetails";
+import Friends from "@/app/components/Contents/Friends";
+import Quests from "@/app/components/Contents/Quests";
+import Airdrop from "@/app/components/Contents/Airdrop";
+import KingdomBuild from "@/app/components/elements/Kingdom/KingdomBuild";
 
 const tabItems: TabItem[] = [
     {
-        image: "/assets/images/tabs/Friends.png", // Image path or URL
-        text: "FRIENDS",
-    },
-    {
-        image: "/assets/images/tabs/Quest.png",
-        text: "QUESTS",
-    },
-    {
-        image: "/assets/images/tabs/Airdrop.png", // Image path or URL
-        text: "AIRDROP",
-    },
-    {
-        image: "/assets/images/tabs/Hero.png", // Image path or URL
+        image: "/assets/images/tabs/Hero.png",
         text: "HERO",
     },
     {
@@ -36,7 +23,7 @@ const tabItems: TabItem[] = [
         text: "LANE",
     },
     {
-        image: "/assets/images/tabs/Kingdom.png", // Image path or URL
+        image: "/assets/images/tabs/Kingdom.png",
         text: "KINGDOM",
     },
     {
@@ -44,61 +31,74 @@ const tabItems: TabItem[] = [
         text: "CREEPS",
     },
     {
-        image: "/assets/images/tabs/Store.png",
+        image: "/assets/images/tabs/store.png",
         text: "STORE",
     },
 ];
 
-interface BottomTabDefaults {
-    tab: number;
-    currentActiveTab?: (activeTabIndex: number) => void;
-}
-
-const contentTabs = [
-    <div key="0" className="z-1">
-        <Friends></Friends>
-    </div>,
-    <div key="1" className="z-1">
-        <Quests></Quests>
-    </div>,
-    <div key="2" className="z-1">
-        <Airdrop></Airdrop>
-    </div>,
-
-    <div key="43" className="z-1">
-        <Hero></Hero>
-    </div>,
-    <div key="4" className="z-1">
-        <Lane></Lane>
-    </div>,
-    <div key="5" className="z-1">
-        <Kingdom></Kingdom>
-    </div>,
-    <div key="6" className="z-1">
-        <Store></Store>
-    </div>,
-    <div key="7" className="z-1">
-        <Creeps></Creeps>
-    </div>,
-];
-
-const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) => {
-    const [activeTab, onActiveTabChange] = useState(tab);
-    const [isHeroTab, onHeroTab] = useState(activeTab == 3);
+const FrontOverlay = () => {
+    const [activeTab, setActiveTab] = useState(2)
 
     const handleTabClick = (index: number) => {
-        onActiveTabChange(index);
-        onHeroTab(index == 3);
-        if (currentActiveTab) currentActiveTab(index);
-
+        setActiveTab(index);
+        console.log("in tab menu " + index);
     };
-    // const [userData, setUserData] = useState(null);
+
+    const contentTabs = [
+        <div key="1" className="z-1">
+            <Hero />
+        </div>,
+        <div key="2" className="z-1">
+            <Lane />
+        </div>,
+        <div key="3" className="z-1">
+            <Kingdom handleBuildClick={handleTabClick}/>
+        </div>,
+        <div key="4" className="z-1">
+            <Creeps />
+        </div>,
+        <div key="5" className="z-1">
+            <Store />
+        </div>,
+        <div key="6" className="z-1">
+            <Friends />
+        </div>,
+        <div key="7" className="z-1">
+            <Quests />
+        </div>,
+        <div key="8" className="z-1">
+            <Airdrop />
+        </div>,
+        <div key="9" className="z-1">
+            <KingdomBuild />
+        </div>,
+    ];
 
     return (
         <div className="overlay-menu z-45">
-            {isHeroTab ? <HeroDetails /> : <TopTitle activeTab={activeTab} />}
+            <div className="">
+                <TopTitle handleTabClick={handleTabClick}/>
+                <div className="details-section">
+                    <div className="wallet-section grid-cols-2">
+                        <div className="curved-box base-text gold-section">
+                            GOLD:
+                            <div className="right-side">
+                                123,456
+                                <img src="/assets/images/Coin.png" alt="" />
+                            </div>
+                        </div>
+                        <div className="curved-box base-text runes-section">
+                            RUNES:
+                            <div className="right-side">
+                                123
+                                <img src="/assets/images/icons/money.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className="bottom-container">
-                <TabMenu tabs={tabItems} onTabChange={handleTabClick} content={contentTabs} />
+                <TabMenu tabs={tabItems} handleTabClick={handleTabClick} content={contentTabs} activeTab={activeTab}/>
             </div>
         </div>
     );
