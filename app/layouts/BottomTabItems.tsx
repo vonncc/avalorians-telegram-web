@@ -83,14 +83,14 @@ const FrontOverlay: React.FC<BottomTabDefaults> = ({ tab, currentActiveTab }) =>
                         GOLD:
                         <div className="right-side">
                             123,456
-                            <img src="/assets/images/Coin.png" alt=""></img>
+                            <img src="/assets/images/Coin.png" alt="" />
                         </div>
                     </div>
                     <div className="curved-box base-text runes-section">
                         RUNES:
                         <div className="right-side">
                             123
-                            <img src="/assets/images/icons/money.png" alt=""></img>
+                            <img src="/assets/images/icons/money.png" alt="" />
                         </div>
                     </div>
                 </div>
