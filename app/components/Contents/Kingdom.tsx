@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "@/app/styles/pages/kingdom.css";
 import Image from "next/image";
+import { API_ENDPOINTS } from "@/app/_globals/constants/baseUrl";
+import { useToken } from "@/app/context/token.context";
 
 interface KingdomProps {
     handleBuildClick: any;
 }
 
 const Kingdom = (props: KingdomProps) => {
+    
 
     return (
         <div className="main-kingdom-container">
