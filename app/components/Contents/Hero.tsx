@@ -35,7 +35,7 @@ const Hero = () => {
                 const initData = WebApp.initData;
                 console.log("initData:", initData);
             }
-        }
+        }   
     }, []);
 
     return (
@@ -60,3 +60,4 @@ const Hero = () => {
 };
 
 export default Hero;
+    
