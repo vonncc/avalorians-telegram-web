@@ -1,17 +1,17 @@
 interface HeroSelectProps {
-    isSelected: boolean;
+    heroSelect: number;
+    currentHero: number;
+    handleSelect: any;
 }
 
 export default function HeroSelect(props: HeroSelectProps) {
 
-    const handleButtonClick = () => {
-        console.log('click');
-    }
+    const heroSelected = props.heroSelect === props.currentHero;
 
     return <div className="stats-row">
-        <button className={`character-select justify-items-center grid ${props.isSelected ? 'selected' : ''}` }
-                value="Select" onClick={() => handleButtonClick()}>
-            <p className="character-select-text">Select</p>
+        <button className={`character-select justify-items-center grid ${heroSelected ? 'selected' : ''}` }
+                value="Select" onClick={props.handleSelect}>
+            <p className="character-select-text">{heroSelected ? 'SELECTED' : 'SELECT'}</p>
         </button>
     </div>
 }

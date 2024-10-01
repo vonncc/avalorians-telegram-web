@@ -30,7 +30,7 @@ const tabItems: TabItem[] = [
         text: "CREEPS",
     },
     {
-        image: "/assets/images/tabs/Store.png",
+        image: "/assets/images/tabs/store.png",
         text: "STORE",
     },
 ];

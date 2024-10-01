@@ -60,8 +60,7 @@
 }
 
 .details-section .experience-section {
-    margin: 10px;
-    margin-bottom: 5px;
+    margin: 10px 10px 5px;
     display: flex;
     justify-content: space-between;
     gap: 5px;
@@ -149,7 +148,7 @@
 .character-section .user-name {
     position: absolute;
     z-index: 3; /* Topmost layer */
-    top: 240px; /* Adjust the top position as needed */
+    top: 250px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     background-color: black;
@@ -162,7 +161,7 @@
 .character-section .experience-section {
     position: absolute;
     z-index: 2; /* Middle layer */
-    top: 255px; /* Adjust the top position as needed */
+    top: 265px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     width: 70%; /* Full width */
@@ -222,7 +221,7 @@
     position: absolute;
     width: 70%;
     gap: 10px;
-    top: 315px;
+    top: 325px;
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
 }
@@ -398,4 +397,18 @@
     bottom: 0;
     z-index: 6;
     position: absolute;
+}
+
+.hero-selector {
+    top: 160px;
+    position: absolute;
+}
+
+.hero-selector.left {
+    transform: rotate(-180deg);
+    left: 70px;
+}
+
+.hero-selector.right {
+    right: 70px;
 }

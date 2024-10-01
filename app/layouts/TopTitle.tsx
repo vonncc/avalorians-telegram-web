@@ -54,7 +54,7 @@ const TopTitle: React.FC<TopTitleProps> = ({activeTab}) => {
                     <div className={`top-tab-border`}>
                         <img src={`${tabItems[2].image}`} alt="Icon" width={20} height={20}/>
                     </div>
-                    <span className="mt-1 text-[8px]">{tabItems[2].text}</span>
+                    <span className="mt-1 text-[#FF3E3E] text-[8px]">{tabItems[2].text}</span>
                 </div>
         </div>
     );

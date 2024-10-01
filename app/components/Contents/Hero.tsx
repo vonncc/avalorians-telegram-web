@@ -14,9 +14,43 @@ interface UserData {
     is_premium?: boolean;
 }
 
+const heroes = [{
+    id: 0,
+    name: "Dum Dum",
+    image: "/assets/images/Hero/hero1.png",
+    stats: { hit_points: 10, armor: 12, attack_speed: 8, splash_damage: 3},
+}, {
+    id: 1,
+    name: "Troll Priest",
+    image: "/assets/images/Hero/hero2.png",
+    stats: { hit_points: 5, armor: 5, attack_speed: 10, splash_damage: 3},
+}];
+
 const Hero = () => {
     const [userData, setUserData] = useState<UserData | null>(null);
-    const [isSelected, setIsSelected] = useState<boolean>(true);
+    const [heroSelect, setHeroSelect] = useState<number>(0);
+    const [currentHero, setCurrentHero] = useState<number>(0);
+
+    function handleSelect() {
+        setHeroSelect(currentHero);
+    }
+
+    function handleNextHero() {
+        if (currentHero < heroes.length - 1) {
+            setCurrentHero(currentHero + 1);
+        } else {
+            setCurrentHero(0);
+        }
+    }
+
+    function handlePreviousHero() {
+        if (currentHero >= heroes.length - 1) {
+            setCurrentHero(currentHero - 1);
+        } else {
+            setCurrentHero(heroes.length - 1);
+        }
+    }
+
 
     useEffect(() => {
         console.log("TG_123_Hero: start use effect");
@@ -39,9 +73,9 @@ const Hero = () => {
 
     return (
         <div className="general-hero-container">
-            <div className="text-center text-xl font-extrabold">Heroes 1/2</div>
-            {userData ? <HeroEquipment name={userData.username || "No Username"} /> : <HeroEquipment name="Avalorians User" />}
-            <HeroStats isSelected={isSelected} />
+            <div className="text-center text-xl font-extrabold pb-4">{`Heroes ${currentHero + 1}/${heroes.length}`}</div>
+            <HeroEquipment name={heroes[currentHero].name} heroSelect={heroSelect} currentHero={currentHero} handleNextHero={handleNextHero} handlePrevHero={handlePreviousHero} heroImage={heroes[currentHero].image} />
+            <HeroStats stats={heroes[currentHero].stats} heroSelect={heroSelect} currentHero={currentHero} handleSelect={handleSelect} />
         </div>
     );
 };
