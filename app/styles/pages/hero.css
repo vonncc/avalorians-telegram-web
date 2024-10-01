@@ -406,9 +406,9 @@
 
 .hero-selector.left {
     transform: rotate(-180deg);
-    left: 70px;
+    left: 50px;
 }
 
 .hero-selector.right {
-    right: 70px;
+    right: 50px;
 }
