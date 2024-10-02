@@ -184,7 +184,7 @@ const FrontOverlay = () => {
             if (!response.ok) {
                 if (response.status) {
                     console.log("No existing user sign uo now");
-                    // signUp();
+                    signUp();
                     return;
                 } else {
                     console.log("No existing user sign up now 2");
@@ -200,6 +200,7 @@ const FrontOverlay = () => {
             setData(result);
         } catch (err) {
             signUp();
+            console.log(err);
             // setError(err.message);
             // setLoading(false);
         } finally {
