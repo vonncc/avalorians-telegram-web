@@ -6,18 +6,20 @@ import Image from "next/image";
 interface QuestsData {
     quests_id: string;
     quests_status: boolean;
+    quests_reward: number;
+    quests_url: string;
 }
 // Define the type for the props
 interface ButtonProps {
     text: string;
     image: string;
-    onClick?: () => void;
-    data?: QuestsData;
+    onClick?: (data: QuestsData) => void;
+    data: QuestsData;
 }
 
 // Apply the type to the component's props
-const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image }) => {
-    const [buttonDisabled, setIsDisabled] = useState(false);
+const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image, data }) => {
+    const [buttonDisabled, setIsDisabled] = useState(data.quests_status);
 
     function Enable() {
         setIsDisabled(false);
@@ -26,10 +28,17 @@ const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image }) => {
     function Disable() {
         setIsDisabled(true);
     }
+
+    function ButtonClicked() {
+        if (onClick && data) {
+            onClick(data);
+            Disable();
+        }
+    }
     // const buttonState
     // "/assets/images/icons/youtubeIcon.png"
     return !buttonDisabled ? (
-        <Button className="box button" onClick={onClick} color="primary">
+        <Button className="box button" onClick={ButtonClicked} color="primary">
             {/* <Image src={`${image}`} alt="icon for image" /> */}
             <div className="border">
                 <img src={`${image}`} alt="icon for image" />
@@ -40,7 +49,7 @@ const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image }) => {
                 {/* Anything Below here is next line */}
                 <div className="reward-box-button">
                     <img src="/assets/images/icons/money.png" alt="Money Icon" />
-                    <div className="reward-text">+1000</div>
+                    <div className="reward-text">+{data.quests_reward}</div>
                 </div>
             </div>
 
@@ -58,7 +67,7 @@ const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image }) => {
                 {/* Anything Below here is next line */}
                 <div className="reward-box-button">
                     <img src="/assets/images/icons/money.png" alt="Money Icon" />
-                    <div className="reward-text">+1000</div>
+                    <div className="reward-text">+{data.quests_reward}</div>
                 </div>
             </div>
 

@@ -1,0 +1,44 @@
+{
+    "skinM": [
+      "skin-1-m",
+      "skin-2-m",
+      "skin-3-m"
+    ],
+    "skinF": [
+      "skin-1-f",
+      "skin-2-f",
+      "skin-3-f"
+    ],
+    "hairM": [
+      "hair-1-m",
+      "hair-2-m",
+      "hair-3-m",
+      "hair-4-m",
+      "hair-5-m",
+      "hair-6-m",
+      "hair-7-m",
+      "hair-8-m"
+    ],
+    "hairF": [
+      "hair-1-f",
+      "hair-2-f",
+      "hair-3-f",
+      "hair-4-f",
+      "hair-5-f",
+      "hair-6-f",
+      "hair-7-f",
+      "hair-8-f"
+    ],
+    "clothM": [
+      "cloth-1-m",
+      "cloth-2-m",
+      "cloth-3-m",
+      "cloth-4-m"
+    ],
+    "clothF": [
+      "cloth-1-f",
+      "cloth-2-f",
+      "cloth-3-f",
+      "cloth-4-f"
+    ]
+  }
