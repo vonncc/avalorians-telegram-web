@@ -127,6 +127,27 @@ blockquote {
     text-align: center;
     font-size: 12px;
     margin-left: 100px;
+    align-content: center;
+}
+
+.curved-box.building {
+    font-family: "mina", "mina-bold", serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    top: 35px;
+}
+
+.curved-box.building.active {
+    background-color: #4FD464;
+    border: none;
+
+}
+
+.curved-box.inactive {
+    background-color: #0C0B17;
 }
 
 .main-nav {
