@@ -113,6 +113,10 @@ const FrontOverlay = () => {
     // Use useEffect to log the token whenever it changes
     useEffect(() => {
         console.log("Updated token:", token);
+
+        if (!token) 
+            return;
+
         getUserEquipment();
         GetWalet();
     }, [token]); // This will log the token every time it changes
@@ -159,6 +163,8 @@ const FrontOverlay = () => {
                 return;
             }
 
+            
+
             const response = await fetch(API_ENDPOINTS.POST_PROFILE_SIGNIN, {
                 method: "POST", // or 'POST'
                 headers: {
@@ -177,23 +183,27 @@ const FrontOverlay = () => {
 
             if (!response.ok) {
                 if (response.status) {
-                    signUp();
+                    console.log("No existing user sign uo now");
+                    // signUp();
                     return;
                 } else {
+                    console.log("No existing user sign up now 2");
                     throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
             }
 
             const result = await response.json();
-            console.log("asdad");
+            console.log("Sign in");
             console.log(result.access_token);
             setToken(result.access_token); // Assuming the token is in data.token
 
             setData(result);
         } catch (err) {
+            signUp();
             // setError(err.message);
-            setLoading(false);
+            // setLoading(false);
         } finally {
+
         }
     };
 
@@ -203,7 +213,7 @@ const FrontOverlay = () => {
                 console.log("no user how did you get here do nothing and block ");
                 return;
             }
-            console.log("userData");
+            console.log("sign up attempt");
             console.log(userData);
             const backupResponse = await fetch(API_ENDPOINTS.POST_PROFILE_SIGNUP, {
                 method: "POST", // or 'POST'
@@ -220,15 +230,20 @@ const FrontOverlay = () => {
                     telegram_id: userData.id.toString(),
                 }),
             });
-
+            console.log("sign up attempt 1");
             if (!backupResponse.ok) {
                 throw new Error("Backup API failed with status: " + backupResponse.status);
             }
             const backupResult = await backupResponse.json();
+            console.log("Signing Up");
+            console.log(backupResult.access_token);
             setToken(backupResult.access_token); // Assuming the token is in data.token
 
             setData(backupResult); // Set backup data if successful
-        } catch (backupError) {}
+        } catch (backupError) {
+            console.log("Sign Up Error");
+            console.log(backupError );
+        }
     };
 
     // Define the function for the additional fetch
