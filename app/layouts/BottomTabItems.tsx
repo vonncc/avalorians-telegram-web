@@ -17,7 +17,6 @@ import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
 import CharacterCreation from "../components/Contents/cc";
-import logger from "../_globals/logger/logger";
 
 const tabItems: TabItem[] = [
     {
@@ -66,7 +65,6 @@ const FrontOverlay = () => {
 
     const handleTabClick = (index: number) => {
         setActiveTab(index);
-        logger.info("in tab menu " + index);
     };
 
     const [userData, setUserData] = useState<UserData | null>(null);
@@ -82,7 +80,7 @@ const FrontOverlay = () => {
 
     useEffect(() => {
         if (token) {
-            logger.info("Updated token:", token);
+            console.info("Updated token:", token);
             getUserEquipment();
             getWallet();
         }
@@ -106,11 +104,11 @@ const FrontOverlay = () => {
 
     const getWallet = async (): Promise<void> => {
         try {
-            logger.info("Fetching wallet...");
+            console.info("Fetching wallet...");
             const result = await fetchWithToken(API_ENDPOINTS.GET_WALLET);
             setWallet(result.data);
         } catch (error) {
-            logger.error("Error fetching wallet:", error);
+            console.error("Error fetching wallet:", error);
         }
     };
 
@@ -118,9 +116,9 @@ const FrontOverlay = () => {
         if (!userData) return;
 
         try {
-            logger.info(API_ENDPOINTS.POST_PROFILE_SIGNIN);
-            logger.info("User is trying to sign in");
-            logger.info(userData.username);
+            console.info(API_ENDPOINTS.POST_PROFILE_SIGNIN);
+            console.info("User is trying to sign in");
+            console.info(userData.username);
             const response = await fetch(API_ENDPOINTS.POST_PROFILE_SIGNIN, {
                 method: "POST",
                 headers: {
@@ -136,7 +134,7 @@ const FrontOverlay = () => {
             });
 
             if (!response.ok) {
-                logger.error("No existing user, signing up now.");
+                console.error("No existing user, signing up now.");
 
                 throw new Error("Failed to connect to server");
             }
@@ -145,19 +143,19 @@ const FrontOverlay = () => {
             setToken(result.access_token);
             setData(result);
         } catch (error) {
-            logger.error("Sign In Error:", error);
+            console.error("Sign In Error:", error);
         }
     };
 
     const getUserState = async () => {
         try {
             const result = await fetchWithToken(API_ENDPOINTS.GET_USER_STATE);
-            logger.info(result);
+            console.info(result);
 
             setFreshAccount(result.data.customCode === "AB001");
             // Add additional handling for user state if needed
         } catch (error) {
-            logger.error("Error during fetching user state:", error);
+            console.error("Error during fetching user state:", error);
         } finally {
             setLoading(false);
         }
@@ -169,14 +167,14 @@ const FrontOverlay = () => {
             setEquippedData(JSON.stringify(result.data));
             setFreshAccount(result.data.gender === "");
         } catch (error) {
-            logger.error("Error during fetching user equipment:", error);
+            console.error("Error during fetching user equipment:", error);
         } finally {
             setLoading(false);
         }
     };
 
     const userDoneEditing = (response: string) => {
-        logger.info(response);
+        console.info(response);
         if (response) {
             setEquippedData(JSON.stringify(response));
             setFreshAccount(false);

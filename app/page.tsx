@@ -27,23 +27,23 @@ export default function Home() {
     // };
 
     // useEffect(() => {
-    //     logger.info("TG_123: start use effect");
+    //     console.info("TG_123: start use effect");
 
     //     if (typeof window !== "undefined") {
 
     //         if (WebApp.initDataUnsafe.user) {
-    //             logger.info("TG_123: Web App found");
-    //             logger.info(WebApp);
-    //             logger.info("TG_123: This is initDataUnsafe ");
-    //             logger.info(WebApp.initDataUnsafe);
+    //             console.info("TG_123: Web App found");
+    //             console.info(WebApp);
+    //             console.info("TG_123: This is initDataUnsafe ");
+    //             console.info(WebApp.initDataUnsafe);
     //             setUserData(WebApp.initDataUnsafe.user as UserData);
     //         } else {
-    //             logger.info("TG_123: Web App Not found");
-    //             logger.info(WebApp);
+    //             console.info("TG_123: Web App Not found");
+    //             console.info(WebApp);
 
-    //             logger.info("TG_123: Init Data only");
+    //             console.info("TG_123: Init Data only");
     //             const initData = WebApp.initData; // This is base64-encoded
-    //             logger.info("initData:", initData);
+    //             console.info("initData:", initData);
     //         }
     //     }
 

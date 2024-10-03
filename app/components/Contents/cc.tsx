@@ -66,7 +66,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
         try {
             dataCC.current = jsonData ? JSON.parse(jsonData) : defaultData;
         } catch (error) {
-            //logger.error('Invalid JSON string:', error);
+            //console.error('Invalid JSON string:', error);
             //dataCC.current = defaultData;
         }
 
@@ -414,9 +414,9 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
             const result = await response.json();
             saveUserState();
             if (CharacterCreateEvent) CharacterCreateEvent(result.data);
-            logger.info("Data saved successfully:", result);
+            console.info("Data saved successfully:", result);
         } catch (error) {
-            logger.error("Error saving data:", error);
+            console.error("Error saving data:", error);
         }
 
         //

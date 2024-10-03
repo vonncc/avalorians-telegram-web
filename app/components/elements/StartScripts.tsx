@@ -9,12 +9,12 @@ const StartScripts = () => {
                 src="https://telegram.org/js/telegram-web-app.js"
                 strategy="beforeInteractive"
                 onLoad={() => {
-                    logger.info("Telegram Web App script loaded and integrated");
+                    console.info("Telegram Web App script loaded and integrated");
                     if (window.Telegram) {
-                        logger.info("Telegram WebApp is ready to use");
+                        console.info("Telegram WebApp is ready to use");
                     }
                 }}
-                onError={(error) => logger.error("Failed to load the Telegram Web App script: " + error)}
+                onError={(error) => console.error("Failed to load the Telegram Web App script: " + error)}
             /> */}
         </div>
     );

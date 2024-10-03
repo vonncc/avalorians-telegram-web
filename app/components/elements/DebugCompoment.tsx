@@ -8,7 +8,7 @@ const DebugComponent: React.FC = () => {
   // Function to log messages to the state and console
   const logMessage = (message: string) => {
     setDebugLogs((prevLogs) => [...prevLogs, message]);
-    logger.info(message); // Log to console as well
+    console.info(message); // Log to console as well
   };
 
   // Log a message when the component is mounted
