@@ -16,7 +16,7 @@ import WebApp from "@twa-dev/sdk";
 import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
-import CharacterCreation from "../components/Contents/cc";
+import CharacterCreation from "../components/Contents/CharacterCreation";
 
 const tabItems: TabItem[] = [
     {
@@ -57,7 +57,7 @@ const FrontOverlay = () => {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [freshAccount, setFreshAccount] = useState(true);
     const [equippedData, setEquippedData] = useState("");
 
