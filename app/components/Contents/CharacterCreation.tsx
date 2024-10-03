@@ -45,7 +45,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
 
     // #region Mount/Unmount
     const genderCC = useRef<Gender>();
-    const initLoadFlag = useRef<boolean>(jsonData ? true : false);
+    const initLoadFlag = useRef<boolean>(!!jsonData);
 
     const defaultData: CharacterCustomizationData = {
         name: EMPTY_STRING,
@@ -56,8 +56,6 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     };
 
     const dataCC = useRef<CharacterCustomizationData>(defaultData);
-
-    //const jsonString = JSON.stringify(defaultData);
 
     useEffect(() => {
         //runs once when the component mounts
@@ -115,14 +113,14 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     // #endregion
 
     // #region CharacterViewer
-    const [viewerColor, setviewerColor] = useState<string>(EMPTY_STRING);
+    const [viewerColor, setViewerColor] = useState<string>(EMPTY_STRING);
 
     function displayViewer(): void {
-        setviewerColor("rgb(180, 186, 192)");
+        setViewerColor("rgb(180, 186, 192)");
     }
 
     function hideViewer(): void {
-        setviewerColor(EMPTY_STRING);
+        setViewerColor(EMPTY_STRING);
     }
     // #endregion
 
@@ -168,7 +166,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     // #endregion
 
     // #region Gender
-    const [selectedGender, setSelectedGender] = useState<Gender>(Gender.Male); //will be overriden in useEffect()
+    const [selectedGender, setSelectedGender] = useState<Gender>(Gender.Male); //will be overridden in useEffect()
     const [previousGender, setPreviousGender] = useState<Gender | null>(null);
     const [textMaleColor, setTextMaleColor] = useState<string>(colorChosen);
     const [textFemaleColor, setTextFemaleColor] = useState<string>(colorUnchosen);
@@ -412,7 +410,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
             }
 
             const result = await response.json();
-            saveUserState();
+            await saveUserState();
             if (CharacterCreateEvent) CharacterCreateEvent(result.data);
             console.info("Data saved successfully:", result);
         } catch (error) {
@@ -489,9 +487,9 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
 
     // #region Slider
     const sliderMin = 0;
-    const sliderMax = 5;
+    const sliderMax = 4;
 
-    const [sliderCurrentValue, setWidth] = useState<number>(1);
+    const [sliderCurrentValue, setWidth] = useState<number>(0);
 
     const sliderIncreaseWidth = () => {
         setWidth((prevWidth) => (prevWidth < sliderMax ? prevWidth + 1 : sliderMax));
@@ -503,7 +501,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     // #endregion
 
     return (
-        <div className="d-flex flex-column min-vh-100">
+        <div className="d-flex flex-column align-middle text-center min-vh-100">
             {/*<header className={`${styles.headerCC} d-flex align-items-center justify-content-center`}>
         <p className="mb-0">Header</p>
       </header>*/}
@@ -513,7 +511,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                     <div className="row d-flex">
                         <div className="col-12 d-flex justify-content-center align-items-center mt-5">
                             <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                <div style={{ width: "400px", position: "relative" }}>
+                                <div className="mb-5">
                                     <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
                                         <h4
                                             className={`${styles.fontMinaBold} text-center`}
@@ -527,7 +525,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                         </div>
 
                         {/* Character Viewer */}
-                        <div className="col-12 d-flex justify-content-center align-items-center mt-5 mb-3" style={{ height: "20vh" }}>
+                        <div className="col-12 mt-5 mb-3 px-24" style={{ height: "20vh" }}>
                             <div>
                                 <div className={styles.heroViewer}>
                                     {" "}
@@ -553,7 +551,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                         {/* Instruction Label */}
                         <div className="col-12 d-flex justify-content-center align-items-center mt-5">
                             <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                <div style={{ width: "400px", position: "relative" }}>
+                                <div className="mb-5">
                                     <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
                                         <h6
                                             className={`${styles.fontMinaBold} text-center`}
@@ -567,7 +565,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                         </div>
 
                         {/* Name */}
-                        <div className="col-12 d-flex flex-column justify-content-center align-items-center mt-5" style={{ height: "10vh" }}>
+                        <div className="col-12 d-flex flex-column justify-content-center align-items-center mt-12" style={{ height: "10vh" }}>
                             {currentStep === CustomizationSteps.Name && (
                                 <div style={{ margin: "20px auto" }}>
                                     <div className={styles.uiContainer}>
@@ -637,7 +635,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                             {/* Hair Chooser */}
                             {currentStep === CustomizationSteps.Hair && (
                                 <div className="d-flex justify-content-between align-items-center w-50">
-                                    <div style={{ width: "400px", margin: "20px auto" }}>
+                                    <div className="mb-5">
                                         <div className={styles.uiContainer}>
                                             <button
                                                 className="btn"
@@ -667,7 +665,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                             {/* Skin Chooser */}
                             {currentStep === CustomizationSteps.Skin && (
                                 <div className="d-flex justify-content-between align-items-center w-50">
-                                    <div style={{ width: "400px", margin: "20px auto" }}>
+                                    <div className="mb-5">
                                         <div className={styles.uiContainer}>
                                             <button
                                                 className="btn"
@@ -697,7 +695,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                             {/* Cloth Chooser */}
                             {currentStep === CustomizationSteps.Cloth && (
                                 <div className="d-flex justify-content-between align-items-center w-50">
-                                    <div style={{ width: "400px", margin: "20px auto" }}>
+                                    <div className="mb-5">
                                         <div className={styles.uiContainer}>
                                             {/*<button className="btn" onClick={clothPrevious} style={{ border: 'none', padding: 0, position: 'absolute', left: '20px' }}>
                   <Image src={arrowLeft} alt="arrowLeft" width={10} height={10} />
@@ -746,7 +744,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
                             </div>
                         )}
 
-                        <div className="col-12 mt-5 justify-content-center align-items-center">
+                        <div className="col-12 mt-10 justify-content-center align-items-center">
                             <div>
                                 <AvalorianDesignedSliderCC min={sliderMin} max={sliderMax} currentValue={sliderCurrentValue} />
                             </div>
