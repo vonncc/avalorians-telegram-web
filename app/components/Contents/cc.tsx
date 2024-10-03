@@ -139,6 +139,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     const LABEL_HEADER: string = "CREATE YOUR OWN HERO";
     const INSTRUCTION_NAME: string = "ENTER THE NAME OF YOUR HERO";
     const INSTRUCTION_APPEARANCE: string = "CHOOSE THE APPEARANCE OF THE ENTIRE HERO";
+    const INSTRUCTION_CLOTH: string = "CHOOSE THE CLOTHES OF THE HERO";
     const [instructionLabel, setInstructionLabel] = useState<string>(INSTRUCTION_NAME);
 
     function changeLabel(step: CustomizationSteps): void {
@@ -149,7 +150,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
         } else if (step === CustomizationSteps.Hair || step === CustomizationSteps.Skin) {
             setInstructionLabel(INSTRUCTION_APPEARANCE);
         } else if (step === CustomizationSteps.Cloth) {
-            setInstructionLabel(EMPTY_STRING);
+            setInstructionLabel(INSTRUCTION_CLOTH);
         }
     }
     // #endregion
@@ -396,7 +397,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
 
     async function saveData(): Promise<void> {
         const jsonString = JSON.stringify(characterData);
-
+        console.log(characterData);
         try {
             const response = await fetch(API_ENDPOINTS.POST_EQUIP_ITEM_USING_MASTER_ID, {
                 method: "POST",
@@ -502,263 +503,140 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
     };
     // #endregion
 
+    const Chooser = ({ title, onNext, onPrevious }) => {
+        return (
+            <div className="flex-grow flex justify-center items-center">
+                <div className="bg-white rounded-[30px] p-4 shadow-md w-full">
+                    <div className="flex  justify-center items-center">
+                        <button className="btn text-black btn-primary mx-2" onClick={onPrevious}>
+                            <img src={arrowLeft.src} />
+                        </button>
+                        <h5 className="text-black flex-grow text-center">{title}</h5>
+                        <button className="btn text-black btn-primary mx-2" onClick={onNext}>
+                            <img src={arrowRight.src} />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     return (
-        <div className="d-flex flex-column min-vh-100">
-            {/*<header className={`${styles.headerCC} d-flex align-items-center justify-content-center`}>
-        <p className="mb-0">Header</p>
-      </header>*/}
-
-            <main className={`flex-grow-1 d-flex align-items-center justify-content-center ${styles.mainCC}`}>
-                <div className="container mt-1">
-                    <div className="row d-flex">
-                        <div className="col-12 d-flex justify-content-center align-items-center mt-5">
-                            <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                <div style={{ width: "400px", position: "relative" }}>
-                                    <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                        <h4
-                                            className={`${styles.fontMinaBold} text-center`}
-                                            style={{ color: "white", position: "absolute", whiteSpace: "nowrap" }}
-                                        >
-                                            {LABEL_HEADER}
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Character Viewer */}
-                        <div className="col-12 d-flex justify-content-center align-items-center mt-5 mb-3" style={{ height: "20vh" }}>
-                            <div>
-                                <div className={styles.heroViewer}>
-                                    {" "}
-                                    {/*style={{ backgroundColor: viewerColor }}*/}
-                                    {(currentStep === CustomizationSteps.Skin ||
-                                        currentStep === CustomizationSteps.Hair ||
-                                        currentStep === CustomizationSteps.Cloth) && <div className={styles.heroFrame} />}
-                                    {(currentStep === CustomizationSteps.Skin ||
-                                        currentStep === CustomizationSteps.Hair ||
-                                        currentStep === CustomizationSteps.Cloth) && (
-                                        <div className={styles.skin} style={{ backgroundImage: skinChoice }} />
-                                    )}
-                                    {(currentStep === CustomizationSteps.Hair || currentStep === CustomizationSteps.Cloth) && (
-                                        <div className={styles.hair} style={{ backgroundImage: hairChoice }} />
-                                    )}
-                                    {currentStep === CustomizationSteps.Cloth && (
-                                        <div className={styles.cloth} style={{ backgroundImage: clothChoice }} />
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Instruction Label */}
-                        <div className="col-12 d-flex justify-content-center align-items-center mt-5">
-                            <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                <div style={{ width: "400px", position: "relative" }}>
-                                    <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                        <h6
-                                            className={`${styles.fontMinaBold} text-center`}
-                                            style={{ color: "white", position: "absolute", whiteSpace: "nowrap" }}
-                                        >
-                                            {instructionLabel}
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Name */}
-                        <div className="col-12 d-flex flex-column justify-content-center align-items-center mt-5" style={{ height: "10vh" }}>
-                            {currentStep === CustomizationSteps.Name && (
-                                <div style={{ margin: "20px auto" }}>
-                                    <div className={styles.uiContainer}>
-                                        <input
-                                            type="text"
-                                            className={`${styles.fontMinaBold} ${styles.inputText} mt-1 form-control`}
-                                            autoComplete="off"
-                                            id="inputField"
-                                            defaultValue={heroName}
-                                            placeholder="Hero Name"
-                                            ref={inputRef}
-                                            style={{
-                                                backgroundColor: "transparent",
-                                                width: "100%",
-                                                height: "100%",
-                                                border: "none",
-                                                borderRadius: "100px",
-                                                padding: "0 20px", //padding inside the input field
-                                                outline: "none",
-                                                fontSize: "16px",
-                                                color: "white",
-                                                textAlign: "center",
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Gender */}
-                            {currentStep === CustomizationSteps.Gender && (
-                                <div>
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            name="gender"
-                                            id="male"
-                                            value={Gender.Male}
-                                            checked={selectedGender === Gender.Male}
-                                            onChange={handleGenderChange}
-                                        />
-                                        <label className={`${styles.fontMinaBold} form-check-label`} htmlFor="male" style={{ color: textMaleColor }}>
-                                            Male
-                                        </label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            name="gender"
-                                            id="female"
-                                            value={Gender.Female}
-                                            checked={selectedGender === Gender.Female}
-                                            onChange={handleGenderChange}
-                                        />
-                                        <label
-                                            className={`${styles.fontMinaBold} form-check-label`}
-                                            htmlFor="female"
-                                            style={{ color: textFemaleColor }}
-                                        >
-                                            Female
-                                        </label>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Hair Chooser */}
-                            {currentStep === CustomizationSteps.Hair && (
-                                <div className="d-flex justify-content-between align-items-center w-50">
-                                    <div style={{ width: "400px", margin: "20px auto" }}>
-                                        <div className={styles.uiContainer}>
-                                            <button
-                                                className="btn"
-                                                onClick={hairPrevious}
-                                                style={{ border: "none", padding: 0, position: "absolute", left: "20px" }}
-                                            >
-                                                <Image src={arrowLeft} alt="arrowLeft" width={10} height={10} />
-                                            </button>
-                                            <h5
-                                                className={`${styles.fontMinaBold} mt-3 text-center`}
-                                                style={{ color: "white", position: "absolute" }}
-                                            >
-                                                Hair
-                                            </h5>
-                                            <button
-                                                className="btn"
-                                                onClick={hairNext}
-                                                style={{ border: "none", padding: 0, position: "absolute", right: "20px" }}
-                                            >
-                                                <Image src={arrowRight} alt="arrowRight" width={20} height={20} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Skin Chooser */}
-                            {currentStep === CustomizationSteps.Skin && (
-                                <div className="d-flex justify-content-between align-items-center w-50">
-                                    <div style={{ width: "400px", margin: "20px auto" }}>
-                                        <div className={styles.uiContainer}>
-                                            <button
-                                                className="btn"
-                                                onClick={skinPrevious}
-                                                style={{ border: "none", padding: 0, position: "absolute", left: "20px" }}
-                                            >
-                                                <Image src={arrowLeft} alt="arrowLeft" width={10} height={10} />
-                                            </button>
-                                            <h5
-                                                className={`${styles.fontMinaBold} mt-3 text-center`}
-                                                style={{ color: "white", position: "absolute" }}
-                                            >
-                                                Skin
-                                            </h5>
-                                            <button
-                                                className="btn"
-                                                onClick={skinNext}
-                                                style={{ border: "none", padding: 0, position: "absolute", right: "20px" }}
-                                            >
-                                                <Image src={arrowRight} alt="arrowRight" width={20} height={20} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Cloth Chooser */}
-                            {currentStep === CustomizationSteps.Cloth && (
-                                <div className="d-flex justify-content-between align-items-center w-50">
-                                    <div style={{ width: "400px", margin: "20px auto" }}>
-                                        <div className={styles.uiContainer}>
-                                            {/*<button className="btn" onClick={clothPrevious} style={{ border: 'none', padding: 0, position: 'absolute', left: '20px' }}>
-                  <Image src={arrowLeft} alt="arrowLeft" width={10} height={10} />
-                </button>*/}
-                                            <h5
-                                                className={`${styles.fontMinaBold} mt-3 text-center`}
-                                                style={{ color: "white", position: "absolute" }}
-                                            >
-                                                Cloth
-                                            </h5>
-                                            {/*<button className="btn" onClick={clothNext} style={{ border: 'none', padding: 0, position: 'absolute', right: '20px' }}>
-                  <Image src={arrowRight} alt="arrowRight" width={20} height={20} />
-                </button>*/}
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Navigation Buttons */}
-                        {currentStep === CustomizationSteps.Name && (
-                            <div className="col-12 d-flex flex-column justify-content-center align-items-center" style={{ height: "10vh" }}>
-                                <div className="container d-flex justify-content-center mt-5">
-                                    <Button className={`${styles.fontMinaBold} ${styles.nextButton}`} onClick={handleNext}>
-                                        NEXT
-                                    </Button>
-                                </div>
-                            </div>
-                        )}
-                        {currentStep !== CustomizationSteps.Name && (
-                            <div className="col-12 d-flex flex-column justify-content-center align-items-center" style={{ height: "10vh" }}>
-                                <div className="container d-flex justify-content-center">
-                                    <div className="row justify-content-center">
-                                        <div className="col-6 d-flex justify-content-end mt-5">
-                                            <Button className={`${styles.fontMinaBold} ${styles.backButton}`} onClick={handleBack}>
-                                                BACK
-                                            </Button>
-                                        </div>
-                                        <div className="col-6 d-flex justify-content-start mt-5">
-                                            <Button className={`${styles.fontMinaBold} ${styles.nextButton}`} onClick={handleNext}>
-                                                NEXT
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        <div className="col-12 mt-5 justify-content-center align-items-center">
-                            <div>
-                                <AvalorianDesignedSliderCC min={sliderMin} max={sliderMax} currentValue={sliderCurrentValue} />
+        <main
+            className=" overflow-hidden"
+            style={{
+                backgroundImage: 'url("/assets/images/character/frame/bg.png")',
+                backgroundSize: "100% 100%", // Stretches the image to fit the area
+                backgroundPosition: "center", // Centers the image
+                backgroundRepeat: "no-repeat", // Prevents repeating the image
+            }}
+        >
+            <div className="h-screen flex flex-col">
+                <div className="text-center">
+                    <h4>{LABEL_HEADER}</h4>
+                </div>
+                <div className="flex-grow p-4">
+                    {" "}
+                    {/* Ensure padding is applied within the area */}
+                    {/* Header Label */}
+                    {/* Character Viewer */}
+                    <div className="flex-grow flex justify-center items-center">
+                        <div>
+                            <div className={styles.heroViewer}>
+                                {" "}
+                                {/*style={{ backgroundColor: viewerColor }}*/}
+                                {(currentStep === CustomizationSteps.Skin ||
+                                    currentStep === CustomizationSteps.Hair ||
+                                    currentStep === CustomizationSteps.Cloth) && <div className={styles.heroFrame} />}
+                                {(currentStep === CustomizationSteps.Skin ||
+                                    currentStep === CustomizationSteps.Hair ||
+                                    currentStep === CustomizationSteps.Cloth) && (
+                                    <div className={styles.skin} style={{ backgroundImage: skinChoice }} />
+                                )}
+                                {(currentStep === CustomizationSteps.Hair || currentStep === CustomizationSteps.Cloth) && (
+                                    <div className={styles.hair} style={{ backgroundImage: hairChoice }} />
+                                )}
+                                {currentStep === CustomizationSteps.Cloth && (
+                                    <div className={styles.cloth} style={{ backgroundImage: clothChoice }} />
+                                )}
                             </div>
                         </div>
                     </div>
+                    {/* Instruction Label */}
+                    <div className="text-center">
+                        <h6>{instructionLabel}</h6>
+                    </div>
+                    {/* Name Input */}
+                    {currentStep === CustomizationSteps.Name && (
+                        <div className="flex justify-center">
+                            <input
+                                className="w-full text-black"
+                                type="text"
+                                autoComplete="off"
+                                id="inputField"
+                                defaultValue={heroName}
+                                placeholder="Hero Name"
+                                ref={inputRef}
+                            />
+                        </div>
+                    )}
+                    {/* Gender Selector */}
+                    {currentStep === CustomizationSteps.Gender && (
+                        <div className="flex-grow flex justify-center items-center">
+                            <div>
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    id="male"
+                                    value={Gender.Male}
+                                    checked={selectedGender === Gender.Male}
+                                    onChange={handleGenderChange}
+                                />
+                                <label htmlFor="male">Male</label>
+                            </div>
+                            <div>
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    id="female"
+                                    value={Gender.Female}
+                                    checked={selectedGender === Gender.Female}
+                                    onChange={handleGenderChange}
+                                />
+                                <label htmlFor="female">Female</label>
+                            </div>
+                        </div>
+                    )}
+                    {currentStep === CustomizationSteps.Hair && <Chooser title="Hair" onNext={hairNext} onPrevious={hairPrevious} />}
+                    {currentStep === CustomizationSteps.Skin && <Chooser title="Skin" onNext={skinNext} onPrevious={skinPrevious} />}
+                    {currentStep === CustomizationSteps.Cloth && <Chooser title="Cloth" onNext={clothNext} onPrevious={clothPrevious} />}
                 </div>
-            </main>
 
-            {/*<footer className={`${styles.footerCC} d-flex align-items-center justify-content-center`}>
-      <p className="mb-0">Footer</p>
-    </footer>*/}
-        </div>
+                {/* Hair/Skin/Cloth Chooser */}
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-center items-center space-x-4 mb-16">
+                    {currentStep !== CustomizationSteps.Name && (
+                        <button onClick={handleBack} className="px-4 py-2 border rounded-lg w-full">
+                            BACK
+                        </button>
+                    )}
+                    <button
+                        onClick={handleNext}
+                        className="px-4 py-2 border rounded-lg w-full"
+                        style={{ backgroundColor: "#FFAB2B", color: "black" }}
+                    >
+                        {currentStep === CustomizationSteps.Cloth ? "SAVE" : "NEXT"}
+                    </button>
+                </div>
+
+                {/* Slider Component at the Bottom */}
+                <div className="h-16">
+                    {/* Fixed height for the slider */}
+                    <AvalorianDesignedSliderCC min={sliderMin} max={sliderMax} currentValue={sliderCurrentValue} />
+                </div>
+            </div>
+        </main>
     );
 };
 

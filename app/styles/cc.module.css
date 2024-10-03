@@ -7,12 +7,16 @@
   font-style: normal;
 }
 
+
+
 @font-face {
   font-family: 'Mina-Bold';
   src: url('/fonts/Mina-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
+
+
 
 .fontMinaNormal {
   font-family: 'Mina-Regular', 'Helvetica Neue';
@@ -128,23 +132,6 @@
   padding: 0.5rem 1rem; /* Add padding for better spacing */
 }
 
-@media (max-width: 768px) {
-  .btn-size-responsive {
-    width: 40vw; /* Adjust width for smaller screens */
-    height: 10vw; /* Adjust height for smaller screens */
-    font-size: 3vw; /* Adjust font size for smaller screens */
-    padding: 0.75rem 1.5rem; /* Adjust padding for smaller screens */
-  }
-}
-  
-@media (max-width: 576px) {
-  .btn-size-responsive {
-    width: 60vw; /* Further adjust width for very small screens */
-    height: 15vw; /* Further adjust height for very small screens */
-    font-size: 4vw; /* Further adjust font size for very small screens */
-    padding: 1rem 2rem; /* Adjust padding for very small screens */
-  }
-}
 
 .nextButton {
   background-image: linear-gradient(to bottom, #febd69, #fb8c00);
@@ -225,8 +212,7 @@
 }
 
 .mainCC {
-  padding-top: 70px;
-  padding-bottom: 170px;
+
 
   background-image: url('/assets/images/character/frame/bg.png');
   background-repeat: no-repeat; /* Prevents the image from repeating */
