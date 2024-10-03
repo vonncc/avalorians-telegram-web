@@ -53,20 +53,20 @@ const Hero = () => {
 
 
     useEffect(() => {
-        console.log("TG_123_Hero: start use effect");
+        logger.info("TG_123_Hero: start use effect");
 
         if (typeof window !== "undefined") {
             if (WebApp.initDataUnsafe.user) {
-                console.log("TG_123_Hero: This is initDataUnsafe ");
-                console.log(WebApp.initDataUnsafe);
+                logger.info("TG_123_Hero: This is initDataUnsafe ");
+                logger.info(WebApp.initDataUnsafe);
                 setUserData(WebApp.initDataUnsafe.user as UserData);
             } else {
-                console.log("TG_123_Hero: Web App Not found");
-                console.log(WebApp);
+                logger.info("TG_123_Hero: Web App Not found");
+                logger.info(WebApp);
 
-                console.log("TG_123_Hero: Init Data only");
+                logger.info("TG_123_Hero: Init Data only");
                 const initData = WebApp.initData;
-                console.log("initData:", initData);
+                logger.info("initData:", initData);
             }
         }   
     }, []);

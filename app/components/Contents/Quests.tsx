@@ -28,7 +28,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
 
     const handleClick = async (element: any) => {
         try {
-            console.log(`${API_ENDPOINTS.PATCH_FINISH_QUESTS}${element.quests_id}`);
+            logger.info(`${API_ENDPOINTS.PATCH_FINISH_QUESTS}${element.quests_id}`);
             const response = await fetch(`${API_ENDPOINTS.PATCH_FINISH_QUESTS}${element.quests_id}`, {
                 method: "PATCH",
                 headers: {
@@ -44,24 +44,24 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
             });
 
             if (!response.ok) {
-                console.log(response);
+                logger.info(response);
                 throw new Error("Network response was not ok" + response);
             }
 
             const result = await response.json();
-            console.log(result);
+            logger.info(result);
             const link = element.quests_url; // Replace with the desired link
             window.open(link, "_blank"); // Opens in a new tab
             onUpdateWallet();
             // Optionally reload quests after completing an action
         } catch (error) {
-            console.log("ai error" + error);
+            logger.info("ai error" + error);
         }
     };
 
     const loadQuests = async () => {
         try {
-            console.log("Loading quests...");
+            logger.info("Loading quests...");
             const response = await fetch(`${API_ENDPOINTS.GET_USER_ACTIVE_QUESTS}`, {
                 method: "GET",
                 headers: {
@@ -71,15 +71,15 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
             });
 
             if (!response.ok) {
-                console.log(response);
+                logger.info(response);
                 throw new Error("Network response was not ok" + response);
             }
 
             const result = await response.json();
-            console.log(result);
+            logger.info(result);
             setData(result); // Update the state with fetched quests
         } catch (error) {
-            console.log("ai error" + error);
+            logger.info("ai error" + error);
         }
     };
 
@@ -104,7 +104,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                 const ha = await response.json(); // You might not need to store this result if you just need to trigger the loadQuests function
                 loadQuests();
             } catch (error) {
-                console.log("Error fetching data: ", error);
+                logger.info("Error fetching data: ", error);
             } finally {
                 setLoading(false);
             }
