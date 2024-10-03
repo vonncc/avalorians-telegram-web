@@ -17,6 +17,7 @@ import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
 import CharacterCreation from "../components/Contents/CharacterCreation";
+import CharacterCreationV2 from "../components/Contents/cc";
 
 const tabItems: TabItem[] = [
     {
@@ -87,6 +88,7 @@ const FrontOverlay = () => {
     }, [token]);
 
     const fetchWithToken = async (url: string, method: string = "GET") => {
+        
         const response = await fetch(url, {
             method,
             headers: {
@@ -94,7 +96,8 @@ const FrontOverlay = () => {
                 Authorization: `Bearer ${token}`,
             },
         });
-
+        console.log("OOHH");
+        console.log(response.json());
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
@@ -105,7 +108,8 @@ const FrontOverlay = () => {
     const getWallet = async (): Promise<void> => {
         try {
             console.info("Fetching wallet...");
-            const result = await fetchWithToken(API_ENDPOINTS.GET_WALLET);
+            const result = await fetchWithToken(API_ENDPOINTS.GET_WALLET, "GET");
+            console.log("walet is oa");
             setWallet(result.data);
         } catch (error) {
             console.error("Error fetching wallet:", error);
@@ -165,6 +169,7 @@ const FrontOverlay = () => {
         try {
             const result = await fetchWithToken(API_ENDPOINTS.GET_EQUIP_ITEM_USING_MASTER_ID);
             setEquippedData(JSON.stringify(result.data));
+            console.log(JSON.stringify(result.data));
             setFreshAccount(result.data.gender === "");
         } catch (error) {
             console.error("Error during fetching user equipment:", error);
@@ -247,11 +252,12 @@ const FrontOverlay = () => {
                             </div>
                         </>
                     ) : (
-                        <CharacterCreation jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
+                        <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
                     )}
                 </>
             ) : (
                 <Loading />
+                
             )}
         </div>
     );
