@@ -17,6 +17,7 @@ import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
 import CharacterCreation from "../components/Contents/CharacterCreation";
+import CharacterCreationV2 from "../components/Contents/cc";
 
 const tabItems: TabItem[] = [
     {
@@ -251,11 +252,12 @@ const FrontOverlay = () => {
                             </div>
                         </>
                     ) : (
-                        <CharacterCreation jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
+                        <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
                     )}
                 </>
             ) : (
-                <Loading />
+                <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
+                
             )}
         </div>
     );
