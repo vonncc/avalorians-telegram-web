@@ -27,23 +27,23 @@ export default function Home() {
     // };
 
     // useEffect(() => {
-    //     console.log("TG_123: start use effect");
+    //     console.info("TG_123: start use effect");
 
     //     if (typeof window !== "undefined") {
 
     //         if (WebApp.initDataUnsafe.user) {
-    //             console.log("TG_123: Web App found");
-    //             console.log(WebApp);
-    //             console.log("TG_123: This is initDataUnsafe ");
-    //             console.log(WebApp.initDataUnsafe);
+    //             console.info("TG_123: Web App found");
+    //             console.info(WebApp);
+    //             console.info("TG_123: This is initDataUnsafe ");
+    //             console.info(WebApp.initDataUnsafe);
     //             setUserData(WebApp.initDataUnsafe.user as UserData);
     //         } else {
-    //             console.log("TG_123: Web App Not found");
-    //             console.log(WebApp);
+    //             console.info("TG_123: Web App Not found");
+    //             console.info(WebApp);
 
-    //             console.log("TG_123: Init Data only");
+    //             console.info("TG_123: Init Data only");
     //             const initData = WebApp.initData; // This is base64-encoded
-    //             console.log("initData:", initData);
+    //             console.info("initData:", initData);
     //         }
     //     }
 

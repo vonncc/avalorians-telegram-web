@@ -65,7 +65,6 @@ const FrontOverlay = () => {
 
     const handleTabClick = (index: number) => {
         setActiveTab(index);
-        console.log("in tab menu " + index);
     };
 
     const [userData, setUserData] = useState<UserData | null>(null);
@@ -81,7 +80,7 @@ const FrontOverlay = () => {
 
     useEffect(() => {
         if (token) {
-            console.log("Updated token:", token);
+            console.info("Updated token:", token);
             getUserEquipment();
             getWallet();
         }
@@ -105,7 +104,7 @@ const FrontOverlay = () => {
 
     const getWallet = async (): Promise<void> => {
         try {
-            console.log("Fetching wallet...");
+            console.info("Fetching wallet...");
             const result = await fetchWithToken(API_ENDPOINTS.GET_WALLET);
             setWallet(result.data);
         } catch (error) {
@@ -117,25 +116,27 @@ const FrontOverlay = () => {
         if (!userData) return;
 
         try {
-            console.log(API_ENDPOINTS.POST_PROFILE_SIGNIN);
-            console.log(userData);
+            console.info(API_ENDPOINTS.POST_PROFILE_SIGNIN);
+            console.info("User is trying to sign in");
+            console.info(userData.username);
             const response = await fetch(API_ENDPOINTS.POST_PROFILE_SIGNIN, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    first_name: userData.first_name,
-                    last_name: userData.last_name,
-                    username: userData.username,
+                    first_name: userData.first_name || "telegram firstName",
+                    last_name: userData.last_name || "telegram last_name",
+                    username: userData.username || "telegram username",
                     is_premium: false,
-                    telegram_id: userData.id.toString(),
+                    telegram_id: userData.id.toString() || "telegram id temp",
                 }),
             });
 
             if (!response.ok) {
-                console.log("No existing user, signing up now.");
-                throw new Error('Failed to connect to server');
+                console.error("No existing user, signing up now.");
+
+                throw new Error("Failed to connect to server");
             }
 
             const result = await response.json();
@@ -149,7 +150,7 @@ const FrontOverlay = () => {
     const getUserState = async () => {
         try {
             const result = await fetchWithToken(API_ENDPOINTS.GET_USER_STATE);
-            console.log(result);
+            console.info(result);
 
             setFreshAccount(result.data.customCode === "AB001");
             // Add additional handling for user state if needed
@@ -173,7 +174,7 @@ const FrontOverlay = () => {
     };
 
     const userDoneEditing = (response: string) => {
-        console.log(response);
+        console.info(response);
         if (response) {
             setEquippedData(JSON.stringify(response));
             setFreshAccount(false);
@@ -183,7 +184,6 @@ const FrontOverlay = () => {
     useEffect(() => {
         signIn();
     }, [userData]);
-
 
     const contentTabs = [
         <div key="1" className="z-1">

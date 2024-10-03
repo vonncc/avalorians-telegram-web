@@ -414,7 +414,7 @@ const CharacterCreation: FC<ChildComponentProp> = ({ jsonData, CharacterCreateEv
             const result = await response.json();
             saveUserState();
             if (CharacterCreateEvent) CharacterCreateEvent(result.data);
-            console.log("Data saved successfully:", result);
+            console.info("Data saved successfully:", result);
         } catch (error) {
             console.error("Error saving data:", error);
         }
