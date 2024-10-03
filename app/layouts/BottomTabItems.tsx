@@ -256,7 +256,7 @@ const FrontOverlay = () => {
                     )}
                 </>
             ) : (
-                <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
+                <Loading />
                 
             )}
         </div>
