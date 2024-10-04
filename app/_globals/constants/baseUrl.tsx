@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://b83c-120-28-179-30.ngrok-free.app';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.dev.avalorians.io';
 // NEXT_PUBLIC_API_BASE_URL
 export const API_ENDPOINTS = {
 
