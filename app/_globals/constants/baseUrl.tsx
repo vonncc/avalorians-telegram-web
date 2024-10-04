@@ -1,14 +1,16 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.dev.avalorians.io';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://b83c-120-28-179-30.ngrok-free.app';
 // NEXT_PUBLIC_API_BASE_URL
 export const API_ENDPOINTS = {
 
+    TESTING: `${API_BASE_URL}/api/v1/user/version`,
     // USER PROFILE
     POST_PROFILE_SIGNUP: `${API_BASE_URL}/api/v1/auth/signup/`,
     POST_PROFILE_SIGNIN: `${API_BASE_URL}/api/v1/auth/signin/`,
 
     //USER STATE
     POST_USER_STATE_NEW: `${API_BASE_URL}/api/v1/user/user-state/create/`,
-    GET_USER_STATE: `${API_BASE_URL}/api/v1/user/user-state/get/`,
+    GET_USER_STATE: `${API_BASE_URL}/api/v1/user/user-state/get`,
+    GET_ALL_USERS: `${API_BASE_URL}/api/v1/user/get/all/`,
     PATCH_USER_STATE: `${API_BASE_URL}/api/v1/user/user-state/update/state/`,
     PATCH_USER_STATE_EXPERIENCE: `${API_BASE_URL}/api/v1/user/user-state/update/experience/`,
     PATCH_USER_STATE_STATS: `${API_BASE_URL}/api/v1/user/user-state/update/stats/`,
