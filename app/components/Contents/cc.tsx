@@ -22,6 +22,7 @@ import arrowRight from "../../../public/assets/images/icons/arrowRight.png";
 import { AvalorianDesignedSliderCC } from "../elements/avalorianDesignedSliderCC";
 import { API_ENDPOINTS } from "@/app/_globals/constants/baseUrl";
 import { useToken } from "@/app/context/token.context";
+import Loading from "./Loading";
 
 const PATH_CHARACTER: string = "/assets/images/character";
 const PATH_SKIN_M: string = `${PATH_CHARACTER}/skin/male/`;
@@ -46,6 +47,8 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
     // #region Mount/Unmount
     const genderCC = useRef<Gender>();
     const initLoadFlag = useRef<boolean>(jsonData ? true : false);
+
+    const [isSaving, setIsSaving] = useState(false);
 
     const defaultData: CharacterCustomizationData = {
         name: EMPTY_STRING,
@@ -363,6 +366,7 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
     const data: AppearanceData = characterCustomizationData;
 
     const characterData = {
+        character_name: '',
         name: heroName,
         gender: selectedGender,
         hair: selectedGender === Gender.Male ? data.hairM[indexChosenHairM] : data.hairF[indexChosenHairF],
@@ -396,10 +400,14 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
     }
 
     async function saveData(): Promise<void> {
+
+        characterData.character_name = characterData.name
         const jsonString = JSON.stringify(characterData);
         console.log(characterData);
+        setIsSaving(true);
         try {
-            const response = await fetch(API_ENDPOINTS.POST_EQUIP_ITEM_USING_MASTER_ID, {
+            // const response = await fetch(API_ENDPOINTS.POST_EQUIP_ITEM_USING_MASTER_ID, {
+            const response = await fetch(API_ENDPOINTS.POST_USER_STATE_NEW, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -413,8 +421,10 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
             }
 
             const result = await response.json();
-            saveUserState();
+            // saveUserState();
             if (CharacterCreateEvent) CharacterCreateEvent(result.data);
+
+            setIsSaving(false);
             console.info("Data saved successfully:", result);
         } catch (error) {
             console.error("Error saving data:", error);
@@ -635,6 +645,28 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
                     {/* Fixed height for the slider */}
                     <AvalorianDesignedSliderCC min={sliderMin} max={sliderMax} currentValue={sliderCurrentValue} />
                 </div>
+
+                {isSaving ? (
+                    <div
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            backgroundColor: "black",
+                            opacity: 0.75,
+                            zIndex: 999,
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center", // Vertically and horizontally centers the content
+                        }}
+                    >
+                        <Loading></Loading>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
             </div>
         </main>
     );

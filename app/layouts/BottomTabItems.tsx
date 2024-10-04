@@ -97,12 +97,13 @@ const FrontOverlay = () => {
             },
         });
         console.log("OOHH");
-        console.log(response.json());
+        const reponseJSON = response.json();
+        console.log(reponseJSON);
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
 
-        return response.json();
+        return reponseJSON;
     };
 
     const getWallet = async (): Promise<void> => {
@@ -256,7 +257,8 @@ const FrontOverlay = () => {
                     )}
                 </>
             ) : (
-                <Loading />
+                // <Loading />
+                <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
                 
             )}
         </div>
