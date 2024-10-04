@@ -79,16 +79,25 @@ const FrontOverlay = () => {
         initializeUserData();
     }, []);
 
+    const [sample, setSample] = useState('')
+
     useEffect(() => {
         if (token) {
             console.info("Updated token:", token);
-            getUserEquipment();
-            getWallet();
+
+            // Call getUserState only if token exists
+            getUserState();
+        } else {
+            console.warn("Token is missing or invalid, skipping user state fetch.");
         }
     }, [token]);
 
+    useEffect(() => {
+        console.log("here you go mah nigg");
+        console.log(sample);
+    },[sample])
+
     const fetchWithToken = async (url: string, method: string = "GET") => {
-        
         const response = await fetch(url, {
             method,
             headers: {
@@ -137,16 +146,21 @@ const FrontOverlay = () => {
                     telegram_id: userData.id.toString() || "telegram id temp",
                 }),
             });
-
+            
             if (!response.ok) {
                 console.error("No existing user, signing up now.");
 
                 throw new Error("Failed to connect to server");
             }
 
+            console.log("OFFFFFFFF");
+            
             const result = await response.json();
+            console.log(JSON.stringify(response));
+            console.log("Beating");
+            console.log(result);
             setToken(result.access_token);
-            setData(result);
+            // setData(result);
         } catch (error) {
             console.error("Sign In Error:", error);
         }
@@ -154,11 +168,27 @@ const FrontOverlay = () => {
 
     const getUserState = async () => {
         try {
-            const result = await fetchWithToken(API_ENDPOINTS.GET_USER_STATE);
-            console.info(result);
+            const response = await fetch(API_ENDPOINTS.GET_USER_STATE, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
 
-            setFreshAccount(result.data.customCode === "AB001");
-            // Add additional handling for user state if needed
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+
+
+            console.log("User state 1:", JSON.stringify(response));
+
+            setSample(JSON.stringify(response));
+            const responseJSON = await response.json();
+            // console.log("User state 2:", responseJSON);
+
+            // Proceed with other operations only after the awaited code
+            setFreshAccount(responseJSON.data.customCode === "AB001");
         } catch (error) {
             console.error("Error during fetching user state:", error);
         } finally {
@@ -189,6 +219,8 @@ const FrontOverlay = () => {
 
     useEffect(() => {
         signIn();
+        // setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI0LCJ0ZWxlZ3JhbV9pZCI6Ijc0NjkxNDM3NTgiLCJpZCI6MjQsImlhdCI6MTcyODAyNjA0NywiZXhwIjoxNzI4MDI5NjQ3fQ.rpuUYZZCv1-CWXr7w7WwstAwpXlhNFFDFsBw_y6YfyA");
+        // getUserState();
     }, [userData]);
 
     const contentTabs = [
@@ -257,9 +289,8 @@ const FrontOverlay = () => {
                     )}
                 </>
             ) : (
-                // <Loading />
-                <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
-                
+                <Loading />
+                // <CharacterCreationV2 jsonData={equippedData} CharacterCreateEvent={userDoneEditing} />
             )}
         </div>
     );

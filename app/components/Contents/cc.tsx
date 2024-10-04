@@ -403,6 +403,7 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
 
         characterData.character_name = characterData.name
         const jsonString = JSON.stringify(characterData);
+        console.log("Trying to save DB");
         console.log(characterData);
         setIsSaving(true);
         try {
