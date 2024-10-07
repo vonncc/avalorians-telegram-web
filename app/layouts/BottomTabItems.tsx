@@ -16,7 +16,6 @@ import WebApp from "@twa-dev/sdk";
 import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
-import CharacterCreation from "../components/Contents/CharacterCreation";
 import CharacterCreationV2 from "../components/Contents/cc";
 
 const tabItems: TabItem[] = [
