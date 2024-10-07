@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {TabItem} from "@/app/components/elements/TabMenu";
 
 interface TopTitleProps{
@@ -55,7 +55,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>
             </div>
             <div className={`tab-button`}>
-                <div className={`top-tab-border`} onClick={() => handleTabClick(6)}>
+                <div className={`top-tab-border`} onClick={() => handleTabClick(7)}>
                 <img src={`${tabItems[2].image}`} alt="Icon" width={20} height={20}/>
                 </div>
                 <span className="mt-1 text-[8px]">{tabItems[2].text}</span>
@@ -64,7 +64,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <div className={`top-tab-border`}>
                     <img src={`${tabItems[3].image}`} alt="Icon" width={20} height={20}/>
                 </div>
-                <span className="mt-1 text-[#FF3E3E] text-[8px]">{tabItems[2].text}</span>
+                <span className="mt-1 text-[#FF3E3E] text-[8px]">{tabItems[3].text}</span>
                 <span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>
             </div>
         </div>
