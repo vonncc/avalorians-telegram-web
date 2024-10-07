@@ -417,10 +417,15 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
                 body: jsonString,
             });
 
+            console.log("Result test to save DB");
+            console.log(response);
+
             if (!response.ok) {
+                const a = await response.json();
+                console.log(a);
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
-
+            
             const result = await response.json();
             // saveUserState();
             if (CharacterCreateEvent) CharacterCreateEvent(result.data);
