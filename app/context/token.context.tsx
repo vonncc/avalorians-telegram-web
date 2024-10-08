@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState } from 'react';
 // Define the shape of your context
 interface TokenContextType {
     token: string | null;
-    setToken: (token: string | null) => void;
+    setToken: (token: string | null) => void; 
 }
 
 

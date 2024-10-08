@@ -23,7 +23,7 @@ import { AvalorianDesignedSliderCC } from "../elements/avalorianDesignedSliderCC
 import { API_ENDPOINTS } from "@/app/_globals/constants/baseUrl";
 import { useToken } from "@/app/context/token.context";
 import Loading from "./Loading";
-import { useuserState } from "@/app/context/data.context";
+import { useUserState } from "@/app/context/data.context";
 
 const PATH_CHARACTER: string = "/assets/images/character";
 const PATH_SKIN_M: string = `${PATH_CHARACTER}/skin/male/`;
@@ -379,7 +379,7 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
     // #region SaveData
 
     const { token } = useToken();
-    const { setUserStateData } = useuserState();
+    const { setUserStateData } = useUserState();
     async function saveUserState(): Promise<void> {
         try {
             const response2 = await fetch(API_ENDPOINTS.POST_USER_STATE_NEW, {

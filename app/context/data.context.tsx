@@ -24,7 +24,7 @@ export const UserStateProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 };
 
 // Create a custom hook to use the userState context
-export const useuserState = () => {
+export const useUserState = () => {
     const context = useContext(UserStateContext);
     if (!context) {
         throw new Error('useuserState must be used within a userStateProvider');

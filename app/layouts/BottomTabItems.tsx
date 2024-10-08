@@ -16,14 +16,13 @@ import WebApp from "@twa-dev/sdk";
 import Loading from "../components/Contents/Loading";
 import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
-import CharacterCreation from "../components/Contents/CharacterCreation";
 import CharacterCreationV2 from "../components/Contents/cc";
-import { useuserState } from "../context/data.context";
-
+import King from "@/app/components/Contents/King";
+import { useUserState } from "../context/data.context";
 const tabItems: TabItem[] = [
     {
-        image: "/assets/images/tabs/Hero.png",
-        text: "HERO",
+        image: "/assets/images/tabs/King.png",
+        text: "KING",
     },
     {
         image: "/assets/images/tabs/Lane.png",
@@ -34,12 +33,12 @@ const tabItems: TabItem[] = [
         text: "KINGDOM",
     },
     {
-        image: "/assets/images/tabs/Creeps.png",
-        text: "CREEPS",
+        image: "/assets/images/tabs/Champions.png",
+        text: "CHAMPIONS",
     },
     {
-        image: "/assets/images/tabs/store.png",
-        text: "STORE",
+        image: "/assets/images/tabs/Creeps.png",
+        text: "CREEPS",
     },
 ];
 
@@ -55,7 +54,7 @@ interface UserData {
 const FrontOverlay = () => {
 
     const { setToken, token } = useToken();
-    const { userStateData, setUserStateData} = useuserState();
+    const { userStateData, setUserStateData} = useUserState();
 
     const [activeTab, setActiveTab] = useState(2);
 
@@ -236,14 +235,17 @@ const FrontOverlay = () => {
     }, [userData]);
 
     const contentTabs = [
-        <div key="1" className="z-1">
-            <Hero />
+        <div key="0" className="z-1">
+            <King />
         </div>,
-        <div key="2" className="z-1">
+        <div key="1" className="z-1">
             <Lane />
         </div>,
-        <div key="3" className="z-1">
+        <div key="2" className="z-1">
             <Kingdom handleBuildClick={handleTabClick} />
+        </div>,
+        <div key="3" className="z-1">
+            <Hero />
         </div>,
         <div key="4" className="z-1">
             <Creeps />
@@ -254,7 +256,7 @@ const FrontOverlay = () => {
         <div key="6" className="z-1">
             <Friends />
         </div>,
-        <div key={`quests-${activeTab}`} className="z-1">
+        <div key="7" className="z-1">
             <Quests uniqueId={Date.now()} onUpdateWallet={getWallet} />
         </div>,
         <div key="8" className="z-1">

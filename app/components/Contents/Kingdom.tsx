@@ -20,7 +20,7 @@ const Kingdom = (props: KingdomProps) => {
                         <Image className="float-right" src="/assets/images/Coin.png" width={20} height={20} alt=""/>
                     </div>
                 </div>
-                <button className="curved-box build base-text" onClick={() => props.handleBuildClick(8)}>Build</button>
+                <button className="curved-box build base-text" onClick={() => props.handleBuildClick(9)}>Build</button>
             </div>
             <Image src="/assets/images/kingdoms/kingdom.png" alt="kingdom" width={1000} height={1000}/>
         </div>
