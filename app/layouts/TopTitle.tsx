@@ -41,11 +41,10 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                                                       alt="ton"/></p>
             </div>
             <div className={`tab-button`}>
-                <div className={`top-tab-border`}>
+                <div className={`top-tab-border`} onClick={() => handleTabClick(5)}>
                     <img src={`${tabItems[0].image}`} alt="Icon" width={20} height={20}/>
                 </div>
                 <span className="mt-1 text-[8px]">{tabItems[0].text}</span>
-                <span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>
             </div>
             <div className={`tab-button`}>
                 <div className={`top-tab-border`}>
