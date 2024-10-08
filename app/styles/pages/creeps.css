@@ -1,0 +1,21 @@
+.captured-creeps {
+    border-radius: 9999px;
+    width: 7rem;
+    height: 7rem;
+    border-width: 1px;
+}
+
+.captured-creeps.common {
+    border-color: #B6B7B8;
+    background-image: "/assets/images/creeps/common.png";
+    background-position: center center;
+    background-size: contain;
+}
+
+.captured-creeps.rare {
+    border-color: #0098EA;
+}
+
+.captured-creeps.epic {
+    border-color: #6A1AB4;
+}
