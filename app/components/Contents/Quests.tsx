@@ -23,6 +23,7 @@ interface QuestsProps {
 
 const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
     const [data, setData] = useState<any>(null); // State to store fetched data
+    const [tryingToGetData, setTryingToGetData] = useState(true);
     const { token } = useToken();
     const [loading, setLoading] = useState(true); // State to handle loading state
 
@@ -59,57 +60,64 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
         }
     };
 
-    const loadQuests = async () => {
+    // const loadQuests = async () => {
+    //     try {
+    //         console.info("Loading quests...");
+    //         const response = await fetch(`${API_ENDPOINTS.GET_USER_ACTIVE_QUESTS}`, {
+    //             method: "GET",
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //                 "Content-Type": "application/json",
+    //             },
+    //         });
+
+    //         if (!response.ok) {
+    //             console.info(response);
+    //             throw new Error("Network response was not ok" + response);
+    //         }
+
+    //         const result = await response.json();
+    //         console.info(result);
+    //         setData(result); // Update the state with fetched quests
+    //     } catch (error) {
+    //         console.info("ai error" + error);
+    //     }
+    // };
+
+    const fetchData = async () => {
         try {
-            console.info("Loading quests...");
-            const response = await fetch(`${API_ENDPOINTS.GET_USER_ACTIVE_QUESTS}`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            });
 
-            if (!response.ok) {
-                console.info(response);
-                throw new Error("Network response was not ok" + response);
-            }
-
-            const result = await response.json();
-            console.info(result);
-            setData(result); // Update the state with fetched quests
-        } catch (error) {
-            console.info("ai error" + error);
-        }
-    };
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
+            console.log('data');
+            console.log(data);
+            // if (tryingToGetData == true) {
                 const response = await fetch(API_ENDPOINTS.POST_GET_AND_SYNC_QUESTS, {
                     method: "POST",
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json",
-                        "Cache-Control": "no-cache",
-                        Pragma: "no-cache",
-                        Expires: "0",
                     },
                 });
-
+    
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
+    
+                const results = await response.json(); // You might not need to store this result if you just need to trigger the loadQuests function
+                console.log("LAGI");
+                console.log(results);
+                setData(results)
+                // setTryingToGetData(false);
+                // loadQuests();
+            // }
+            
+        } catch (error) {
+            console.info("Error fetching data: ", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-                const ha = await response.json(); // You might not need to store this result if you just need to trigger the loadQuests function
-                loadQuests();
-            } catch (error) {
-                console.info("Error fetching data: ", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
+    useEffect(() => {
         fetchData();
     }, [token]); // Consider adding other dependencies that affect fetching
     return (
