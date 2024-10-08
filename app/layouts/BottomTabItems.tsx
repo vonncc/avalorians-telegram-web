@@ -18,7 +18,7 @@ import { TokenProvider, useToken } from "../context/token.context";
 import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
 import CharacterCreationV2 from "../components/Contents/cc";
 import King from "@/app/components/Contents/King";
-
+import { useUserState } from "../context/data.context";
 const tabItems: TabItem[] = [
     {
         image: "/assets/images/tabs/King.png",
@@ -52,13 +52,19 @@ interface UserData {
 }
 
 const FrontOverlay = () => {
-    const [activeTab, setActiveTab] = useState(2);
 
     const { setToken, token } = useToken();
+    const { userStateData, setUserStateData} = useUserState();
+
+    const [activeTab, setActiveTab] = useState(2);
+
+    
+
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [isTelegramWebView, setIsTelegramWebView] = useState(false);
     const [freshAccount, setFreshAccount] = useState(true);
     const [equippedData, setEquippedData] = useState("");
 
@@ -73,6 +79,7 @@ const FrontOverlay = () => {
     useEffect(() => {
         const initializeUserData = () => {
             if (typeof window !== "undefined" && WebApp.initDataUnsafe.user) {
+                setIsTelegramWebView(true);
                 setUserData(WebApp.initDataUnsafe.user as UserData);
             }
         };
@@ -93,9 +100,12 @@ const FrontOverlay = () => {
     }, [token]);
 
     useEffect(() => {
-        console.log("here you go mah nigg");
-        console.log(sample);
-    },[sample])
+        if (userStateData) {
+            console.log("asdadasdsa");
+            console.log(userStateData);
+        }
+    }, [userStateData]);
+
 
     const fetchWithToken = async (url: string, method: string = "GET") => {
         const response = await fetch(url, {
@@ -186,13 +196,14 @@ const FrontOverlay = () => {
             setSample(JSON.stringify(response));
             const responseJSON = await response.json();
             // console.log("User state 2:", responseJSON);
-
+            setUserStateData(responseJSON);
             // Proceed with other operations only after the awaited code
-            setFreshAccount(responseJSON.data.customCode === "AB001");
+            setFreshAccount(!responseJSON);
+            setLoading(false);
         } catch (error) {
             console.error("Error during fetching user state:", error);
         } finally {
-            setLoading(false);
+            
         }
     };
 
@@ -258,7 +269,7 @@ const FrontOverlay = () => {
 
     return (
         <div className="overlay-menu z-45">
-            {!loading ? (
+            {!loading  && isTelegramWebView ? (
                 <>
                     {!freshAccount ? (
                         <>

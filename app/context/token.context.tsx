@@ -7,6 +7,7 @@ interface TokenContextType {
     setToken: (token: string | null) => void; 
 }
 
+
 // Create the context with a default value
 const TokenContext = createContext<TokenContextType | undefined>(undefined);
 
