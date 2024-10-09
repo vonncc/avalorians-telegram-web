@@ -1,9 +1,11 @@
 "use client"
 import React from "react";
 import {TabItem} from "@/app/components/elements/TabMenu";
+import {TonConnectButton, TonConnectUIProvider, useTonAddress} from "@tonconnect/ui-react";
 
 interface TopTitleProps{
     handleTabClick: any;
+    telegram_name?: string;
 }
 
 const tabItems: TabItem[] = [
@@ -25,20 +27,16 @@ const tabItems: TabItem[] = [
     },
 ]
 
-const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
-
-    // TODO: Change Van Helsing to variable (telegram_handle)
-    // TODO: Change Wallet Address to Connect Wallet (Ton Connect)
-
+const TopTitle: React.FC<TopTitleProps> = ({handleTabClick, telegram_name}) => {
     return (
+        <TonConnectUIProvider manifestUrl="https:/app.avalorians.io/tonconnect-manifest.json">
         <div className="top-container">
             <div className="">
                 <img src="/assets/images/ProfilePicture.png" alt="Pika!"/>
             </div>
             <div>
-                <p>Van Helsing</p>
-                <p>&nbsp;&nbsp;&nbsp;UQCa....d23a<img className="float-right" src="/assets/images/icons/ton.png"
-                                                      alt="ton"/></p>
+                <p>{telegram_name}</p>
+                <TonConnectButton className="p-1"/>
             </div>
             <div className={`tab-button`}>
                 <div className={`top-tab-border`} onClick={() => handleTabClick(5)}>
@@ -67,6 +65,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>
             </div>
         </div>
+        </TonConnectUIProvider>
     );
 };
 

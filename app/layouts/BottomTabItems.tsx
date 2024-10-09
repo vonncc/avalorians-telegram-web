@@ -58,9 +58,6 @@ const FrontOverlay = () => {
 
     const [activeTab, setActiveTab] = useState(2);
 
-    
-
-
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -274,7 +271,7 @@ const FrontOverlay = () => {
                     {!freshAccount ? (
                         <>
                             <div className="">
-                                <TopTitle handleTabClick={handleTabClick} />
+                                <TopTitle handleTabClick={handleTabClick} telegram_name={userData.username || "telegram username"} />
                                 <div className="details-section">
                                     <div className="wallet-section grid-cols-2">
                                         <div className="curved-box base-text gold-section">
