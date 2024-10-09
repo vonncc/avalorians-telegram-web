@@ -273,7 +273,7 @@ const FrontOverlay = () => {
                     {!freshAccount ? (
                         <>
                             <div className="">
-                                <TopTitle handleTabClick={handleTabClick} telegram_name={userData.username || "telegram username"} />
+                                <TopTitle handleTabClick={handleTabClick} />
                                 <div className="details-section">
                                     <div className="wallet-section grid-cols-2">
                                         <div className="curved-box base-text gold-section">

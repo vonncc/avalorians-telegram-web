@@ -27,12 +27,9 @@ const tabItems: TabItem[] = [
     },
 ]
 
-const TopTitle: React.FC<TopTitleProps> = ({handleTabClick, telegram_name}) => {
 const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
 
     const { userStateData } = useUserState();
-    // TODO: Change Van Helsing to variable (telegram_handle)
-    // TODO: Change Wallet Address to Connect Wallet (Ton Connect)
 
     return (
         <TonConnectUIProvider manifestUrl="https://www.avalorians.io/assets/tonconnect-manifest.json">
@@ -41,7 +38,6 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <img src="/assets/images/ProfilePicture.png" alt="Pika!"/>
             </div>
             <div>
-                <p>{telegram_name}</p>
                 <TonConnectButton className="p-1"/>
                 <p>{userStateData ? userStateData.character_name : "Avalorians User"}</p>
                 <p>&nbsp;&nbsp;&nbsp;UQCa....d23a<img className="float-right" src="/assets/images/icons/ton.png"
