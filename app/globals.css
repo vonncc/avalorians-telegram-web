@@ -329,23 +329,25 @@ blockquote {
 }
 
 .overlay-menu .tab-button .tab-border {
-    background-color: #9F6000;
+    background-color: rgba(238, 144, 0, 0.6);
     border-radius: 10px;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 3px 0 0 rgba(159, 96, 0, 0.6);
 }
 
 .overlay-menu .tab-button .top-tab-border {
-    background-color: #FFAB2B;
+    background-color: rgba(238, 144, 0, 1);
     border-radius: 10px;
     width: 30px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 3px 0 0 rgba(159, 96, 0, 1)
 }
 
 .overlay-menu .tab-icon {
@@ -369,5 +371,6 @@ blockquote {
 
 
 .overlay-menu .tab-button .tab-border.active {
-    background-color: #FFAB2B;
+    background-color: rgba(238, 144, 0, 1);
+    box-shadow: 0 3px 0 0 rgba(159, 96, 0, 1);
 }
