@@ -58,9 +58,6 @@ const FrontOverlay = () => {
 
     const [activeTab, setActiveTab] = useState(2);
 
-    
-
-
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);

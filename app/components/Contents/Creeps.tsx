@@ -49,8 +49,7 @@ const Creeps = () => {
     return (
         <div className="creeps">
             <div className="">
-
-                <div className="section">
+                {/* <div className="section">
                     <span className="label">My Chests</span>
                     <div className="content grid grid-cols-4 mt-2">
                         {chests.map((chest) => {
@@ -62,6 +61,22 @@ const Creeps = () => {
                                 </div>
                             );
                         })}
+                    </div>
+                </div> */}
+                <div>
+                    <span>My Chests</span>
+                    {/*<div className="grid grid-cols-4 gap-4 mt-2">*/}
+                    {/*    {chests.map((chest) => {*/}
+                    {/*        return <div key={chest.type}*/}
+                    {/*                    className="rounded-full w-16 h-16 border border-[#CC8E44]">*/}
+                    {/*            <Image className="absolute top-12 ml-4" src="/assets/images/tabs/store.png" width={30} height={30} alt="Chests" />*/}
+                    {/*            <span className="absolute top-8">{chest.type}</span>*/}
+                    {/*            <span className="absolute top-20 py-1 px-3 curved-box">Open</span>*/}
+                    {/*        </div>*/}
+                    {/*    })}*/}
+                    {/*</div>*/}
+                    <div className="inset-0 flex justify-center items-center">
+                        <img src="/assets/images/creeps/tempChests.png" className="max-w-full" alt=""/>
                     </div>
                 </div>
 
