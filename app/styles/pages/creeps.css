@@ -6,18 +6,8 @@
      1px  1px 0 black;
 }
 
-.captured-creeps {
-    border-radius: 9999px;
-    width: 7rem;
-    height: 7rem;
-    border-width: 1px;
-}
-
 .common {
     border-color: #B6B7B8;
-    /* background-image: "/assets/images/creeps/common.png";
-    background-position: center center;
-    background-size: contain; */
 }
 
 .rare {
@@ -28,7 +18,7 @@
     border-color: #6A1AB4;
 }
 
-/* // TODO: these can be reusable tbh */
+
 .section {
 padding: 16px 8px;
 }
@@ -41,6 +31,18 @@ padding: 16px 8px;
 .section .content {
     gap: 32px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 .my-chest {
     width: 100%;
@@ -83,6 +85,20 @@ padding: 16px 8px;
     padding: 4px 24px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .captured-creep {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -113,4 +129,29 @@ padding: 16px 8px;
     font-size: 12px;
     font-weight: bold;
     padding: 8px 48px;
+}
+
+.captured-creep .count-label {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #B6B7B8;
+    border: 2px solid #231E2B;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 8px;
+}
+
+.captured-creep .name-label {
+    position: absolute;
+    bottom: -4px;
+    /* right: -8px; */
+    background-color: #B6B7B8;
+    border: 2px solid #231E2B;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 8px;
+    white-space: nowrap;
 }
