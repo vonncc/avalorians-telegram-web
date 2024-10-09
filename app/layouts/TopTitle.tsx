@@ -29,7 +29,7 @@ const tabItems: TabItem[] = [
 
 const TopTitle: React.FC<TopTitleProps> = ({handleTabClick, telegram_name}) => {
     return (
-        <TonConnectUIProvider manifestUrl="https:/app.avalorians.io/tonconnect-manifest.json">
+        <TonConnectUIProvider manifestUrl="https://www.avalorians.io/assets/tonconnect-manifest.json">
         <div className="top-container">
             <div className="">
                 <img src="/assets/images/ProfilePicture.png" alt="Pika!"/>
