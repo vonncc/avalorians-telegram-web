@@ -117,7 +117,7 @@ const Creeps = () => {
                     <div className="content grid grid-cols-3">
                         {temporaryCreeps.map((creep) => {
                             return (
-                                <div className={"captured-creep " + creep.rarity} onClick={handleCreepSelect}>
+                                <div key={creep.label} className={"captured-creep " + creep.rarity} onClick={handleCreepSelect}>
                                     <div className="level-label">{"LVL. " + creep.level}</div>
                                     {creep.src
                                         ? <Image src={creep.src} width={109} height={109} alt="swamp-crawler" /> 
