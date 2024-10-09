@@ -282,14 +282,14 @@ const FrontOverlay = () => {
                                         <div className="curved-box base-text gold-section">
                                             GOLD:
                                             <div className="right-side">
-                                                {wallet ? wallet.gold.quantity : "0"}
+                                                {wallet ? wallet.gold : "0"}
                                                 <img src="/assets/images/Coin.png" alt="" />
                                             </div>
                                         </div>
                                         <div className="curved-box base-text runes-section">
                                             RUNES:
                                             <div className="right-side">
-                                                {wallet ? wallet.rune.quantity : "0"}
+                                                {wallet ? wallet.rune : "0"}
                                                 <img src="/assets/images/icons/money.png" alt="" />
                                             </div>
                                         </div>
