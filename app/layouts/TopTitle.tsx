@@ -43,22 +43,22 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <TonConnectButton className="p-1"/>
             </div>
             <div className={`tab-button`}>
-                <div className={`top-tab-border disabled`} onClick={() => handleTabClick(5)}>
+                <div className={`top-tab-border disabled`} >
                     {/*<img src={`${tabItems[0].image}`} alt="Icon" width={20} height={20}/>*/}
                     <Image src="/assets/images/tabs/Disabled.png" alt="Icon" width={50} height={50}/>
                 </div>
-                <span className="mt-1 text-[8px]">{tabItems[0].text}</span>
+                <span className="mt-1 text-[8px] opacity-60">{tabItems[0].text}</span>
             </div>
             <div className={`tab-button`}>
-                <div className={`top-tab-border`}>
-                    <img src={`${tabItems[1].image}`} alt="Icon" width={20} height={20}/>
-                </div>
-                <span className="mt-1 text-[8px]">{tabItems[1].text}</span>
-            </div>
-            <div className={`tab-button`}>
-                <div className={`top-tab-border disabled`} onClick={() => handleTabClick(7)}>
-                    {/*<img src={`${tabItems[2].image}`} alt="Icon" width={20} height={20}/>*/}
+                <div className={`top-tab-border disabled`}>
+                    {/*<img src={`${tabItems[1].image}`} alt="Icon" width={20} height={20}/>*/}
                     <Image src="/assets/images/tabs/Disabled.png" alt="Icon" width={50} height={50}/>
+                </div>
+                <span className="mt-1 text-[8px] opacity-60">{tabItems[1].text}</span>
+            </div>
+            <div className={`tab-button`}>
+                <div className={`top-tab-border`} onClick={() => handleTabClick(7)}>
+                    <img src={`${tabItems[2].image}`} alt="Icon" width={20} height={20}/>
                 </div>
                 <span className="mt-1 text-[8px]">{tabItems[2].text}</span>
             </div>
@@ -67,7 +67,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                     {/*<img src={`${tabItems[3].image}`} alt="Icon" width={20} height={20}/>*/}
                     <Image src="/assets/images/tabs/Disabled.png" alt="Icon" width={50} height={50}/>
                 </div>
-                <span className="mt-1 text-[#FF3E3E] text-[8px]">{tabItems[3].text}</span>
+                <span className="mt-1 text-[#FF3E3E] text-[8px] opacity-60">{tabItems[3].text}</span>
                 {/*<span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>*/}
             </div>
         </div>
