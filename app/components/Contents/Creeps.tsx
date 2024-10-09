@@ -28,6 +28,20 @@ const temporaryCreeps = [
         label: "Swamp Crawler",
         src: "/assets/images/creeps/swamp-crawler.png",
         rarity: "common"
+    },
+    {
+        level: 1,
+        count: 1,
+        label: "",
+        src: null,
+        rarity: "rare"
+    },
+    {
+        level: 1,
+        count: 1,
+        label: "",
+        src: null,
+        rarity: "epic"
     }
 ];
 
@@ -49,7 +63,7 @@ const Creeps = () => {
     return (
         <div className="creeps">
             <div className="">
-                {/* <div className="section">
+                <div className="section">
                     <span className="label">My Chests</span>
                     <div className="content grid grid-cols-4 mt-2">
                         {chests.map((chest) => {
@@ -62,9 +76,9 @@ const Creeps = () => {
                             );
                         })}
                     </div>
-                </div> */}
-                <div>
-                    <span>My Chests</span>
+                </div>
+                {/* <div>
+                    <span>My Chests</span> */}
                     {/*<div className="grid grid-cols-4 gap-4 mt-2">*/}
                     {/*    {chests.map((chest) => {*/}
                     {/*        return <div key={chest.type}*/}
@@ -75,10 +89,10 @@ const Creeps = () => {
                     {/*        </div>*/}
                     {/*    })}*/}
                     {/*</div>*/}
-                    <div className="inset-0 flex justify-center items-center">
+                    {/* <div className="inset-0 flex justify-center items-center">
                         <img src="/assets/images/creeps/tempChests.png" className="max-w-full" alt=""/>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="section">
                     <span className="label">My Spawning Gallery</span>
@@ -110,10 +124,12 @@ const Creeps = () => {
                                 //     <Image className="icon" src={chest.src} width={30} height={30} alt="Chests" />
                                 //     <div className="open-button absolute bottom-20">Open</div>
                                 // </div>
-                                <div className={"captured-creeps " + creep.rarity} onClick={handleCreepSelect}>
-                                    <div className="type-label">{"LVL. " + creep.level}</div>
-                                    <Image src={creep.src} width={109} height={109} alt="swamp-crawler" />
-                                    <div className="open-button absolute bottom-20">Merge</div>
+                                <div className={"captured-creep " + creep.rarity} onClick={handleCreepSelect}>
+                                    <div className="level-label">{"LVL. " + creep.level}</div>
+                                    {creep.src
+                                        ? <Image src={creep.src} width={109} height={109} alt="swamp-crawler" /> 
+                                        : null}
+                                    <div className="merge-button absolute bottom-20">Merge</div>
                                 </div>
                             );
                         })}

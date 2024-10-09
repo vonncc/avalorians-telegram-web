@@ -13,18 +13,18 @@
     border-width: 1px;
 }
 
-.captured-creeps.common {
+.common {
     border-color: #B6B7B8;
-    background-image: "/assets/images/creeps/common.png";
+    /* background-image: "/assets/images/creeps/common.png";
     background-position: center center;
-    background-size: contain;
+    background-size: contain; */
 }
 
-.captured-creeps.rare {
+.rare {
     border-color: #0098EA;
 }
 
-.captured-creeps.epic {
+.epic {
     border-color: #6A1AB4;
 }
 
@@ -35,6 +35,7 @@ padding: 16px 8px;
 
 .section .label {
     font-weight: bold;
+    line-height: 48px;
 }
 
 .section .content {
@@ -80,4 +81,36 @@ padding: 16px 8px;
     font-size: 12px;
     font-weight: bold;
     padding: 4px 24px;
+}
+
+.captured-creep {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.captured-creep .level-label {
+    position: absolute;
+    top: -8px;
+    background-color: #B6B7B8;
+    border: 2px solid #231E2B;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 8px;
+}
+
+.captured-creep .merge-button {
+    position: absolute;
+    bottom: -48px;
+    background-color: #B6B7B8;
+    box-shadow: 0 2px 0 #231E2B;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 48px;
 }
