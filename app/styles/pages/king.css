@@ -1,0 +1,91 @@
+.curved-box.vault {
+    background-color: #FA993C;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    align-content: center;
+    box-shadow: 2px 2px 0 0 #FFFFFF;
+    padding: 1rem;
+    font-weight: bold;
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
+}
+
+.curved-box.vault .top-side {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-inline: 10px;
+}
+
+.curved-box.vault .bottom-side {
+    background-color: rgba(255, 255, 255, 0.24);
+    padding: .5rem;
+    width: 100%;
+    height: 34px;
+    margin-top: 10px;
+    align-content: center;
+    display: flex;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.curved-box.vault .right-side {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.curved-box.vault .left-side {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.curved-box.level {
+    background-color: #FA993C;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    align-content: center;
+    box-shadow: 2px 2px 0 0 #9C251F;
+    padding: 1rem;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
+}
+
+.curved-box.level .top-side {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-inline: 10px;
+}
+
+.curved-box.level .bottom-side {
+    width: 100%;
+    align-content: center;
+    display: flex;
+}
+
+.curved-box.level .right-side {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.curved-box.level .left-side {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
