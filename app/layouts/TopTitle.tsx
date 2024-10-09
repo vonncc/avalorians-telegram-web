@@ -2,10 +2,10 @@
 import React from "react";
 import {TabItem} from "@/app/components/elements/TabMenu";
 import {TonConnectButton, TonConnectUIProvider, useTonAddress} from "@tonconnect/ui-react";
+import { useUserState } from "../context/data.context";
 
 interface TopTitleProps{
     handleTabClick: any;
-    telegram_name?: string;
 }
 
 const tabItems: TabItem[] = [
@@ -28,6 +28,12 @@ const tabItems: TabItem[] = [
 ]
 
 const TopTitle: React.FC<TopTitleProps> = ({handleTabClick, telegram_name}) => {
+const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
+
+    const { userStateData } = useUserState();
+    // TODO: Change Van Helsing to variable (telegram_handle)
+    // TODO: Change Wallet Address to Connect Wallet (Ton Connect)
+
     return (
         <TonConnectUIProvider manifestUrl="https://www.avalorians.io/assets/tonconnect-manifest.json">
         <div className="top-container">
@@ -37,6 +43,9 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick, telegram_name}) => {
             <div>
                 <p>{telegram_name}</p>
                 <TonConnectButton className="p-1"/>
+                <p>{userStateData ? userStateData.character_name : "Avalorians User"}</p>
+                <p>&nbsp;&nbsp;&nbsp;UQCa....d23a<img className="float-right" src="/assets/images/icons/ton.png"
+                                                      alt="ton"/></p>
             </div>
             <div className={`tab-button`}>
                 <div className={`top-tab-border`} onClick={() => handleTabClick(5)}>

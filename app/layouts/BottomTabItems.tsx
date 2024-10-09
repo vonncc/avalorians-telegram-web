@@ -192,10 +192,12 @@ const FrontOverlay = () => {
 
             setSample(JSON.stringify(response));
             const responseJSON = await response.json();
-            // console.log("User state 2:", responseJSON);
+            console.log("User state 2:", responseJSON);
             setUserStateData(responseJSON);
+            setWallet(responseJSON.wallet);
             // Proceed with other operations only after the awaited code
             setFreshAccount(!responseJSON);
+            
             setLoading(false);
         } catch (error) {
             console.error("Error during fetching user state:", error);
@@ -277,14 +279,14 @@ const FrontOverlay = () => {
                                         <div className="curved-box base-text gold-section">
                                             GOLD:
                                             <div className="right-side">
-                                                {wallet ? wallet.gold.quantity : "0"}
+                                                {wallet ? wallet.gold : "0"}
                                                 <img src="/assets/images/Coin.png" alt="" />
                                             </div>
                                         </div>
                                         <div className="curved-box base-text runes-section">
                                             RUNES:
                                             <div className="right-side">
-                                                {wallet ? wallet.rune.quantity : "0"}
+                                                {wallet ? wallet.rune : "0"}
                                                 <img src="/assets/images/icons/money.png" alt="" />
                                             </div>
                                         </div>

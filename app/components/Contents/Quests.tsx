@@ -34,10 +34,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                    "Cache-Control": "no-cache",
-                    Pragma: "no-cache",
-                    Expires: "0",
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     progress: 1, // Your raw body as a JSON object
