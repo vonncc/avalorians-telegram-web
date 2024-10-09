@@ -369,8 +369,12 @@ blockquote {
     /* Any other styles for the active state */
 }
 
-
 .overlay-menu .tab-button .tab-border.active {
     background-color: rgba(238, 144, 0, 1);
     box-shadow: 0 3px 0 0 rgba(159, 96, 0, 1);
+}
+
+.overlay-menu .tab-button .top-tab-border.disabled {
+    background-color: rgba(238, 144, 0, 0.6);
+    box-shadow: 0 3px 0 0 rgba(159, 96, 0, 0.6);
 }
