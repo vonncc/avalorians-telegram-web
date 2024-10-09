@@ -25,24 +25,27 @@ const temporaryCreeps = [
     {
         level: 1,
         count: 1,
+        maxCount: 3,
         label: "Swamp Crawler",
         src: "/assets/images/creeps/swamp-crawler.png",
         rarity: "common"
     },
-    {
-        level: 1,
-        count: 1,
-        label: "",
-        src: null,
-        rarity: "rare"
-    },
-    {
-        level: 1,
-        count: 1,
-        label: "",
-        src: null,
-        rarity: "epic"
-    }
+    // {
+    //     level: 1,
+    //     count: 1,
+    //     maxCount: 3,
+    //     label: "",
+    //     src: null,
+    //     rarity: "rare"
+    // },
+    // {
+    //     level: 1,
+    //     count: 1,
+    //     maxCount: 3,
+    //     label: "",
+    //     src: null,
+    //     rarity: "epic"
+    // }
 ];
 
 const Creeps = () => {
@@ -112,24 +115,18 @@ const Creeps = () => {
                 <div className="section">
                     <span className="label">Captured Creeps</span>
                     <div className="content grid grid-cols-3">
-                        {/* <div className="captured-creeps common" onClick={handleCreepSelect}>
-                            <Image src="/assets/images/creeps/swamp-crawler.png" width={109} height={109} alt="swamp-crawler" />
-                        </div>
-                        <div className="captured-creeps rare"/>
-                        <div className="captured-creeps epic"/> */}
                         {temporaryCreeps.map((creep) => {
                             return (
-                                // <div key={creep.type} className="my-chest">
-                                //     <div className="type-label">{chest.type}</div>
-                                //     <Image className="icon" src={chest.src} width={30} height={30} alt="Chests" />
-                                //     <div className="open-button absolute bottom-20">Open</div>
-                                // </div>
                                 <div className={"captured-creep " + creep.rarity} onClick={handleCreepSelect}>
                                     <div className="level-label">{"LVL. " + creep.level}</div>
                                     {creep.src
                                         ? <Image src={creep.src} width={109} height={109} alt="swamp-crawler" /> 
                                         : null}
-                                    <div className="merge-button absolute bottom-20">Merge</div>
+                                    <div className="name-label">{creep.label}</div>
+                                    <div className="merge-button absolute bottom-20">
+                                        <div>Merge</div>
+                                        <div className="count-label">{creep.count + " / " + creep.maxCount}</div>
+                                    </div>
                                 </div>
                             );
                         })}
