@@ -195,10 +195,12 @@ const FrontOverlay = () => {
 
             setSample(JSON.stringify(response));
             const responseJSON = await response.json();
-            // console.log("User state 2:", responseJSON);
+            console.log("User state 2:", responseJSON);
             setUserStateData(responseJSON);
+            setWallet(responseJSON.wallet);
             // Proceed with other operations only after the awaited code
             setFreshAccount(!responseJSON);
+            
             setLoading(false);
         } catch (error) {
             console.error("Error during fetching user state:", error);
