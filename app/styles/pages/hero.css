@@ -96,6 +96,7 @@
     padding-right: 5px;
     height: 35px;
     background-color: #0C0B17;
+    box-shadow: 1px 1px 0 0 #FFA33E;
 }
 
 .details-section .wallet-section .runes-section {
@@ -106,6 +107,7 @@
     padding-left: 5px;
     padding-right: 5px;
     background-color: #0C0B17;
+    box-shadow: 1px 1px 0 0 #FFA33E;
 }
 
 .details-section .wallet-section .runes-section .right-side {
