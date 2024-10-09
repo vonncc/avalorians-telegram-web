@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 import {TabItem} from "@/app/components/elements/TabMenu";
+import { useUserState } from "../context/data.context";
 
 interface TopTitleProps{
     handleTabClick: any;
@@ -27,6 +28,7 @@ const tabItems: TabItem[] = [
 
 const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
 
+    const { userStateData } = useUserState();
     // TODO: Change Van Helsing to variable (telegram_handle)
     // TODO: Change Wallet Address to Connect Wallet (Ton Connect)
 
@@ -36,7 +38,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <img src="/assets/images/ProfilePicture.png" alt="Pika!"/>
             </div>
             <div>
-                <p>Van Helsing</p>
+                <p>{userStateData.character_name}</p>
                 <p>&nbsp;&nbsp;&nbsp;UQCa....d23a<img className="float-right" src="/assets/images/icons/ton.png"
                                                       alt="ton"/></p>
             </div>
