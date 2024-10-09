@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 import {TabItem} from "@/app/components/elements/TabMenu";
+import {TonConnectButton, TonConnectUIProvider, useTonAddress} from "@tonconnect/ui-react";
 import { useUserState } from "../context/data.context";
 
 interface TopTitleProps{
@@ -29,15 +30,15 @@ const tabItems: TabItem[] = [
 const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
 
     const { userStateData } = useUserState();
-    // TODO: Change Van Helsing to variable (telegram_handle)
-    // TODO: Change Wallet Address to Connect Wallet (Ton Connect)
 
     return (
+        <TonConnectUIProvider manifestUrl="https://www.avalorians.io/assets/tonconnect-manifest.json">
         <div className="top-container">
             <div className="">
                 <img src="/assets/images/ProfilePicture.png" alt="Pika!"/>
             </div>
             <div>
+                <TonConnectButton className="p-1"/>
                 <p>{userStateData ? userStateData.character_name : "Avalorians User"}</p>
                 <p>&nbsp;&nbsp;&nbsp;UQCa....d23a<img className="float-right" src="/assets/images/icons/ton.png"
                                                       alt="ton"/></p>
@@ -69,6 +70,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <span className="text-[8px] absolute top-6 bg-black opacity-70">disabled</span>
             </div>
         </div>
+        </TonConnectUIProvider>
     );
 };
 
