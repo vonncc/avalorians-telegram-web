@@ -135,7 +135,7 @@
 .character-image {
     position: absolute;
     /* height: 50%; */
-    width: 250px;
+    width: 220px;
     z-index: 1; /* Lowest layer */
     left: 50%; /* Move the image to the horizontal center */
     transform: translateX(-50%); /* Adjust for the element's width to truly center it */
@@ -150,20 +150,25 @@
 .character-section .user-name {
     position: absolute;
     z-index: 3; /* Topmost layer */
-    top: 250px; /* Adjust the top position as needed */
+    top: 230px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     background-color: black;
-    border-color: #3a3835;
+    border-color: #262626;
     text-align: center;
     padding-inline: 10px;
-    /* width: 100%; */
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    gap: 10px;
+    width: 114px;
+    box-shadow: 2px 2px 0 0 #262626;
 }
 
 .character-section .experience-section {
     position: absolute;
     z-index: 2; /* Middle layer */
-    top: 265px; /* Adjust the top position as needed */
+    top: 245px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     width: 70%; /* Full width */
@@ -171,6 +176,7 @@
     justify-content: space-evenly;
     height: 50px;
     flex-direction: column;
+    box-shadow: 2px 2px 0 0 #9F6000;
 }
 
 .character-section .experience-section .top-side {
@@ -196,12 +202,17 @@
     opacity: 100;
     background-color: #FFA33E;
     align-content: center;
-    box-shadow: 0 4px 0 #9F6000, 0 3px 10px 0 #9F6000;
+    box-shadow: 0 4px 0 0 #9F6000;
+    text-shadow:
+            -1px -1px 0 rgba(0, 0, 0, 0.6),
+            1px -1px 0 rgba(0, 0, 0, 0.6),
+            -1px  1px 0 rgba(0, 0, 0, 0.6),
+            1px  1px 0 rgba(0, 0, 0, 0.6);
 }
 
 .character-select.selected {
     background-color: #4FD464;
-    box-shadow: 0 4px 0 #16A32C, 0 3px 10px 0 #16A32C;
+    box-shadow: 0 4px 0 0 #16A32C;
 }
 
 .character-select-text {
@@ -223,7 +234,7 @@
     position: absolute;
     width: 70%;
     gap: 10px;
-    top: 325px;
+    top: 305px;
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
 }
@@ -402,7 +413,7 @@
 }
 
 .hero-selector {
-    top: 160px;
+    top: 150px;
     position: absolute;
 }
 

@@ -118,6 +118,7 @@ blockquote {
     height: 26px;
     font-size: 12px;
     padding-left: 10px;
+    box-shadow: 2px 2px 0 0 #9F6000;
 }
 
 .curved-box.build {
@@ -129,6 +130,8 @@ blockquote {
     font-weight: bold;
     margin-left: 100px;
     align-content: center;
+    background-color: #FFA33E;
+    box-shadow: 2px 2px 0 0 #9F6000;
     text-shadow:
             -1px -1px 0 black,
             1px -1px 0 black,
