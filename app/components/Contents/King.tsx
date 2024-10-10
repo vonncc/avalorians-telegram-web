@@ -2,8 +2,13 @@ import React from "react";
 import "@/app/styles/pages/king.css";
 import Image from "next/image";
 import {AvalorianDesignedSlider} from "@/app/components/elements/AvaloriansSlider";
+import {useUserState} from "@/app/context/data.context";
+import HeroSelect from "@/app/components/elements/Hero/HeroSelect";
 
 const King = () => {
+
+    const { userStateData } = useUserState();
+
     return (
         <div>
             <div className="curved-box vault">
@@ -29,8 +34,53 @@ const King = () => {
                     <AvalorianDesignedSlider experience={0} level={1} nextLevelExp={[1000000000]} />
                 </div>
             </div>
-            <div className="inset-0 flex justify-center items-center mt-5">
-                <img src="/assets/images/tempKing.png" className="max-w-full" alt=""/>
+            <div className="w-full justify-center items-center mt-5">
+                <span className="flex justify-center font-bold">{userStateData ? userStateData.character_name : "Avalorians User"}</span>
+                <div className="grid grid-cols-2">
+                    <div className="grid"></div>
+                    <div className="stats-container king">
+                        <div className="stats-row">
+                            <div className="stats-item">
+                                <div className="base-text">
+                                    <p className="stats-name">Hit Points</p>
+                                </div>
+                                <div className="base-text stats-up">
+                                    {userStateData ? userStateData.hit_points : 0}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="stats-row">
+                            <div className="stats-item">
+                                <div className="base-text">
+                                    <p className="stats-name">Armor</p>
+                                </div>
+                                <div className="base-text stats-up">
+                                    {userStateData ? userStateData.armor : 0}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="stats-row">
+                            <div className="stats-item">
+                                <div className="base-text">
+                                    <p className="stats-name">Splash Damage</p>
+                                </div>
+                                <div className="base-text stats-up">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                        <div className="stats-row">
+                            <div className="stats-item">
+                                <div className="base-text">
+                                    <p className="stats-name">Attack Speed</p>
+                                </div>
+                                <div className="base-text stats-up">
+                                    {userStateData ? userStateData.attack_speed : 0}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
