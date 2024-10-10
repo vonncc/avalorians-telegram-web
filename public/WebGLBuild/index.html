@@ -137,7 +137,7 @@
 
                   console.log('JS Received message', event.data);
 
-                  window.MyGameInstance.SendMessage('WebCommunication', 'ReceiveMessageFromParent', event.data);
+                  window.MyGameInstance.SendMessage('Persistent Manager', 'ReceiveMessageFromParent', event.data);
                 });
 
               }).catch((message) => {
