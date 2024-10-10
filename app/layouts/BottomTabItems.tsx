@@ -238,10 +238,10 @@ const FrontOverlay = () => {
             <King />
         </div>,
         <div key="1" className="z-1">
-            <Lane />
+            <Lane token={token} />
         </div>,
         <div key="2" className="z-1">
-            <Kingdom handleBuildClick={handleTabClick} />
+            <Kingdom handleBuildClick={handleTabClick} token={token} />
         </div>,
         <div key="3" className="z-1">
             <Hero />
