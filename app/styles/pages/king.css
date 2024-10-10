@@ -89,3 +89,10 @@
     align-items: center;
     text-align: left;
 }
+
+.stats-container.king {
+    justify-content: end;
+    width: 103px;
+    left: 80%;
+    top: 280px;
+}
