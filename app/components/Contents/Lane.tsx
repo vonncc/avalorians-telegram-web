@@ -48,7 +48,7 @@ const Lane = ({ token }) => {
     };
 
     return (
-        <div>
+        <div className="size-full">
             <div className="inset-0 flex justify-center items-center size-full">
                 <iframe
                     ref={iframeRef}

@@ -58,7 +58,7 @@ const Kingdom = (props: KingdomProps) => {
     };
 
     return (
-        <div className="main-kingdom-container">
+        <div className="main-kingdom-container size-full">
             <div className="flex pb-5">
                 <div className="curved-box profit base-text"><span>Profit (1H)</span>
                     <div className="float-right pr-2 text-center">
