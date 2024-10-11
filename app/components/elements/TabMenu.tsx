@@ -29,7 +29,14 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, activeTab, handleTabClick 
                         bottom: 0, // Keeps it aligned to the bottom
                     }}
                 >
-                    <img src="/assets/images/BottomBG.png" className="w-full h-48" alt=""/>
+                    <img 
+                        src="/assets/images/BottomBG.png" 
+                        className="w-full" 
+                        alt=""
+                        style={{
+                            height: "128px"
+                        }}
+                    />
                 </div>
 
                 {tabs.map((tab, index) => (

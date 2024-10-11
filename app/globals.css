@@ -258,6 +258,7 @@ blockquote {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Always 4 columns */
     gap: 4px; /* Adjust the gap between the tabs as needed */
+    height: 48px;
 }
 
 
