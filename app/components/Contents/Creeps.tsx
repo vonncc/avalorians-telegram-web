@@ -100,15 +100,15 @@ const Creeps = () => {
                 <div className="section">
                     <span className="label">My Spawning Gallery</span>
                     <div className="content grid grid-cols-5">
-                        <div className="rounded-full w-16 h-16 border border-[#CC8E44]"
+                        <div className="spawning-gallery"
                              onClick={handleCreepDeselect}
                         >
                             <Image className={selected ? '' : 'hidden'} src="/assets/images/creeps/swamp-crawler.png" width={60} height={60} alt="swamp-crawler" />
                         </div>
-                        <div className="rounded-full w-16 h-16 border border-[#CC8E44]" />
-                        <div className="rounded-full w-16 h-16 border border-[#CC8E44]" />
-                        <div className="rounded-full w-16 h-16 border border-[#CC8E44]" />
-                        <div className="rounded-full w-16 h-16 border border-[#CC8E44]" />
+                        <div className="spawning-gallery" />
+                        <div className="spawning-gallery" />
+                        <div className="spawning-gallery" />
+                        <div className="spawning-gallery" />
                     </div>
                 </div>
 

@@ -29,7 +29,7 @@ padding: 16px 8px;
 }
 
 .section .content {
-    gap: 32px;
+    gap: 8px;
 }
 
 
@@ -95,6 +95,18 @@ padding: 16px 8px;
 
 
 
+.spawning-gallery {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #CC8E44;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+
 
 
 
@@ -128,7 +140,7 @@ padding: 16px 8px;
     border-radius: 8px;
     font-size: 12px;
     font-weight: bold;
-    padding: 8px 48px;
+    padding: 8px 40px;
 }
 
 .captured-creep .count-label {
