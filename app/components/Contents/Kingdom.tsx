@@ -4,12 +4,7 @@ import Image from "next/image";
 import { API_ENDPOINTS } from "@/app/_globals/constants/baseUrl";
 import { useToken } from "@/app/context/token.context";
 
-interface KingdomProps {
-    handleBuildClick: any;
-    token: string;
-}
-
-const Kingdom = (props: KingdomProps) => {
+const Kingdom = ({ token }) => {
     
     // TODO: just test if working, if yes, then reuse what's on the lane
     const iframeRef = useRef(null);
@@ -28,7 +23,7 @@ const Kingdom = (props: KingdomProps) => {
             console.log("Received message from Unity WebGL:", data);
 
             if (data.action === "initialization") {
-                sendMessageToUnity("access_token", props.token);
+                sendMessageToUnity("access_token", token);
                 sendMessageToUnity("scene_change", "kingdom");
             }
         };
@@ -66,7 +61,11 @@ const Kingdom = (props: KingdomProps) => {
                         <Image className="float-right" src="/assets/images/Coin.png" width={20} height={20} alt=""/>
                     </div>
                 </div>
-                <button className="curved-box build base-text" onClick={() => props.handleBuildClick(9)}>BUILD</button>
+                <button 
+                    className="curved-box build base-text" 
+                    onClick={() => sendMessageToUnity("build", "")}>
+                    Build
+                </button>
             </div>
             {/* <Image src="/assets/images/kingdoms/kingdom.png" alt="kingdom" width={1000} height={1000}/> */}
             <iframe

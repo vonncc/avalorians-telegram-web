@@ -290,6 +290,7 @@ blockquote {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Always 4 columns */
     gap: 4px; /* Adjust the gap between the tabs as needed */
+    height: 48px;
 }
 
 
@@ -311,7 +312,8 @@ blockquote {
     
     flex-grow: 1;
     padding: 10px;
-    padding-bottom: 200px;
+    /* padding-bottom: 200px; */
+    padding-bottom: 0px;
     border-top: 2px solid #EE9000; /* Defines a top border */
     border-left: none;
     border-right: none;

@@ -12,17 +12,23 @@
       <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <!-- <div id="unity-logo"></div> -->
-        <img src="TemplateData/ava-logo-png.png" style="
+        <img id="ava-loading-logo" src="TemplateData/ava-logo-png.png" style="
         position: absolute;
-        top: calc(50% - 64px);
+        top: calc(50% - 128px);
         left: 50%;
         transform: translate(-50%, -50%);
         width: 256px;
     " />
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
+          <div id="unity-loading-tip-msg">
+            <span>
+              TIP: Earn gold and runes by completing daily and weekly quests.
+            </span>
+          </div>
         </div>
       </div>
+      
       <div id="unity-warning"> </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
@@ -109,11 +115,62 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+      var tipRaw = ""
+      var tipMsg = document.getElementById("unity-loading-tip-msg");
+      var tipFinal = "TIP: " + tipMsg;
+      var tipRandom = Math.floor(Math.random() * 10);
+
+      if (tipRandom == 0) {
+        tipRaw = "Earn gold and runes by completing daily and weekly quests.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 1) {
+        tipRaw = "Upgrade buildings to generate passive income and grant gameplay benefits to your hero.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 2) {
+        tipRaw = "Runes unlock chests to upgrade your creep collection.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 3) {
+        tipRaw = "Improve your creep collection to increase the gold and XP earned per creep kill, boosting your hero's growth.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 4) {
+        tipRaw = "View your customized hero and inspect its stats.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 5) {
+        tipRaw = "Spawn creeps and defeat them to earn valuable gold & XP for your hero.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 6) {
+        tipRaw = "Name your hero & customize its appearance using our character creation tool.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      } else if (tipRandom == 7) {
+        tipRaw = "There are 4 tiers of creeps in airdrop mode: neutral, rare, epic & legendary. All of which can be upgraded by merging extra cards of the same creep to enhance their gold and XP loot.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      }else if (tipRandom == 8) {
+        tipRaw = "Instead of playing with the base hero, you can play with exclusive characters  (Rare, Epic & Legendary collectible Heroes). They are more powerful and provide higher multipliers for your final airdrop results.";
+      } else if (tipRandom == 9) {
+        tipRaw = "Cards are found during gameplay progression & opening chests.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      }
+      else {
+        tipRaw = "Earn gold and runes by completing daily and weekly quests.";
+        tipFinal = "TIP: " + tipRaw;
+        tipMsg.innerHTML = tipFinal;
+      }
+
       //var MyGameInstance = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+
 
                 window.MyGameInstance = unityInstance;
                 console.log('unityInstance', unityInstance);

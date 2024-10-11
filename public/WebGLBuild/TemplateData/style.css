@@ -1,16 +1,151 @@
-body { padding: 0; margin: 0 }
-#unity-container { position: absolute }
-#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
-#unity-container.unity-mobile { position: fixed; width: 100%; height: 100% }
-#unity-canvas { background: #231F20 }
-.unity-mobile #unity-canvas { width: 100%; height: 100% }
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
-#unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 200px; margin-left: 6.5px; background: url('progress-bar-empty-dark.png') no-repeat center }
-#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
-#unity-footer { position: relative }
-.unity-mobile #unity-footer { display: none }
-#unity-webgl-logo { float:left; width: 204px; height: 38px; background: url('webgl-logo.png') no-repeat center }
-#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
-#unity-fullscreen-button { cursor:pointer; float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+@font-face {
+    font-family: "micross";
+    src: url(./micross.ttf);
+}
+
+@font-face {
+    font-family: "arcade";
+    src: url(./ARCADECLASSIC.TTF);
+}
+
+@font-face {
+    font-family: "FFFFORWA";
+    src: url(./FFFFORWA.TTF);
+}
+
+@font-face {
+    font-family: "Pixellari";
+    src: url(./Pixellari.TTF);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+#unity-container {
+    position: absolute;
+}
+#unity-container.unity-desktop {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#unity-container.unity-mobile {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+#unity-canvas {
+    background: #231f20;
+}
+.unity-mobile #unity-canvas {
+    width: 100%;
+    height: 100%;
+}
+#unity-loading-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    justify-content: center;
+}
+#unity-logo {
+    width: 154px;
+    height: 130px;
+    background: url("unity-logo-dark.png") no-repeat center;
+}
+#unity-progress-bar-empty {
+    animation: appear 3s;
+    width: 104px;
+    height: 27px;
+    margin-top: 0px;
+    background: url("ava-loading-bar-frame.png") no-repeat center;
+    background-size: cover;
+}
+#unity-progress-bar-full {
+    animation: appear 5s;
+    width: 0%;
+    height: 27px;
+    background: url("ava-loading-bar-alt.png");
+    background-size: cover;
+}
+#ava-loading-logo{
+    width: 200px;
+    animation: appear-enlarge 5s;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes appear-enlarge {
+    0% {
+        width: 200px;
+        opacity: 0;
+    }
+    100% {
+        width: 256px;
+        opacity: 1;
+    }
+}
+#unity-footer {
+    position: relative;
+}
+#unity-loading-tip-msg{
+    animation: appear 5s;
+    margin-top: 4rem;
+    font-family: 'Pixellari';
+    width: max-content;
+    max-width: 320px;
+    font-size: 12px;
+    letter-spacing: 0.1rem;
+    color: #e7d5a5;
+    text-align: center;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; */
+    -webkit-box-orient: vertical;
+    -webkit-font-smoothing: never;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translate(-50%, -50%);
+}
+.unity-mobile #unity-footer {
+    display: none;
+}
+#unity-webgl-logo {
+    float: left;
+    width: 204px;
+    height: 38px;
+    background: url("webgl-logo.png") no-repeat center;
+}
+#unity-build-title {
+    float: right;
+    margin-right: 10px;
+    line-height: 38px;
+    font-family: arial;
+    font-size: 18px;
+}
+#unity-fullscreen-button {
+    cursor: pointer;
+    float: right;
+    width: 38px;
+    height: 38px;
+    background: url("fullscreen-button.png") no-repeat center;
+}
+#unity-warning {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
+    background: white;
+    padding: 10px;
+    display: none;
+}
