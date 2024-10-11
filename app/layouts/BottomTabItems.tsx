@@ -289,7 +289,7 @@ const FrontOverlay = () => {
                                         ? <TopTitle handleTabClick={handleTabClick} />
                                         : null
                                 }
-                                {/* <TwitterButton></TwitterButton> */}
+                                {/* TODO: Move to TopTitle ?<TwitterButton></TwitterButton> */}
                                 <div className="details-section">
                                     <div className="wallet-section grid-cols-2">
                                         <div className="curved-box base-text gold-section">
