@@ -1,9 +1,9 @@
-import { Button } from "@nextui-org/button";
 import React from "react";
 import "@/app/styles/pages/hero.css";
 import { AvalorianDesignedSlider } from "../AvaloriansSlider";
 import { NextLevelExp } from "@/app/_globals/expereinceTreshhold";
 import Image from "next/image";
+
 export interface HeroDetailsProps {
     profilePic?: string;
     rate?: number;

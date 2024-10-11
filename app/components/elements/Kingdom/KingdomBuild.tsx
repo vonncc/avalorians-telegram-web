@@ -5,7 +5,7 @@ import "@/app/styles/pages/kingdom.css";
 const buildings = [
     {
         index: 0,
-        type: "utility",
+        type: "utility buildings",
         building: [
             {
                 name: "tavern",
@@ -35,7 +35,7 @@ const buildings = [
     },
     {
         index: 1,
-        type: "economy",
+        type: "economy buildings",
         building: [
             {
                 name: "farmlands",
@@ -55,7 +55,7 @@ const buildings = [
     },
     {
         index: 2,
-        type: "decoration",
+        type: "decorations",
         building: [
             {
                 name: "tree",
@@ -86,11 +86,11 @@ export default function KingdomBuild() {
             <span className="text-2xl font-bold text-center">KINGDOM BUILDING</span>
             <div className="grid grid-cols-2 gap-1">
                 {buildings.map((building) => {
-                    return <span key={building.index} className={`curved-box text-sm px-4 ${activeBuildings === building.index ? '' : 'inactive'}`} onClick={() => {handleFilterClick(building.index)}}>{building.type} Buildings</span>
+                    return <span key={building.index} className={`curved-box filter text-sm px-4 ${activeBuildings === building.index ? '' : 'inactive'}`} onClick={() => {handleFilterClick(building.index)}}>{building.type}</span>
                 })}
             </div>
             <div className="mt-5">
-                <span>{buildings[activeBuildings].type} Buildings</span>
+                <span>{buildings[activeBuildings].type} </span>
                 <div className="grid grid-cols-3 gap-2 py-5">
                     {buildings[activeBuildings].building.map((building) => {
                         return <div key={building.name}
@@ -105,7 +105,7 @@ export default function KingdomBuild() {
                     })}
                 </div>
             </div>
-            <span className="curved-box w-full float-end h-11 text-center mt-5">Build</span>
+            <span className="curved-box build-button w-full float-end h-11 text-center mt-5">Build</span>
         </div>
     )
 }

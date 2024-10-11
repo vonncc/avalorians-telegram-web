@@ -118,6 +118,7 @@ blockquote {
     height: 26px;
     font-size: 12px;
     padding-left: 10px;
+    box-shadow: 2px 2px 0 0 #9F6000;
 }
 
 .curved-box.build {
@@ -126,8 +127,16 @@ blockquote {
     float: right;
     text-align: center;
     font-size: 12px;
+    font-weight: bold;
     margin-left: 100px;
     align-content: center;
+    background-color: #FFA33E;
+    box-shadow: 2px 2px 0 0 #9F6000;
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
 }
 
 .curved-box.building {
@@ -138,7 +147,30 @@ blockquote {
     text-align: center;
     position: relative;
     top: 35px;
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
 }
+
+.curved-box.filter {
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
+}
+
+.curved-box.build-button {
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
+    box-shadow: 0 3px 0 0 #D44A2A;
+}
+
 
 .curved-box.building.active {
     background-color: #4FD464;

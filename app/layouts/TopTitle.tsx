@@ -39,7 +39,7 @@ const TopTitle: React.FC<TopTitleProps> = ({handleTabClick}) => {
                 <img src="/assets/images/ProfilePicture.png" alt="Pika!"/>
             </div>
             <div>
-                <p>{userStateData ? userStateData.character_name : "Avalorians User"}</p>
+                <p>{userStateData ? userStateData.user.username : "Avalorians User"}</p>
                 <TonConnectButton className="p-1"/>
             </div>
             <div className={`tab-button`}>
