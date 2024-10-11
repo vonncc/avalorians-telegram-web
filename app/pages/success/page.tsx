@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import React from 'react'
+import { useSearchParams } from 'next/navigation';
+import React from 'react';
 
 const SuccessPage = () => {
-    const router = useRouter();
-    const { username } = router.query; // Extract the 'username' from the URL
+    const searchParams = useSearchParams();
+    const username = searchParams.get('username'); // Extract the 'username' from the URL
 
     return (
         <div>
@@ -17,4 +17,4 @@ const SuccessPage = () => {
     );
 }
 
-export default SuccessPage
+export default SuccessPage;
