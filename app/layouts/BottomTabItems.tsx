@@ -280,7 +280,12 @@ const FrontOverlay = () => {
                     {!freshAccount ? (
                         <>
                             <div className="">
-                                <TopTitle handleTabClick={handleTabClick} />
+                                {
+                                    // Hide top title for lane and kingdom for larger view
+                                    activeTab != 1 && activeTab != 2
+                                        ? <TopTitle handleTabClick={handleTabClick} />
+                                        : null
+                                }
                                 <div className="details-section">
                                     <div className="wallet-section grid-cols-2">
                                         <div className="curved-box base-text gold-section">
@@ -301,7 +306,12 @@ const FrontOverlay = () => {
                                 </div>
                             </div>
                             <div className="bottom-container">
-                                <TabMenu tabs={tabItems} handleTabClick={handleTabClick} content={contentTabs} activeTab={activeTab} />
+                                <TabMenu 
+                                    tabs={tabItems} 
+                                    marginTops={[120, 80, 80, 120, 120]}
+                                    handleTabClick={handleTabClick} 
+                                    content={contentTabs} 
+                                    activeTab={activeTab} />
                             </div>
                         </>
                     ) : (
