@@ -19,6 +19,7 @@ import { API_ENDPOINTS } from "../_globals/constants/baseUrl";
 import CharacterCreationV2 from "../components/Contents/cc";
 import King from "@/app/components/Contents/King";
 import { useUserState } from "../context/data.context";
+import TwitterButton from "../components/elements/TwitterButton";
 const tabItems: TabItem[] = [
     {
         image: "/assets/images/tabs/King.png",
@@ -167,6 +168,7 @@ const FrontOverlay = () => {
             console.log("Beating");
             console.log(result);
             setToken(result.access_token);
+            
             // setData(result);
         } catch (error) {
             console.error("Sign In Error:", error);
@@ -175,6 +177,7 @@ const FrontOverlay = () => {
 
     const getUserState = async () => {
         try {
+            console.log(API_ENDPOINTS.GET_USER_STATE);
             const response = await fetch(API_ENDPOINTS.GET_USER_STATE, {
                 method: "GET",
                 headers: {
@@ -202,7 +205,7 @@ const FrontOverlay = () => {
         } catch (error) {
             console.error("Error during fetching user state:", error);
         } finally {
-            
+            setLoading(false);
         }
     };
 
@@ -274,6 +277,7 @@ const FrontOverlay = () => {
                         <>
                             <div className="">
                                 <TopTitle handleTabClick={handleTabClick} />
+                                <TwitterButton></TwitterButton>
                                 <div className="details-section">
                                     <div className="wallet-section grid-cols-2">
                                         <div className="curved-box base-text gold-section">
@@ -293,7 +297,7 @@ const FrontOverlay = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container">
+                            <div className="bottom-container z-46">
                                 <TabMenu tabs={tabItems} handleTabClick={handleTabClick} content={contentTabs} activeTab={activeTab} />
                             </div>
                         </>

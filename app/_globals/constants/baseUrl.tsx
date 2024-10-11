@@ -22,6 +22,7 @@ export const API_ENDPOINTS = {
     // USER QUESTS
     POST_GET_AND_SYNC_QUESTS: `${API_BASE_URL}/api/v1/user-quests/create/`,
     GET_USER_ACTIVE_QUESTS: `${API_BASE_URL}/api/v1/user-quests/get-all-quest/`,
+    GET_IF_QUEST_FINISHED: `${API_BASE_URL}/api/v1/user-quests/check-if-quest-is-finished/`,
     PATCH_FINISH_QUESTS: `${API_BASE_URL}/api/v1/user-quests/finish-quest/`,
 
     // INVENTORY

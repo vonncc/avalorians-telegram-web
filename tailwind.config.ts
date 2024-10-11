@@ -14,7 +14,9 @@ const config: Config = {
             colors: {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
-                self: "#f6d700"
+                self: "#f6d700",
+                primary: "#EE9000",
+                messagebox: "#0C0B17"
             },
         },
     },
