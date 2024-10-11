@@ -18,15 +18,15 @@ export interface TabProps {
 const TabMenu: React.FC<TabProps> = ({ tabs, content, marginTops, activeTab, handleTabClick }) => {
 
     return (
-        <div className="tab-container tab-container-gradient-background">
+        <div className="tab-container tab-container-gradient-background z-46">
             <div 
-                className={`tab-content hero`}
+                className={`tab-content z-46 hero`}
                 style={{
                     marginTop: marginTops[activeTab]
                 }}>
                 {content[activeTab]}
             </div>
-            <div className="tab-header">
+            <div className="tab-header z-46">
                 <div
                     className="w-full object-left-bottom"
                     style={{
@@ -48,7 +48,7 @@ const TabMenu: React.FC<TabProps> = ({ tabs, content, marginTops, activeTab, han
 
                 {tabs.map((tab, index) => (
                     <div key={index} className={`tab-button`} onClick={() => handleTabClick(index)}>
-                        <div className={`tab-border ${index === activeTab ? "active" : ""}`}>
+                        <div className={`z-46 tab-border ${index === activeTab ? "active" : ""}`}>
                             <Image src={`${tab.image}`} alt="Icon" width={20} height={20} />
                         </div>
 

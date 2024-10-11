@@ -412,3 +412,7 @@ blockquote {
     background-color: rgba(238, 144, 0, 0.6);
     box-shadow: 0 3px 0 0 rgba(159, 96, 0, 0.6);
 }
+
+img {
+    image-rendering: pixelated;
+}

@@ -544,9 +544,9 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
             className=" overflow-hidden"
             style={{
                 backgroundImage: 'url("/assets/images/character/frame/bg.png")',
-                backgroundSize: "100% 100%", // Stretches the image to fit the area
-                backgroundPosition: "center", // Centers the image
-                backgroundRepeat: "no-repeat", // Prevents repeating the image
+                backgroundSize: "100% 100%", 
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat", 
             }}
         >
             <div className="h-screen flex flex-col pt-10">
@@ -555,7 +555,6 @@ const CharacterCreationV2: FC<ChildComponentProp> = ({ jsonData, CharacterCreate
                 </div>
                 <div className="flex-grow p-4">
                     {" "}
-                    {/* Ensure padding is applied within the area */}
                     {/* Header Label */}
                     {/* Character Viewer */}
                     <div className="flex-grow flex justify-center items-center">
