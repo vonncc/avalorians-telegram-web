@@ -2,7 +2,7 @@ export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api
 // NEXT_PUBLIC_API_BASE_URL
 export const API_ENDPOINTS = {
 
-    TESTING: `${API_BASE_URL}/api/v1/user/version`,
+    GET_VERSION: `${API_BASE_URL}/api/v1/version-checker/current-version`,
     // USER PROFILE
     POST_PROFILE_SIGNUP: `${API_BASE_URL}/api/v1/auth/signup/`,
     POST_PROFILE_SIGNIN: `${API_BASE_URL}/api/v1/auth/signin/`,
@@ -34,6 +34,9 @@ export const API_ENDPOINTS = {
     POST_EQUIP_ITEM_USING_MASTER_ID: `${API_BASE_URL}/api/v1/equipped/equip-many/master-id/`,
     GET_EQUIP_ITEM: `${API_BASE_URL}/api/v1/equipped/get?organized=true/`,
     GET_EQUIP_ITEM_USING_MASTER_ID: `${API_BASE_URL}/api/v1/equipped/get?organized=false/`,
+
+    // TWITTER STUFF
+    POST_ASSIGN_TWITTER: `${API_BASE_URL}/api/v1/auth/assign-twitter`,
 
     // KINGDOM
 };

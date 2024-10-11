@@ -44,9 +44,22 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
     const [permanentQuests, setPermanentQuests] = useState<Quest[]>([]);
     const selectedQuestsToView = useRef<Quest | null>(null);
 
-    const handleTwitterLogin = () => {
+    const handleTwitterLogin = async () => {
         // window.location.href = 'https://7882-120-28-179-30.ngrok-free.app/auth/twitter'; // Adjust to your backend URL
-        window.open('https://api.dev.avalorians.io/api/v1/auth/twitter', "_blank");
+        // window.open('https://api.dev.avalorians.io/api/v1/auth/twitter', "_blank");
+        // window.location.href = 'http://localhost:3000/api/v1/auth/twitter';
+        // window.open('http://localhost:3000/api/v1/auth/twitter', "_blank");
+        // window.location.href = 'https://api.dev.avalorians.io/api/v1/auth/twitter';
+
+        const response = await fetch('https://api.dev.avalorians.io/api/v1/auth/twitter', {
+            method: 'GET',
+            credentials: 'include', // Ensure cookies are included
+        });
+    
+        if (response.redirected) {
+            // If the response is a redirect, navigate to the new URL
+            window.location.href = response.url;
+        }
     };
 
     const handleClick = async (element: any, index:number, category: string) => {
@@ -184,6 +197,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
+                credentials: 'include'
             });
 
             if (!response.ok) {

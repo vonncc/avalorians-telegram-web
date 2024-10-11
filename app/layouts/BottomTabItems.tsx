@@ -185,6 +185,7 @@ const FrontOverlay = () => {
     const getUserState = async () => {
         try {
             console.log(API_ENDPOINTS.GET_USER_STATE);
+            // window.location.href = API_ENDPOINTS.GET_VERSION;
             const response = await fetch(API_ENDPOINTS.GET_USER_STATE, {
                 method: "GET",
                 headers: {
