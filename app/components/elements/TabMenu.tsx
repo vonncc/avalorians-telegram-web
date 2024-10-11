@@ -12,13 +12,20 @@ export interface TabProps {
     content: React.ReactNode[]; // Array of content for each tab
     activeTab: number;
     handleTabClick: any;
+    marginTops: number[];
 }
 
-const TabMenu: React.FC<TabProps> = ({ tabs, content, activeTab, handleTabClick }) => {
+const TabMenu: React.FC<TabProps> = ({ tabs, content, marginTops, activeTab, handleTabClick }) => {
 
     return (
         <div className="tab-container tab-container-gradient-background z-46">
-            <div className={`tab-content z-46 hero`}>{content[activeTab]}</div>
+            <div 
+                className={`tab-content z-46 hero`}
+                style={{
+                    marginTop: marginTops[activeTab]
+                }}>
+                {content[activeTab]}
+            </div>
             <div className="tab-header z-46">
                 <div
                     className="w-full object-left-bottom"
