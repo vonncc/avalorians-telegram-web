@@ -60,9 +60,16 @@ const FrontOverlay = () => {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+
     const [loading, setLoading] = useState(true);
     const [isTelegramWebView, setIsTelegramWebView] = useState(false);
     const [freshAccount, setFreshAccount] = useState(true);
+
+    // Use only for local testing
+    // const [loading, setLoading] = useState(false);
+    // const [isTelegramWebView, setIsTelegramWebView] = useState(true);
+    // const [freshAccount, setFreshAccount] = useState(false);
+    
     const [equippedData, setEquippedData] = useState("");
 
     const [wallet, setWallet] = useState(null);
@@ -241,7 +248,7 @@ const FrontOverlay = () => {
             <Lane token={token} />
         </div>,
         <div key="2" className="z-1 size-full">
-            <Kingdom handleBuildClick={handleTabClick} token={token} />
+            <Kingdom token={token} />
         </div>,
         <div key="3" className="z-1">
             <Hero />
