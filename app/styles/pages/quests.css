@@ -21,8 +21,8 @@
     display: flex; /* Ensures the button doesn't take up more space than necessary */
     background-color: #ee9000;
     border-radius: 15px;
-    border: 1px solid #ee9000;
-    box-shadow: 0.5px 0.5px 0px #262626;
+    border: 1px solid #9F6000;
+    box-shadow: 2px 2px 0 0 #9F6000;
     justify-content: flex-start;
     align-items: center;
 }
