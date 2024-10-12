@@ -135,7 +135,7 @@
 .character-image {
     position: absolute;
     /* height: 50%; */
-    width: 220px;
+    width: 150px;
     z-index: 1; /* Lowest layer */
     left: 50%; /* Move the image to the horizontal center */
     transform: translateX(-50%); /* Adjust for the element's width to truly center it */
@@ -150,7 +150,7 @@
 .character-section .user-name {
     position: absolute;
     z-index: 3; /* Topmost layer */
-    top: 230px; /* Adjust the top position as needed */
+    top: 175px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     background-color: black;
@@ -168,7 +168,7 @@
 .character-section .experience-section {
     position: absolute;
     z-index: 2; /* Middle layer */
-    top: 245px; /* Adjust the top position as needed */
+    top: 190px; /* Adjust the top position as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     width: 70%; /* Full width */
@@ -234,7 +234,7 @@
     position: absolute;
     width: 70%;
     gap: 10px;
-    top: 305px;
+    top: 250px;
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
 }
@@ -414,15 +414,15 @@
 }
 
 .hero-selector {
-    top: 150px;
+    top: 115px;
     position: absolute;
 }
 
 .hero-selector.left {
     transform: rotate(-180deg);
-    left: 50px;
+    left: 80px;
 }
 
 .hero-selector.right {
-    right: 50px;
+    right: 80px;
 }

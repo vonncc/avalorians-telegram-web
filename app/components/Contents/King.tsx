@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "@/app/styles/pages/king.css";
 import Image from "next/image";
 import {AvalorianDesignedSlider} from "@/app/components/elements/AvaloriansSlider";
 import {useUserState} from "@/app/context/data.context";
-import HeroSelect from "@/app/components/elements/Hero/HeroSelect";
+import styles from "@/app/styles/cc.module.css";
 
 const King = () => {
 
@@ -37,7 +37,19 @@ const King = () => {
             <div className="w-full justify-center items-center mt-5">
                 <span className="flex justify-center font-bold">{userStateData ? userStateData.character_name : "Avalorians User"}</span>
                 <div className="grid grid-cols-2">
-                    <div className="grid"></div>
+                    <div className="grid">
+                        <div className="" style={{height: "22vh"}}>
+                            <div>
+                                <div className={styles.heroViewer}>
+                                    {" "}
+                                        <div className={styles.heroFrame}/>
+                                        <div className={styles.skin} style={{backgroundImage: 'url("/assets/images/character/skin/male/201.png")'}} />
+                                        <div className={styles.hair} style={{backgroundImage: 'url("/assets/images/character/hair/male/207.png")'}} />
+                                        <div className={styles.cloth} style={{backgroundImage: 'url("/assets/images/character/cloth/male/222.png")'}}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="stats-container king">
                         <div className="stats-row">
                             <div className="stats-item">

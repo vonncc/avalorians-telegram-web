@@ -23,7 +23,7 @@ const HeroEquipment: React.FC<EquipmentProps> = ({ head = "", body = "", pants =
             <div className="character-section">
                 <button className="hero-selector left" onClick={handlePrevHero}><Image src="/assets/images/icons/vector.png" width={20} height={32} alt="previous"/></button>
                 <div className={`character-image ${heroSelected ? 'selected' : ''}`}>
-                    <Image src={heroImage} width={258} height={279}
+                    <Image src={heroImage} width={150} height={150}
                            alt="character image"/>
                 </div>
                 <button className="hero-selector right" onClick={handleNextHero}><Image src="/assets/images/icons/vector.png" width={20} height={32} alt="previous"/></button>
