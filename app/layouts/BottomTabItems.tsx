@@ -310,7 +310,7 @@ const FrontOverlay = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container z-46">
+                            <div className="bottom-container z-1">
                                 <TabMenu 
                                     tabs={tabItems} 
                                     marginTops={[120, 80, 80, 120, 120]}

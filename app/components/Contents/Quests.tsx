@@ -5,6 +5,8 @@ import "@/app/styles/pages/quests.css";
 import { API_ENDPOINTS } from "@/app/_globals/constants/baseUrl";
 import { useToken } from "@/app/context/token.context";
 import MessageBox from "../elements/MessageBox/MessageBox";
+import ErrorMessageBox from "../elements/MessageBox/ErrorMessageBox";
+import DoneMessageBox from "../elements/MessageBox/DoneMessageBox";
 
 interface Quest {
     id: string; // or number, depending on your data type
@@ -33,7 +35,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
     const [data, setData] = useState<any>(null); // State to store fetched data
     const [isRewardClaind, setIsRewardClaimed] = useState(false);
     const [tryingToGetData, setTryingToGetData] = useState(true);
-    const [isShowMessageBox, setShowMessageBox] = useState(false);
+
     const { token } = useToken();
     const [loading, setLoading] = useState(true); // State to handle loading state
 
@@ -44,6 +46,12 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
     const [permanentQuests, setPermanentQuests] = useState<Quest[]>([]);
     const selectedQuestsToView = useRef<Quest | null>(null);
 
+    const [isShowMessageBox, setShowMessageBox] = useState(false);
+    const [doneMessageBox, setdoneMessageBox] = useState(false);
+    const [errorMessageBox, seterrorMessageBox] = useState(false);
+
+    const [selectedQuestId, setSelectedQuestId] = useState("");
+    const [selectedReward, setSelectedReward] = useState("");
     const handleTwitterLogin = async () => {
         // window.location.href = 'https://7882-120-28-179-30.ngrok-free.app/auth/twitter'; // Adjust to your backend URL
         // window.open('https://api.dev.avalorians.io/api/v1/auth/twitter', "_blank");
@@ -51,43 +59,95 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
         // window.open('http://localhost:3000/api/v1/auth/twitter', "_blank");
         // window.location.href = 'https://api.dev.avalorians.io/api/v1/auth/twitter';
 
-        const response = await fetch('https://api.dev.avalorians.io/api/v1/auth/twitter', {
-            method: 'GET',
-            credentials: 'include', // Ensure cookies are included
+        const response = await fetch("https://api.dev.avalorians.io/api/v1/auth/twitter", {
+            method: "GET",
+            // credentials: 'include', // Ensure cookies are included
         });
-    
+
         if (response.redirected) {
             // If the response is a redirect, navigate to the new URL
             window.location.href = response.url;
         }
     };
 
-    const handleClick = async (element: any, index:number, category: string) => {
+    const handleClickMessageBox = async (questsId) => {
         try {
+            console.log("heres the quest ID");
+            console.log(questsId);
+
+            const response = await fetch(`${API_ENDPOINTS.GET_IF_QUEST_FINISHED}${questsId}`, {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                }
+            });
+
+            console.log("checking");
+            if (!response.ok) {
+                console.info(response);
+                throw new Error("Network response was not ok" + response);
+            }
+
+            const result = await response.json();
+
+            console.log(result);
+
+            if (result.status == "failed") {
+                setShowMessageBox(false);
+                setdoneMessageBox(false);
+                seterrorMessageBox(true);
+            } else {
+                setShowMessageBox(false);
+                setdoneMessageBox(true);
+                seterrorMessageBox(false);
+            }
+        } catch (err) {}
+    };
+
+    const handleMessageBoxClose = () => {
+        setShowMessageBox(false);
+        setdoneMessageBox(false);
+        seterrorMessageBox(false);
+    };
+
+    const handleClick = async (element: any, index: number, category: string, isDone: boolean) => {
+        try {
+            console.log("KITA MO");
             console.info(`${API_ENDPOINTS.PATCH_FINISH_QUESTS}${element.quests_id}`);
             console.info(permanentQuests[index]);
-            if (element.is_done) {
-                setShowMessageBox(true);
+            console.log(element);
+            console.log(element.quests_reward);
 
-                if (category == "daily") {
-                    // setSelectedQuestsToView(dailyQuests[index]);
-                    selectedQuestsToView.current = dailyQuests[index];
-                } else if (category == "weekly") {
-                    // setSelectedQuestsToView(weeklyQuests[index]);
-                    selectedQuestsToView.current = weeklyQuests[index];
+            setSelectedQuestId(element.quests_id);
+            setSelectedReward(element.quests_reward);
+            if (element.is_done) {
+                if (element.reward_claimed == true) {
+                    setShowMessageBox(false);
+                    setdoneMessageBox(true);
+                    seterrorMessageBox(false);
                 } else {
-                    // setSelectedQuestsToView(permanentQuests[index]);
-                    selectedQuestsToView.current = permanentQuests[index];
+                    setShowMessageBox(true);
+                    setdoneMessageBox(false);
+                    seterrorMessageBox(false);
                 }
+
+                setShowMessageBox(true);
+                setdoneMessageBox(false);
+                seterrorMessageBox(false);
+
                 console.log("Cre");
                 console.log(selectedQuestsToView);
-                // 
+                //
             } else {
-
                 if (element.quests_url == "link_twitter") {
                     handleTwitterLogin();
                     return;
                 }
+
+                const link = element.quests_url; // Replace with the desired link
+                window.open(link, "_blank"); // Opens in a new tab
+
                 const response = await fetch(`${API_ENDPOINTS.PATCH_FINISH_QUESTS}${element.quests_id}`, {
                     method: "PATCH",
                     headers: {
@@ -95,26 +155,23 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        progress: 1, // Your raw body as a JSON object
+                        progress: 0, // Your raw body as a JSON object
                     }),
                 });
-    
+
                 if (!response.ok) {
                     console.info(response);
                     throw new Error("Network response was not ok" + response);
                 }
-    
+
                 const result = await response.json();
                 console.info(result);
                 element.is_done = true;
-                const link = element.quests_url; // Replace with the desired link
-                window.open(link, "_blank"); // Opens in a new tab
             }
 
             // Optionally reload quests after completing an action
         } catch (error) {
             console.info("ai error" + error);
-            
         }
     };
 
@@ -123,44 +180,40 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
             console.log("Check if verified");
             console.log(selectedQuestsToView.current.reward_claimed);
             console.log(selectedQuestsToView.current.quest_lists.url_link);
-            
-            switch(selectedQuestsToView.current.reward_claimed){
+
+            switch (selectedQuestsToView.current.reward_claimed) {
                 case false:
                     const response = await fetch(`${API_ENDPOINTS.GET_IF_QUEST_FINISHED}${selectedQuestsToView.current.id}`, {
                         method: "GET",
                         headers: {
                             Authorization: `Bearer ${token}`,
                             "Content-Type": "application/json",
-                        }
+                        },
                     });
-            
+
                     if (!response.ok) {
                         console.info(response);
                         throw new Error("Network response was not ok" + response);
                     }
-            
+
                     const result = await response.json();
-        
-                    if (result.status == 'success') {
+
+                    if (result.status == "success") {
                         onUpdateWallet();
                         setIsRewardClaimed(true);
                         selectedQuestsToView.current.reward_claimed = true;
-                        setMessageStatus(MessageStatus.REWARDED); 
+                        setMessageStatus(MessageStatus.REWARDED);
                     }
                     break;
                 case true:
                     setShowMessageBox(false);
                     break;
-
             }
-           
-        } catch(error) {
+        } catch (error) {
             // setIsRewardClaimed(true);
             // setMessageStatus(MessageStatus.CLAIMED);
         }
-        
-
-    }
+    };
 
     // const loadQuests = async () => {
     //     try {
@@ -197,7 +250,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                credentials: 'include'
+                // credentials: 'include'
             });
 
             if (!response.ok) {
@@ -212,7 +265,6 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
             setDailyQuests(results.data.dailyQuests);
             setWeeklyQuests(results.data.weeklyQuests);
             setPermanentQuests(results.data.permanentQuests);
-
 
             // setTryingToGetData(false);
             // loadQuests();
@@ -285,7 +337,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                                                 quests_reward: quest.quest_lists.reward,
                                                 quests_url: quest.quest_lists.url_link,
                                                 is_done: quest.is_done,
-                                                reward_claimed: quest.reward_claimed
+                                                reward_claimed: quest.reward_claimed,
                                             }}
                                         />
                                     )
@@ -348,7 +400,7 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                                                 quests_reward: quest.quest_lists.reward,
                                                 quests_url: quest.quest_lists.url_link,
                                                 is_done: quest.is_done,
-                                                reward_claimed: quest.reward_claimed
+                                                reward_claimed: quest.reward_claimed,
                                             }}
                                         />
                                     )
@@ -392,7 +444,6 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
                                                 quests_url: quest.quest_lists.url_link,
                                                 is_done: quest.is_done,
                                                 reward_claimed: quest.reward_claimed,
-                                                
                                             }}
                                         />
                                     )
@@ -428,6 +479,45 @@ const Quests: React.FC<QuestsProps> = ({ uniqueId, onUpdateWallet }) => {
 
             {isShowMessageBox ? (
                 <div>
+                    <MessageBox
+                        title={"Check Task"}
+                        info={"CLICK THE BUTTON BELOW TO VERIFY TASK COMPLETION"}
+                        buttonText={"VERIFY TASK"}
+                        onClickPass={handleClickMessageBox}
+                        quest_id={selectedQuestId}
+                        onClose={handleMessageBoxClose}
+                    ></MessageBox>
+                    {/* <MessageBox  onClick={CheckIfVerified} messageStatus={messageStatus} setMessageStatus={setMessageStatus} ></MessageBox> */}
+                </div>
+            ) : (
+                <></>
+            )}
+
+            {doneMessageBox ? (
+                <div>
+                    <DoneMessageBox
+                        title={"CONGRATULATIONS"}
+                        info={"YOU HAVE RECEIVED"}
+                        buttonText={"OK"}
+                        onClickPass={handleMessageBoxClose}
+                        reward={selectedReward}
+                        onClose={handleMessageBoxClose}
+                    ></DoneMessageBox>
+                    {/* <MessageBox  onClick={CheckIfVerified} messageStatus={messageStatus} setMessageStatus={setMessageStatus} ></MessageBox> */}
+                </div>
+            ) : (
+                <></>
+            )}
+
+            {errorMessageBox ? (
+                <div>
+                    <ErrorMessageBox
+                        title={"TRY AGAIN"}
+                        info={"TASK WAS NOT COMPLETED"}
+                        buttonText={"OK"}
+                        onClickPass={handleMessageBoxClose}
+                        onClose={handleMessageBoxClose}
+                    ></ErrorMessageBox>
                     {/* <MessageBox  onClick={CheckIfVerified} messageStatus={messageStatus} setMessageStatus={setMessageStatus} ></MessageBox> */}
                 </div>
             ) : (

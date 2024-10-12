@@ -15,7 +15,7 @@ interface QuestsData {
 interface ButtonProps {
     text: string;
     image: string;
-    onClick?: (data: QuestsData, index: number, category: string) => void;
+    onClick?: (data: QuestsData, index: number, category: string, isDone: boolean) => void;
     data: QuestsData;
     messageStatus?: MessageStatus;
     setMessageStatus?: React.Dispatch<React.SetStateAction<MessageStatus>>; // Add this
@@ -34,6 +34,10 @@ const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image, data, messa
     const [buttonDisabled, setIsDisabled] = useState(data.reward_claimed);
     const [indexInArray, setIndexInArray] = useState(index  || -1);
     const [categoryToUse, setGategory] = useState(category);
+
+    const [myData, setMydata] = useState(data);
+
+    const [isDone, setIsDone] = useState(data.is_done);
     // const [messageStatusRef, setMessageStatus] = useState<MessageStatus>(MessageStatus.NORMAL);
     
     function Enable() {
@@ -45,8 +49,13 @@ const QuestsButton: React.FC<ButtonProps> = ({ text, onClick, image, data, messa
     }
 
     function ButtonClicked() {
+
+        console.log('opo');
+        console.log(myData.quests_id);
         if (onClick && data) {
-            onClick(data, indexInArray, category);
+            setIsDone(true);
+            onClick(myData, indexInArray, category, isDone);
+            
             // Disable();
         }
     }
