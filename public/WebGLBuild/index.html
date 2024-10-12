@@ -36,27 +36,31 @@
         <div id="unity-build-title">Avalorians</div>
       </div>
     </div>
-    <script>
 
+    <script id="tips" type="application/json">
+    [
+      { "text": "Earn gold and runes by completing daily and weekly quests" },
+      { "text": "Upgrade buildings to generate passive income and grant gameplay benefits to your hero" },
+      { "text": "Runes unlock chests to upgrade your creep collection" },
+      { "text": "Improve your creep collection to increase the gold and XP earned per creep kill, boosting your hero's growth" },
+      { "text": "Upgrade your creeps by merging extra cards of the same creep to enhance their gold and XP loot" },
+      { "text": "Spawn creeps and defeat them to earn valuable gold & XP for your hero" },
+      { "text": "Name your hero & customize its appearance using our character creation tool" },
+      { "text": "There are 4 tiers of creeps in airdrop mode: Common, Rare, Epic & Legendary" },
+      { "text": "Play with exclusive characters (Rare, Epic & Legendary collectible Heroes) to earn higher multipliers for your final airdrop rewards" },
+      { "text": "Open chests to obtain creep cards" },
+      { "text": "There are four types of chests, each with a specific percentage chance of obtaining creeps of varying rarities: Common, Rare, Epic or Legendary" },
+      { "text": "To shut down the dark portal that a player is likely to encounter during lane spawning gameplay, tap the designated points on the screen to summon beams of light to destroy it" },
+      { "text": "Unleash your hero, defeat your summons and gather the spoils" },
+      { "text": "Showcase your customized hero and boost its stats to unleash its full potential" },
+      { "text": "Opportunity to earn daily rewards with an initial investment" },
+      { "text": "There are 10 Card Series: Gaia Sentinels, Warlord’s Crusade, Firebreath Cabal, Obsidian Brigade, Eclipseborn Renegades, Twilight Chasers, Cyborg Legion, Thunderclap Covenant, Whirlwind Order & Frozen Dominion" }
+    ]
+    </script>
+
+    <script>
       const TIP = "TIP:";
-      const tips = [
-        { text: "Earn gold and runes by completing daily and weekly quests" },
-        { text: "Upgrade buildings to generate passive income and grant gameplay benefits to your hero" },
-        { text: "Runes unlock chests to upgrade your creep collection" },
-        { text: "Improve your creep collection to increase the gold and XP earned per creep kill, boosting your hero's growth" },
-        { text: "Upgrade your creeps by merging extra cards of the same creep to enhance their gold and XP loot" },
-        { text: "Spawn creeps and defeat them to earn valuable gold & XP for your hero" },
-        { text: "Name your hero & customize its appearance using our character creation tool" },
-        { text: "There are 4 tiers of creeps in airdrop mode: Common, Rare, Epic & Legendary" },
-        { text: "Play with exclusive characters (Rare, Epic & Legendary collectible Heroes) to earn higher multipliers for your final airdrop rewards" },
-        { text: "Open chests to obtain creep cards" },
-        { text: "There are four types of chests, each with a specific percentage chance of obtaining creeps of varying rarities: Common, Rare, Epic or Legendary" },
-        { text: "To shut down the dark portal that a player is likely to encounter during lane spawning gameplay, tap the designated points on the screen to summon beams of light to destroy it" },
-        { text: "Unleash your hero, defeat your summons and gather the spoils" },
-        { text: "Showcase your customized hero and boost its stats to unleash its full potential" },
-        { text: "Opportunity to earn daily rewards with an initial investment" },
-        { text: "There are 10 Card Series: Gaia Sentinels, Warlord’s Crusade, Firebreath Cabal, Obsidian Brigade, Eclipseborn Renegades, Twilight Chasers, Cyborg Legion, Thunderclap Covenant, Whirlwind Order & Frozen Dominion" }
-      ];
+      const tips = JSON.parse(document.getElementById("tips").textContent);
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -122,9 +126,9 @@
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
-
-
-      } else {
+      }
+      else
+      {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
         canvas.style.width = "960px";
@@ -137,76 +141,16 @@
       script.src = loaderUrl;
       var tipRaw = ""
       var tipMsg = document.getElementById("unity-loading-tip-msg");
-      var tipFinal = `${TIP} ${tipMsg}`; //"TIP: " + tipMsg;
+      var tipFinal = `${TIP} ${tipMsg}`;
       var tipRandom = Math.floor(Math.random() * tips.length);
 
-      if (tipRandom == 0)
+      for (let i = 0; i < tips.length; i++)
       {
-        tipRaw = tips[0].text;
-      }
-      else if (tipRandom == 1)
-      {
-        tipRaw = tips[1].text;
-      }
-      else if (tipRandom == 2)
-      {
-        tipRaw = tips[2].text;
-      }
-      else if (tipRandom == 3)
-      {
-        tipRaw = tips[3].text;
-      }
-      else if (tipRandom == 4)
-      {
-        tipRaw = tips[4].text;
-      }
-      else if (tipRandom == 5)
-      {
-        tipRaw = tips[5].text;
-      }
-      else if (tipRandom == 6)
-      {
-        tipRaw = tips[6].text;
-      }
-      else if (tipRandom == 7)
-      {
-        tipRaw = tips[7].text;
-      }
-      else if (tipRandom == 8)
-      {
-        tipRaw = tips[8].text;
-      }
-      else if (tipRandom == 9)
-      {
-        tipRaw = tips[9].text;
-      }
-      else if (tipRandom == 10)
-      {
-        tipRaw = tips[10].text;
-      }
-      else if (tipRandom == 11)
-      {
-        tipRaw = tips[11].text;
-      }
-      else if (tipRandom == 12)
-      {
-        tipRaw = tips[12].text;
-      }
-      else if (tipRandom == 13)
-      {
-        tipRaw = tips[13].text;
-      }
-      else if (tipRandom == 14)
-      {
-        tipRaw = tips[14].text;
-      }
-      else if (tipRandom == 15)
-      {
-        tipRaw = tips[15].text;
-      }
-      else
-      {
-        tipRaw = tips[0].text;
+        if (tipRandom === i)
+        {
+          tipRaw = tips[i].text;
+          break;
+        }
       }
 
       tipFinal = `${TIP} ${tipRaw}`;
@@ -218,7 +162,6 @@
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
 
-
                 window.MyGameInstance = unityInstance;
                 console.log('unityInstance', unityInstance);
 
@@ -226,8 +169,6 @@
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
-
-                
 
                 window.addEventListener('message', function(event) {
                   console.log('JS Received message from', event.origin);
