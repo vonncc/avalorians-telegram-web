@@ -20,6 +20,7 @@ import CharacterCreationV2 from "../components/Contents/cc";
 import King from "@/app/components/Contents/King";
 import { useUserState } from "../context/data.context";
 import TwitterButton from "../components/elements/TwitterButton";
+import WalletItem from "../components/elements/WalletItem";
 const tabItems: TabItem[] = [
     {
         image: "/assets/images/tabs/King.png",
@@ -291,22 +292,20 @@ const FrontOverlay = () => {
                                 }
                                 {/* TODO: Move to TopTitle ?<TwitterButton></TwitterButton> */}
                                 <div className="details-section">
-                                    <div className="wallet-section grid-cols-2">
-                                        <div className="curved-box base-text gold-section">
-                                            GOLD:
-                                            <div className="right-side">
-                                                {wallet ? wallet.gold : "0"}
-                                                <img src="/assets/images/Coin.png" alt="" />
-                                            </div>
-                                        </div>
-                                        <div className="curved-box base-text runes-section">
-                                            RUNES:
-                                            <div className="right-side">
-                                                {wallet ? wallet.rune : "0"}
-                                                <img src="/assets/images/icons/money.png" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <WalletItem 
+                                        label="GOLD" 
+                                        amount={wallet?.gold ?? 0} 
+                                        imgBack1="assets/images/ava/ava-gold-container-part1.png" 
+                                        imgBack2="assets/images/ava/ava-gold-container-part2.png" 
+                                        imgBack3="assets/images/ava/ava-gold-container-part3.png" 
+                                        imgIcon="assets/images/ava/ava-gold-icon-xs.png" />
+                                    <WalletItem 
+                                        label="RUNES" 
+                                        amount={wallet?.rune ?? 0} 
+                                        imgBack1="assets/images/ava/ava-runes-container-part1.png"
+                                        imgBack2="assets/images/ava/ava-runes-container-part2.png"
+                                        imgBack3="assets/images/ava/ava-runes-container-part3.png" 
+                                        imgIcon="assets/images/ava/ava-rune-icon-xs.png" />
                                 </div>
                             </div>
                             <div className="bottom-container z-46">

@@ -30,17 +30,25 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'pixellari';
+    src: url("/fonts/Pixellari.ttf");
+}
+
 body {
     padding: 1rem;
     color: var(--foreground);
     background: var(--background);
-    font-family: "mina", "mina-bold";
+    /* font-family: "mina", "mina-bold"; */
+    font-family: 'pixellari', monospace;
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: normal; /* Center vertically */
     height: 100vh; /* Full viewport height */
     margin: 0; /* Remove default margin */
     text-transform: uppercase;
+
+    image-rendering: pixelated;
 }
 
 h1,
