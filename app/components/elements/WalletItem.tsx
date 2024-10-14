@@ -12,56 +12,17 @@ interface WalletItemProps {
 
 const WalletItem : React.FC<WalletItemProps> = (props) => {
 
-
     return (
-        <div style={{
-            display: "flex",
-            width: "100%",
-            height: "40px",
-            margin: "0 0.2rem"
-        }}>
-            <div 
-                style={{
-                    backgroundImage: `url(${props.imgBack1})`,
-                    backgroundPosition: "right center",
-                    backgroundRepeat: "no-repeat",
-                    height: "inherit",
-                    width: "20px",
-                }} 
-            />
-            <div
-                style={{
-                    backgroundImage: `url(${props.imgBack2})`,
-                    backgroundPosition: "center",
-                    backgroundRepeat: "repeat-x",
-                    height: "inherit",
-                    width: '100%',
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between"
-                }}>
+        <div className="wallet-item">
+            <div className="img-back-1" style={{ backgroundImage: `url(${props.imgBack1})` }} />
+            <div className="img-back-2" style={{ backgroundImage: `url(${props.imgBack2})` }}>
                 <span>{props.label + ":"}</span>
-                <div 
-                    style={{ 
-                        display: "flex", 
-                        alignItems: "center" 
-                    }}>
+                <div className="content">
                     <span>{props.amount.toLocaleString()}</span>
-                    <img 
-                        src={props.imgIcon} 
-                        alt="" 
-                        style={{ paddingLeft: "0.4rem" }} />
+                    <img src={props.imgIcon} alt="" style={{ paddingLeft: "0.4rem" }} />
                 </div>
             </div>
-            <div 
-                style={{
-                    backgroundImage: `url(${props.imgBack3})`,
-                    backgroundPosition: "left center",
-                    backgroundRepeat: "no-repeat",
-                    height: "inherit",
-                    width: "20px",
-                }}
-            />
+            <div className="img-back-3" style={{ backgroundImage: `url(${props.imgBack3})` }} />
         </div>
     );
 };

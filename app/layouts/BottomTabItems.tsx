@@ -63,14 +63,14 @@ const FrontOverlay = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
-    const [loading, setLoading] = useState(true);
-    const [isTelegramWebView, setIsTelegramWebView] = useState(false);
-    const [freshAccount, setFreshAccount] = useState(true);
+    // const [loading, setLoading] = useState(true);
+    // const [isTelegramWebView, setIsTelegramWebView] = useState(false);
+    // const [freshAccount, setFreshAccount] = useState(true);
 
     // Use only for local testing
-    // const [loading, setLoading] = useState(false);
-    // const [isTelegramWebView, setIsTelegramWebView] = useState(true);
-    // const [freshAccount, setFreshAccount] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [isTelegramWebView, setIsTelegramWebView] = useState(true);
+    const [freshAccount, setFreshAccount] = useState(false);
     
     const [equippedData, setEquippedData] = useState("");
 
@@ -249,10 +249,10 @@ const FrontOverlay = () => {
             <King />
         </div>,
         <div key="1" className="z-1 size-full">
-            <Lane token={token} />
+            <Lane token={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMxLCJ0ZWxlZ3JhbV9pZCI6Ijc3MzQxMTEiLCJpZCI6MzEsImlhdCI6MTcyODg3NzkyNCwiZXhwIjoxNzI4ODgxNTI0fQ.ky1JE4ImTuclE5yFISK_ZRCUsIYt0RXEugFVmzOoV_A"} />
         </div>,
         <div key="2" className="z-1 size-full">
-            <Kingdom token={token} />
+            <Kingdom token={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMxLCJ0ZWxlZ3JhbV9pZCI6Ijc3MzQxMTEiLCJpZCI6MzEsImlhdCI6MTcyODg3NzkyNCwiZXhwIjoxNzI4ODgxNTI0fQ.ky1JE4ImTuclE5yFISK_ZRCUsIYt0RXEugFVmzOoV_A"} />
         </div>,
         <div key="3" className="z-1">
             <Hero />
@@ -291,7 +291,7 @@ const FrontOverlay = () => {
                                         : null
                                 }
                                 {/* TODO: Move to TopTitle ?<TwitterButton></TwitterButton> */}
-                                <div className="details-section">
+                                <div className="wallet-items">
                                     <WalletItem 
                                         label="GOLD" 
                                         amount={wallet?.gold ?? 0} 
@@ -311,7 +311,7 @@ const FrontOverlay = () => {
                             <div className="bottom-container z-46">
                                 <TabMenu 
                                     tabs={tabItems} 
-                                    marginTops={[120, 80, 80, 120, 120]}
+                                    marginTops={[140, 90, 90, 140, 140]}
                                     handleTabClick={handleTabClick} 
                                     content={contentTabs} 
                                     activeTab={activeTab} />
