@@ -20,6 +20,7 @@ import CharacterCreationV2 from "../components/Contents/cc";
 import King from "@/app/components/Contents/King";
 import { useUserState } from "../context/data.context";
 import TwitterButton from "../components/elements/TwitterButton";
+import WalletItem from "../components/elements/WalletItem";
 const tabItems: TabItem[] = [
     {
         image: "/assets/images/tabs/King.png",
@@ -62,14 +63,14 @@ const FrontOverlay = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
-    const [loading, setLoading] = useState(true);
-    const [isTelegramWebView, setIsTelegramWebView] = useState(false);
-    const [freshAccount, setFreshAccount] = useState(true);
+    // const [loading, setLoading] = useState(true);
+    // const [isTelegramWebView, setIsTelegramWebView] = useState(false);
+    // const [freshAccount, setFreshAccount] = useState(true);
 
     // Use only for local testing
-    // const [loading, setLoading] = useState(false);
-    // const [isTelegramWebView, setIsTelegramWebView] = useState(true);
-    // const [freshAccount, setFreshAccount] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [isTelegramWebView, setIsTelegramWebView] = useState(true);
+    const [freshAccount, setFreshAccount] = useState(false);
     
     const [equippedData, setEquippedData] = useState("");
 
@@ -248,10 +249,10 @@ const FrontOverlay = () => {
             <King />
         </div>,
         <div key="1" className="z-1 size-full">
-            <Lane token={token} />
+            <Lane token={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMxLCJ0ZWxlZ3JhbV9pZCI6Ijc3MzQxMTEiLCJpZCI6MzEsImlhdCI6MTcyODg3NzkyNCwiZXhwIjoxNzI4ODgxNTI0fQ.ky1JE4ImTuclE5yFISK_ZRCUsIYt0RXEugFVmzOoV_A"} />
         </div>,
         <div key="2" className="z-1 size-full">
-            <Kingdom token={token} />
+            <Kingdom token={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMxLCJ0ZWxlZ3JhbV9pZCI6Ijc3MzQxMTEiLCJpZCI6MzEsImlhdCI6MTcyODg3NzkyNCwiZXhwIjoxNzI4ODgxNTI0fQ.ky1JE4ImTuclE5yFISK_ZRCUsIYt0RXEugFVmzOoV_A"} />
         </div>,
         <div key="3" className="z-1">
             <Hero />
@@ -290,29 +291,27 @@ const FrontOverlay = () => {
                                         : null
                                 }
                                 {/* TODO: Move to TopTitle ?<TwitterButton></TwitterButton> */}
-                                <div className="details-section">
-                                    <div className="wallet-section grid-cols-2">
-                                        <div className="curved-box base-text gold-section">
-                                            GOLD:
-                                            <div className="right-side">
-                                                {wallet ? wallet.gold : "0"}
-                                                <img src="/assets/images/Coin.png" alt="" />
-                                            </div>
-                                        </div>
-                                        <div className="curved-box base-text runes-section">
-                                            RUNES:
-                                            <div className="right-side">
-                                                {wallet ? wallet.rune : "0"}
-                                                <img src="/assets/images/icons/money.png" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className="wallet-items">
+                                    <WalletItem 
+                                        label="GOLD" 
+                                        amount={wallet?.gold ?? 0} 
+                                        imgBack1="assets/images/ava/ava-gold-container-part1.png" 
+                                        imgBack2="assets/images/ava/ava-gold-container-part2.png" 
+                                        imgBack3="assets/images/ava/ava-gold-container-part3.png" 
+                                        imgIcon="assets/images/ava/ava-gold-icon-xs.png" />
+                                    <WalletItem 
+                                        label="RUNES" 
+                                        amount={wallet?.rune ?? 0} 
+                                        imgBack1="assets/images/ava/ava-runes-container-part1.png"
+                                        imgBack2="assets/images/ava/ava-runes-container-part2.png"
+                                        imgBack3="assets/images/ava/ava-runes-container-part3.png" 
+                                        imgIcon="assets/images/ava/ava-rune-icon-xs.png" />
                                 </div>
                             </div>
                             <div className="bottom-container z-46">
                                 <TabMenu 
                                     tabs={tabItems} 
-                                    marginTops={[120, 80, 80, 120, 120]}
+                                    marginTops={[140, 90, 90, 140, 140]}
                                     handleTabClick={handleTabClick} 
                                     content={contentTabs} 
                                     activeTab={activeTab} />
